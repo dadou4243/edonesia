@@ -12,13 +12,13 @@ import { SearchResultComponent } from './search/search-result/search-result.comp
 import { MainActivitiesComponent } from './home/main-activities/main-activities.component';
 import { TestimonialsComponent } from './home/testimonials/testimonials.component';
 import { HomeMainComponent } from './home/home-main/home-main.component';
-import { PopularActivitiesComponent } from './components/popular-activities/popular-activities.component';
 import { ActivitySuggestionsComponent } from './components/activity-suggestions/activity-suggestions.component';
 import { ActivityDetailsComponent } from './components/activity-details/activity-details.component';
 import { RelatedItemsComponent } from './components/related-items/related-items.component';
 import { RelatedItemComponent } from './components/related-item/related-item.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { CategoriesComponent } from './home/categories/categories.component';
+import { PopularActivitiesComponent } from './home/popular-activities/popular-activities.component';
 
 @NgModule({
   declarations: [
