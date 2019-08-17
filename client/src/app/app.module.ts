@@ -19,6 +19,15 @@ import { RelatedItemComponent } from './components/related-item/related-item.com
 import { FooterComponent } from './layout/footer/footer.component';
 import { CategoriesComponent } from './home/categories/categories.component';
 import { PopularActivitiesComponent } from './home/popular-activities/popular-activities.component';
+import { BenefitsComponent } from './home/benefits/benefits.component';
+import { AboutUsComponent } from './about/about-us/about-us.component';
+import { AboutCtaComponent } from './about/about-cta/about-cta.component';
+import { AboutSupportComponent } from './about/about-support/about-support.component';
+import { ContactComponent } from './support/contact/contact.component';
+import { ContactInfoComponent } from './support/contact-info/contact-info.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { WishlistHomeComponent } from './wishlist/wishlist-home/wishlist-home.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +47,16 @@ import { PopularActivitiesComponent } from './home/popular-activities/popular-ac
     RelatedItemsComponent,
     RelatedItemComponent,
     FooterComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    BenefitsComponent,
+    AboutUsComponent,
+    AboutCtaComponent,
+    AboutSupportComponent,
+    ContactComponent,
+    ContactInfoComponent,
+    LoginComponent,
+    SignUpComponent,
+    WishlistHomeComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

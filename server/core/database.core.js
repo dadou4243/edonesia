@@ -44,10 +44,12 @@
 
   async function init() {
     if (database) {
+      console.log('database:', database);
       return;
     }
 
     let urlMongo = dbConfig.atlas;
+    console.log('urlMongo:', urlMongo);
     if (process.env.NODE_ENV === 'vincent') {
       urlMongo = dbConfig.dockerMongo;
     }

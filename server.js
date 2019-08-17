@@ -8,7 +8,7 @@ const path = require('path');
 // const passport = require('passport');
 const cors = require('cors');
 
-// const Database = require('./server/core/database.core');
+const Database = require('./server/core/database.core');
 // const AuthCore = require('./server/core/auth.core');
 
 app.use(cors());
@@ -46,26 +46,26 @@ function createServer() {
   });
 }
 
-// connectMongo();
+connectMongo();
 
-// async function checkInternet(cb) {
-//   const isConnected = await Database.init();
-//   cb(isConnected);
-// }
+async function checkInternet(cb) {
+  const isConnected = await Database.init();
+  cb(isConnected);
+}
 
 createServer();
 
-// function connectMongo() {
-//   checkInternet(function(isConnected) {
-//     if (isConnected === true) {
-//       console.log('Connection to Mongo OK');
-//       createServer();
-//     } else {
-//       console.log('Not connected to mongo....');
-//       setTimeout(connectMongo, 3000);
-//     }
-//   });
-// }
+function connectMongo() {
+  checkInternet(function(isConnected) {
+    if (isConnected === true) {
+      console.log('Connection to Mongo OK');
+      createServer();
+    } else {
+      console.log('Not connected to mongo....');
+      setTimeout(connectMongo, 3000);
+    }
+  });
+}
 
 app.get('/toto', function(req, res) {
   return res.status(200).send('toto');
