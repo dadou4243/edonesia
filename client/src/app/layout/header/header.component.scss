@@ -1,0 +1,38 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: grey;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  .left-part {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      background-color: black;
+      margin: 0 20px;
+      cursor: pointer;
+    }
+
+    nav {
+      // padding: 10px;
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+
+        li {
+          margin: 0 10px;
+          a {
+          }
+        }
+      }
+    }
+  }
+}

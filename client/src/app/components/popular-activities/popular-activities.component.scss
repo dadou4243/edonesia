@@ -1,0 +1,37 @@
+:host {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.popular-activites-container {
+  padding: 40px;
+
+  .title {
+    margin: 20px 0;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .activity-list {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .activity {
+      height: 100px;
+      width: 200px;
+      margin: 0 20px;
+      border: 1px solid black;
+      background-color: lightgrey;
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
