@@ -33,10 +33,10 @@
    * @return {Promise<object>} - Les data du word
    */
   async function createWord(wordData) {
-    // console.log('createWord', wordData);
+    console.log('createWord service', wordData);
 
     // if (!lodash.get(wordData, 'hebrew') || !lodash.get(wordData, 'french')) {
-    if (!lodash.get(wordData, 'hebrew')) {
+    if (!lodash.get(wordData, 'name')) {
       throw new Error({
         error: 'Invalid parameters'
       });
@@ -45,13 +45,13 @@
     // IMPORTANT NOTE
     // In here, if the user wants to create a word but there already is an existing one with the same field hebrew,
     // the word is automatically updated to the new params
-    const existingWord = await checkExistingHebrewWord(
-      lodash.get(wordData, 'hebrew')
-    );
-    if (existingWord) {
-      // console.log("existingWord", existingWord);
-      return await updateWord(wordData);
-    }
+    // const existingWord = await checkExistingHebrewWord(
+    //   lodash.get(wordData, 'name')
+    // );
+    // if (existingWord) {
+    //   // console.log("existingWord", existingWord);
+    //   return await updateWord(wordData);
+    // }
 
     return await WordDAO.createWord(wordData);
   }

@@ -1,1 +1,7 @@
-<p>trip works!</p>
+<div class="trip-container">
+  <div class="trip-name">
+    <a [routerLink]="['.', trip.name]" routerLinkActive="router-link-active">{{
+      trip.name
+    }}</a>
+  </div>
+</div>

@@ -20,15 +20,16 @@
   };
 
   async function createWord(wordData) {
-    // console.log('createWord Dao', wordData);
+    console.log('createWord Dao', wordData);
     return new Promise(async function(resolve, reject) {
       try {
-        const data = {
-          hebrew: lodash.get(wordData, 'hebrew'),
-          french: lodash.get(wordData, 'french'),
-          pronunciation: lodash.get(wordData, 'pronunciation'),
-          type: lodash.get(wordData, 'type')
-        };
+        // const data = {
+        //   hebrew: lodash.get(wordData, 'hebrew'),
+        //   french: lodash.get(wordData, 'french'),
+        //   pronunciation: lodash.get(wordData, 'pronunciation'),
+        //   type: lodash.get(wordData, 'type')
+        // };
+        const data = wordData;
 
         const newWord = new WordMongo(data);
         const wordCreated = await newWord.save();

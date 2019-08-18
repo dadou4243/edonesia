@@ -10,6 +10,7 @@ const routes: Routes = [
 
   { path: 'trips', component: TripsComponent },
   { path: 'trips/:id', component: ActivityDetailsComponent },
+  { path: 'activities/:id', component: ActivityDetailsComponent },
   { path: 'wishlist', component: WishlistHomeComponent }
   // { path: 'signup', component: SignUpComponent },
   // { path: 'search/:string', component: SearchResultsComponent },

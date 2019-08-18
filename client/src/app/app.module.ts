@@ -28,6 +28,9 @@ import { ContactInfoComponent } from './support/contact-info/contact-info.compon
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { WishlistHomeComponent } from './wishlist/wishlist-home/wishlist-home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NewsletterSubscribeComponent } from './components/newsletter-subscribe/newsletter-subscribe.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -56,9 +59,11 @@ import { WishlistHomeComponent } from './wishlist/wishlist-home/wishlist-home.co
     ContactInfoComponent,
     LoginComponent,
     SignUpComponent,
-    WishlistHomeComponent
+    WishlistHomeComponent,
+    NewsletterSubscribeComponent,
+    NotFoundComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
 })

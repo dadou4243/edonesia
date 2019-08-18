@@ -5,7 +5,7 @@
   const mongoose = require('mongoose');
 
   const UserSchema = require('../dao/models/user.model').UserSchema;
-  const WordSchema = require('../dao/models/trip.model').WordSchema;
+  const TripSchema = require('../dao/models/trip.model').TripSchema;
   //   const CollectionSchema = require('../dao/models/collection.model')
   //     .CollectionSchema;
   //   const VideoSchema = require('../dao/models/video.model').VideoSchema;
@@ -16,7 +16,7 @@
   //   const ContextSchema = require('../dao/models/context.model').ContextSchema;
 
   exports.UserMongo = mongoose.model('User', UserSchema);
-  exports.WordMongo = mongoose.model('Word', WordSchema);
+  exports.WordMongo = mongoose.model('Trip', TripSchema);
   //   exports.CollectionMongo = mongoose.model('Collection', CollectionSchema);
   //   exports.VideoMongo = mongoose.model('Video', VideoSchema);
   //   exports.FavoriteWordMongo = mongoose.model(

@@ -2,50 +2,55 @@ const router = require('express').Router();
 
 const Auth = require('../../core/auth.core');
 
-const WordController = require('../controller/trip.controller');
-
-// const searchInMorfix = require('../../scrapping/morfix');
+const TripController = require('../controller/trip.controller');
 
 // Définition des routes
 router.post(
   '/deleteMany',
-  Auth.isConnected,
-  Auth.isAdmin,
-  WordController.deleteWords
+  // Auth.isConnected,
+  // Auth.isAdmin,
+  TripController.deleteWords
 );
-
-// Search Word translation on Morfix
-router.get('/scrap/:word', (req, res, next) => {
-  const word = req.params.word;
-  console.log(word);
-  //   searchInMorfix(word).then(result => {
-  //     console.log('result: ', result);
-  //     res.status(200).json(result);
-  //   });
-});
-router.post('/', Auth.isConnected, Auth.isAdmin, WordController.createWord);
 
 router.post(
-  '/:wordID',
-  Auth.isConnected,
-  Auth.isAdmin,
-  WordController.updateWord
+  '/',
+  // Auth.isConnected,
+  // Auth.isAdmin,
+  TripController.createWord
 );
 
-router.get('/:wordID', Auth.isConnected, WordController.getWord);
-router.get('/', Auth.isConnected, Auth.isAdmin, WordController.getAllWords);
+router.post(
+  '/:tripID',
+  // Auth.isConnected,
+  // Auth.isAdmin,
+  TripController.updateWord
+);
+
+router.get(
+  '/:tripID',
+  // Auth.isConnected,
+  TripController.getWord
+);
+
+router.get(
+  '/',
+  // Auth.isConnected,
+  // Auth.isAdmin,
+  TripController.getAllWords
+);
+
 router.get(
   '/search/:searchString',
-  Auth.isConnected,
-  Auth.isAdmin,
-  WordController.searchWord
+  // Auth.isConnected,
+  // Auth.isAdmin,
+  TripController.searchWord
 );
 
 router.delete(
-  '/:wordID',
-  Auth.isConnected,
-  Auth.isAdmin,
-  WordController.deleteWord
+  '/:tripID',
+  // Auth.isConnected,
+  // Auth.isAdmin,
+  TripController.deleteWord
 );
 
 module.exports = router;

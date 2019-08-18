@@ -3,17 +3,17 @@
 
   const mongoose = require('mongoose');
 
-  const WordSchema = new mongoose.Schema(
+  const TripSchema = new mongoose.Schema(
     {
-      hebrew: {
+      name: {
         type: String,
-        unique: true,
+        // unique: true,
         required: true
       },
-      french: {
-        type: String
-        // required: true
-      },
+      // french: {
+      //   type: String
+      //   // required: true
+      // },
       pronunciation: String,
       type: String,
       genre: String,
@@ -26,10 +26,10 @@
     }
   );
 
-  WordSchema.index({
-    hebrew: 'text',
-    french: 'text'
-  });
+  // TripSchema.index({
+  //   hebrew: 'text',
+  //   french: 'text'
+  // });
 
-  exports.WordSchema = WordSchema;
+  exports.TripSchema = TripSchema;
 })();

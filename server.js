@@ -13,20 +13,20 @@ const Database = require('./server/core/database.core');
 
 app.use(cors());
 
-// // Middlewares
-// app.use(morgan('dev'));
-// app.use(
-//   bodyParser.json({
-//     limit: '50mb'
-//   })
-// );
-// app.use(
-//   bodyParser.urlencoded({
-//     limit: '50mb',
-//     extended: true,
-//     parameterLimit: 50000
-//   })
-// );
+// Middlewares
+app.use(morgan('dev'));
+app.use(
+  bodyParser.json({
+    limit: '50mb'
+  })
+);
+app.use(
+  bodyParser.urlencoded({
+    limit: '50mb',
+    extended: true,
+    parameterLimit: 50000
+  })
+);
 
 // Initialize passport
 // app.use(passport.initialize());
@@ -53,8 +53,6 @@ async function checkInternet(cb) {
   cb(isConnected);
 }
 
-createServer();
-
 function connectMongo() {
   checkInternet(function(isConnected) {
     if (isConnected === true) {
@@ -75,7 +73,7 @@ app.get('/toto', function(req, res) {
 exports.app = app;
 
 // On charge les routes
-// require('./server/web/index');
+require('./server/web/index');
 
 // // Static Angular Build
 // app.use(express.static(path.join(__dirname, './dist/')));
