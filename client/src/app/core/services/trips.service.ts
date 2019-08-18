@@ -47,11 +47,6 @@ export class TripsService {
     return this.http.get<any>(`${environment.API_URL}/context/${id}`);
   }
 
-  addTrip(trip): Observable<any> {
-    // console.log('ADD TRIP SERVICE', trip);
-    return this.http.post<any>(`${environment.API_URL}/trip`, trip);
-  }
-
   deleteTrip(tripId): Observable<any> {
     // console.log('DELETE TRIP SERVICE', tripId);
     return this.http.delete<any>(`${environment.API_URL}/trip/${tripId}`);
