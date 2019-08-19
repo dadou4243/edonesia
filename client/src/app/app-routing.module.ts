@@ -4,6 +4,7 @@ import { TripsComponent } from './components/trips/trips.component';
 import { HomeMainComponent } from './home/home-main/home-main.component';
 import { ActivityDetailsComponent } from './components/activity-details/activity-details.component';
 import { WishlistHomeComponent } from './wishlist/wishlist-home/wishlist-home.component';
+import { BookTripComponent } from './components/booking/book-trip/book-trip.component';
 
 const routes: Routes = [
   { path: '', component: HomeMainComponent },
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'trips', component: TripsComponent },
   { path: 'trips/:id', component: ActivityDetailsComponent },
   { path: 'activities/:id', component: ActivityDetailsComponent },
-  { path: 'wishlist', component: WishlistHomeComponent }
+  { path: 'wishlist', component: WishlistHomeComponent },
+  { path: 'book', component: BookTripComponent }
   // { path: 'signup', component: SignUpComponent },
   // { path: 'search/:string', component: SearchResultsComponent },
   // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }

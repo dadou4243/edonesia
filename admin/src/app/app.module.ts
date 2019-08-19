@@ -14,6 +14,10 @@ import { AnalyticsHomeComponent } from './analytics/analytics-home/analytics-hom
 import { PurchasesListComponent } from './purchases/purchases-list/purchases-list.component';
 import { RequestsListComponent } from './requests/requests-list/requests-list.component';
 import { TripsListComponent } from './trips/trips-list/trips-list.component';
+import { BookingsComponent } from './bookings/bookings.component';
+import { BookingComponent } from './booking/booking.component';
+import { TripMainComponent } from './trips/trip-main/trip-main.component';
+import { TripItemComponent } from './trips/trip-item/trip-item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { TripsListComponent } from './trips/trips-list/trips-list.component';
     AnalyticsHomeComponent,
     PurchasesListComponent,
     RequestsListComponent,
-    TripsListComponent
+    TripsListComponent,
+    BookingsComponent,
+    BookingComponent,
+    TripMainComponent,
+    TripItemComponent
   ],
   imports: [
     BrowserModule,

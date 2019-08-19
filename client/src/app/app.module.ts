@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { WishlistHomeComponent } from './wishlist/wishlist-home/wishlist-home.co
 import { HttpClientModule } from '@angular/common/http';
 import { NewsletterSubscribeComponent } from './components/newsletter-subscribe/newsletter-subscribe.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { BookTripComponent } from './components/booking/book-trip/book-trip.component';
 
 @NgModule({
   declarations: [
@@ -61,9 +63,16 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     SignUpComponent,
     WishlistHomeComponent,
     NewsletterSubscribeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    BookTripComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

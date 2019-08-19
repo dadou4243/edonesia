@@ -1,3 +1,7 @@
 <div class="trips-container">
-  <div *ngFor="let trip of trips | async">{{ trip.name }}</div>
+  <h3>Trips list</h3>
+  <app-trip-item
+    *ngFor="let trip of trips | async"
+    [trip]="trip"
+  ></app-trip-item>
 </div>

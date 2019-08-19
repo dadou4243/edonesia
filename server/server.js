@@ -8,7 +8,7 @@ const path = require('path');
 // const passport = require('passport');
 const cors = require('cors');
 
-const Database = require('./server/core/database.core');
+const Database = require('./core/database.core');
 // const AuthCore = require('./server/core/auth.core');
 
 app.use(cors());
@@ -73,7 +73,7 @@ app.get('/toto', function(req, res) {
 exports.app = app;
 
 // On charge les routes
-require('./server/web/index');
+require('./web/index');
 
 // // Static Angular Build
 // app.use(express.static(path.join(__dirname, './dist/')));

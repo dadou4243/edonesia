@@ -6,13 +6,13 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-trip',
-  templateUrl: './trip.component.html',
-  styleUrls: ['./trip.component.scss'],
+  selector: 'app-trip-item',
+  templateUrl: './trip-item.component.html',
+  styleUrls: ['./trip-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TripComponent implements OnInit {
-  @Input() trip: any;
+export class TripItemComponent implements OnInit {
+  @Input() trip;
 
   constructor() {}
 

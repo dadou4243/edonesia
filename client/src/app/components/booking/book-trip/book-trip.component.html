@@ -1,0 +1,50 @@
+<div class="word-dialog-container">
+  <h3>Book trip</h3>
+  <div>
+    <form [formGroup]="tripForm">
+      <input
+        type="text"
+        matInput
+        placeholder="First Name"
+        formControlName="firstName"
+        required
+      />
+      <!-- <input
+        type="text"
+        placeholder="French"
+        matInput
+        formControlName="french"
+      />
+      <input
+        type="text"
+        placeholder="pronunciation"
+        matInput
+        formControlName="pronunciation"
+      />
+      <select name="" id="">
+        <option *ngFor="let type of types" [value]="type.value">
+          {{ type.viewValue }}
+        </option>
+      </select>
+      <select placeholder="Forme" formControlName="forme">
+        <option *ngFor="let forme of formes" [value]="forme.value" #presentatif>
+          {{ forme.viewValue }}
+        </option>
+      </select> -->
+    </form>
+  </div>
+
+  <div>
+    <button (click)="resetForm()">Reset Form</button>
+    <button (click)="onNoClick()">Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!tripForm.valid"
+      (click)="onSubmit()"
+    >
+      Save
+    </button>
+  </div>
+</div>

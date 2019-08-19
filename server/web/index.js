@@ -1,4 +1,4 @@
-_createRouter(require('../../server').app);
+_createRouter(require('../server').app);
 
 /**
  * @description Méthode permettant d'ajouter une version
