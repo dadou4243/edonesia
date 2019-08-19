@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BookingsService } from '../services/bookings.service';
 
 @Component({
   selector: 'app-bookings',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bookings.component.scss']
 })
 export class BookingsComponent implements OnInit {
+  bookings: Observable<any>;
 
-  constructor() { }
+  constructor(private bookingsService: BookingsService) {}
 
   ngOnInit() {
+    this.bookings = this.bookingsService.getBookings();
   }
-
 }

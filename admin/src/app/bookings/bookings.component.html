@@ -1,3 +1,7 @@
 <div class="bookings-container">
-  Bookings
+  <h3>Bookings list</h3>
+  <app-booking-item
+    *ngFor="let booking of bookings | async"
+    [booking]="booking"
+  ></app-booking-item>
 </div>

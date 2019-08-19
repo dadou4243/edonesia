@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BookingsService } from 'src/app/core/services/bookings.service';
 
 @Component({
   selector: 'app-book-trip',
@@ -9,7 +10,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class BookTripComponent implements OnInit {
   tripForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private bookingsService: BookingsService
+  ) {}
 
   ngOnInit() {
     this.tripForm = this.fb.group({
@@ -35,6 +39,9 @@ export class BookTripComponent implements OnInit {
     console.log(this.tripForm.value);
     this.tripForm.patchValue({
       createdAt: Date.now()
+    });
+    this.bookingsService.addBooking(this.tripForm.value).subscribe(booking => {
+      console.log('booking', booking);
     });
   }
 }

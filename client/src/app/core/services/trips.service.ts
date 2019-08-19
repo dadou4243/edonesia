@@ -35,6 +35,11 @@ export class TripsService {
     return this.http.get<any>(`${environment.API_URL}/trip/${id}`);
   }
 
+  addTrip(trip): Observable<any> {
+    console.log('ADD TRIP SERVICE', trip);
+    return this.http.post<any>(`${environment.API_URL}/trip`, trip);
+  }
+
   searchTrip(searchString): Observable<any> {
     // console.log(id);
     return this.http.get<any>(
@@ -66,10 +71,6 @@ export class TripsService {
       tripData: trip,
       overwrite
     });
-  }
-
-  searchReverso(trip): Observable<any> {
-    return this.http.get<any>(`${environment.API_URL}/trip/search/${trip}`);
   }
 
   // deleteManyTrips(tripsIds): Observable<any> {

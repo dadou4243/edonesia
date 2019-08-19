@@ -15,9 +15,10 @@ import { PurchasesListComponent } from './purchases/purchases-list/purchases-lis
 import { RequestsListComponent } from './requests/requests-list/requests-list.component';
 import { TripsListComponent } from './trips/trips-list/trips-list.component';
 import { BookingsComponent } from './bookings/bookings.component';
-import { BookingComponent } from './booking/booking.component';
 import { TripMainComponent } from './trips/trip-main/trip-main.component';
 import { TripItemComponent } from './trips/trip-item/trip-item.component';
+import { BookingsListComponent } from './bookings/bookings-list/bookings-list.component';
+import { BookingItemComponent } from './bookings/booking-item/booking.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +32,10 @@ import { TripItemComponent } from './trips/trip-item/trip-item.component';
     RequestsListComponent,
     TripsListComponent,
     BookingsComponent,
-    BookingComponent,
+    BookingItemComponent,
     TripMainComponent,
-    TripItemComponent
+    TripItemComponent,
+    BookingsListComponent
   ],
   imports: [
     BrowserModule,
