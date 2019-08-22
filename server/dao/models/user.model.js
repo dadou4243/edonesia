@@ -14,22 +14,13 @@
         type: String,
         required: true
       },
-      username: {
-        type: String
-      },
       firstName: String,
       lastName: String,
-      role: String,
-      collections: [
-        {
-          type: String
-        }
-      ]
+      role: String
     },
     {
       timestamps: true
     }
-    // words: [],
   );
 
   exports.UserSchema = UserSchema;
