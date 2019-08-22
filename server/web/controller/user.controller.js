@@ -38,6 +38,7 @@
       // }
 
       const userData = lodash.get(req, 'body');
+      console.log('userData:', userData)
 
       const userCreated = await UserSvc.createUser(userData, 'user');
       const token = AuthCore.generateToken(lodash.get(userCreated, '_id'));

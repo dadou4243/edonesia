@@ -1,8 +1,39 @@
 <div class="signup-container">
   <h2>Sign up</h2>
-  <input type="text" placeholder="Email" class="ut-text-input" />
-  <input type="password" placeholder="Password" class="ut-text-input" />
-  <input type="password" placeholder="Confirm password" class="ut-text-input" />
-  <input type="text" placeholder="First name" class="ut-text-input" />
-  <input type="text" placeholder="Last name" class="ut-text-input" />
+
+  <form [formGroup]="signupForm" autocomplete="off">
+    <input
+      type="text"
+      placeholder="Email"
+      class="ut-text-input"
+      formControlName="email"
+      required
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      class="ut-text-input"
+      formControlName="password"
+      required
+    />
+    <!-- <input
+      type="password"
+      placeholder="Confirm password"
+      class="ut-text-input"
+    /> -->
+    <input
+      type="text"
+      placeholder="First name"
+      class="ut-text-input"
+      formControlName="firstName"
+    />
+    <input
+      type="text"
+      placeholder="Last name"
+      class="ut-text-input"
+      formControlName="lastName"
+    />
+  </form>
+
+  <button class="ut-btn" (click)="onConfirm()">Confirm</button>
 </div>

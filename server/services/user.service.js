@@ -31,6 +31,7 @@
    * @return {Promise<object>} - Les data du user
    */
   async function createUser(userData, role) {
+    console.log('userData:', userData)
     if (!lodash.get(userData, 'email') || !lodash.get(userData, 'password')) {
       throw new Error({
         error: 'Invalid parameters'
