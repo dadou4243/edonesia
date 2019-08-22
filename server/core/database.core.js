@@ -37,7 +37,7 @@
   const options = {
     reconnectTries: Number.MAX_VALUE,
     poolSize: 10,
-    dbName: 'HebrewApp',
+    dbName: 'UniqueTrips',
     useNewUrlParser: true,
     useCreateIndex: true
   };
