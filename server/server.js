@@ -29,9 +29,14 @@ app.use(
   })
 );
 
+app.use(function(req, res, next) {
+  console.log(req.body);
+  next();
+});
+
 app.use(
   session({
-    secret: 'your secret key',
+    secret: 'secretkey1',
     resave: false,
     saveUninitialized: false
   })
@@ -40,6 +45,7 @@ app.use(
 // Initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
+require('./config/passport');
 
 // app.use(AuthCore.getUserID());
 

@@ -68,13 +68,12 @@
       // );
 
       const user = new UserMongo({ email: req.body.email });
-      await user.setPassword('password');
+      await user.setPassword(req.body.password);
       await user.save();
       console.log('user:', user);
-      const { user } = await passport.authenticate()(
-        req.body.email,
-        req.body.password
-      );
+      passport.authenticate('local')(req, res, function() {
+        console.log('authenticate');
+      });
       console.log('user', user);
       return res.status(200).send({
         auth: true

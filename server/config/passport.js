@@ -1,10 +1,12 @@
 const passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-const UserSchema = require('./dao/models/user.model');
+const LocalStrategy = require('passport-local').Strategy;
+
+const MongoCore = require('../core/database.core');
+const UserMongo = MongoCore.UserMongo;
 
 // use static authenticate method of model in LocalStrategy
-passport.use(UserSchema.createStrategy());
+passport.use(UserMongo.createStrategy());
 
 // use static serialize and deserialize of model for passport session support
-passport.serializeUser(UserSchema.serializeUser());
-passport.deserializeUser(UserSchema.deserializeUser());
+passport.serializeUser(UserMongo.serializeUser());
+passport.deserializeUser(UserMongo.deserializeUser());
