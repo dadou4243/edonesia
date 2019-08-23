@@ -6,6 +6,9 @@
 
   // Internal dependencies
   const UserSvc = require('../../services/user.service');
+  const MongoCore = require('../../core/database.core');
+
+  const UserMongo = MongoCore.UserMongo;
 
   const AuthCore = require('../../core/auth.core');
 
@@ -38,18 +41,33 @@
       // }
 
       const userData = lodash.get(req, 'body');
-      console.log('userData:', userData)
+      console.log('userData:', userData);
 
-      const userCreated = await UserSvc.createUser(userData, 'user');
-      const token = AuthCore.generateToken(lodash.get(userCreated, '_id'));
+      UserMongo.register(
+        new UserMongo({ username: req.body.username }),
+        req.body.password,
+        function(err, account) {
+          console.log('I am here');
+          if (err) {
+            return res.render('register', { account: account });
+          }
+
+          passport.authenticate('local')(req, res, function() {
+            res.redirect('/');
+          });
+        }
+      );
+
+      // const userCreated = await UserSvc.createUser(userData, 'user');
+      // const token = AuthCore.generateToken(lodash.get(userCreated, '_id'));
 
       return res.status(200).send({
-        auth: true,
-        token: token,
-        userID: lodash.get(userCreated, '_id')
+        auth: true
+        // token: token,
+        // userID: lodash.get(userCreated, '_id')
       });
     } catch (err) {
-      console.log(err.error);
+      console.log('error', err);
       return res.status(500).send({
         auth: false,
         error: err.toString()

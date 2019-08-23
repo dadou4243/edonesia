@@ -5,7 +5,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const http = require('http');
 const path = require('path');
-// const passport = require('passport');
+const passport = require('passport');
+var session = require('express-session');
 const cors = require('cors');
 
 const Database = require('./core/database.core');
@@ -28,8 +29,17 @@ app.use(
   })
 );
 
+app.use(
+  session({
+    secret: 'your secret key',
+    resave: false,
+    saveUninitialized: false
+  })
+);
+
 // Initialize passport
-// app.use(passport.initialize());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // app.use(AuthCore.getUserID());
 
