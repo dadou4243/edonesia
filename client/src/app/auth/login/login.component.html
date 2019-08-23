@@ -1,8 +1,20 @@
 <div class="login-container">
   <h2>Login</h2>
 
-  <input type="text" placeholder="Email" class="ut-text-input" />
-  <input type="password" placeholder="Password" class="ut-text-input" />
+  <form [formGroup]="loginForm" autocomplete="off">
+    <input
+      type="text"
+      placeholder="Email"
+      class="ut-text-input"
+      formControlName="email"
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      class="ut-text-input"
+      formControlName="password"
+    />
+  </form>
 
   <button class="ut-btn" (click)="onConfirm()">Confirm</button>
 </div>

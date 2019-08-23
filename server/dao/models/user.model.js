@@ -11,10 +11,10 @@
         unique: true,
         required: true
       },
-      password: {
-        type: String,
-        required: true
-      },
+      // password: {
+      //   type: String,
+      //   required: true
+      // },
       firstName: String,
       lastName: String,
       role: String
@@ -24,7 +24,7 @@
     }
   );
 
-  UserSchema.plugin(passportLocalMongoose);
+  UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
   exports.UserSchema = UserSchema;
 })();
