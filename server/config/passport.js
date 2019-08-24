@@ -1,5 +1,4 @@
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 
 const MongoCore = require('../core/database.core');
 const UserMongo = MongoCore.UserMongo;

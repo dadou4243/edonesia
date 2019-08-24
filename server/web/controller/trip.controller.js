@@ -136,6 +136,7 @@
 
     try {
       const words = await WordSvc.getAllWords(sortOrder, pageNumber, pageSize);
+      console.log('words:', words);
 
       return res.status(200).send({
         data: words
