@@ -75,28 +75,42 @@
   }
 
   // On vérifie qu'un user est bien connecté, sinon on le jette
-  async function isConnected(req, res, next) {
-    try {
-      const token = lodash.get(req, 'headers.x-access-token');
-      if (!token) {
-        return res.status(401).send({
-          auth: false,
-          message: 'No token provided.'
-        });
-      }
+  // async function isConnected(req, res, next) {
+  //   try {
+  //     const token = lodash.get(req, 'headers.x-access-token');
+  //     if (!token) {
+  //       return res.status(401).send({
+  //         auth: false,
+  //         message: 'No token provided.'
+  //       });
+  //     }
 
-      if (!lodash.get(req, 'userID')) {
-        return res.status(500).send({
-          auth: false,
-          message: 'Failed to authenticate token.'
-        });
-      }
+  //     if (!lodash.get(req, 'userID')) {
+  //       return res.status(500).send({
+  //         auth: false,
+  //         message: 'Failed to authenticate token.'
+  //       });
+  //     }
 
+  //     return next();
+  //   } catch (error) {
+  //     return res.status(500).send({
+  //       auth: false,
+  //       message: 'Failed to authenticate token.'
+  //     });
+  //   }
+  // }
+
+  function isConnected(req, res, next) {
+    console.log(req.session);
+    console.log('req.user', req.user);
+    console.log('isAuthenticated:', req.isAuthenticated());
+    if (req.isAuthenticated()) {
       return next();
-    } catch (error) {
-      return res.status(500).send({
-        auth: false,
-        message: 'Failed to authenticate token.'
+    } else {
+      console.log('not authenticated');
+      return res.status(401).send({
+        auth: false
       });
     }
   }

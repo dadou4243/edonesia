@@ -34,19 +34,7 @@ router.get(
 
 router.get(
   '/',
-  function(req, res, next) {
-    console.log(req.session);
-    console.log('req.user', req.user);
-    console.log('isAuthenticated:', req.isAuthenticated());
-    if (req.isAuthenticated()) {
-      return next();
-    } else {
-      console.log('not authenticated');
-      return res.status(401).send({
-        auth: false
-      });
-    }
-  },
+  Auth.isConnected,
   // Auth.isConnected,
   // Auth.isAdmin,
   TripController.getAllWords
