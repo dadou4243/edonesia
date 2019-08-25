@@ -6,21 +6,22 @@
 
 .popular-activites-container {
   padding: 40px;
-  border-bottom: 1px solid grey;
+  // border-bottom: 1px solid grey;
 
   .title {
-    margin: 20px 0;
+    margin: 20px 0 20px 20px;
     font-size: 28px;
     font-weight: 700;
     text-align: center;
+    color: rgb(72, 72, 72);
+    margin-left: 20px;
   }
 
   .activity-list {
-    padding: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
     .activity {
       position: relative;
@@ -30,6 +31,7 @@
       display: flex;
       flex-direction: column;
       cursor: pointer;
+      flex: 1;
 
       .overlay {
         bottom: 0;
@@ -51,6 +53,7 @@
         width: 330px;
         background-size: cover;
         position: relative;
+        border-radius: 3px;
 
         &:hover {
           .overlay {
@@ -60,10 +63,17 @@
       }
 
       .location {
-        padding: 10px 0;
+        padding: 10px 0 5px 0;
         text-transform: uppercase;
         font-weight: 700;
         color: #007eff;
+        font-size: 12px;
+      }
+
+      .description {
+        font-size: 18px;
+        color: rgb(72, 72, 72);
+        font-weight: 700;
       }
     }
   }

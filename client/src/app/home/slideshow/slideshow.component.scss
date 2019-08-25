@@ -28,7 +28,7 @@
 }
 
 .div-three {
-  background-image: url(/assets/temple2.jpg);
+  background-image: url(/assets/helicopter.jpg);
 }
 
 .background-overlay {
@@ -51,7 +51,8 @@
     rgba(0, 0, 0, 0.1) 51.54%,
     rgba(0, 0, 0, 0.6) 75.33%
   );
-  opacity: 0.75;
+  // background-color: rgba(0, 0, 0, 0.15);
+  // opacity: 0.75;
 }
 
 .carousel-item {
@@ -73,18 +74,33 @@
 
     .sub-title {
       margin: 20px 0 44px;
-      font-size: 19px;
+      font-size: 18px;
       line-height: 27px;
     }
 
     .get-started-btn {
-      max-width: 120px;
+      display: inline-block;
+      // max-width: 120px;
       margin: 10px 0;
-      padding: 13px 24px;
       background-color: #007eff;
       border-radius: 4px;
       color: #ffffff;
       cursor: pointer;
+      padding: 17px 20px;
+      font-size: 16px;
     }
   }
+}
+
+::ng-deep .slick-dots li button:before {
+  color: #fff;
+}
+::ng-deep .slick-dots li.slick-active button:before {
+  color: #fff;
+}
+
+::ng-deep ul.slick-dots {
+  bottom: 40px;
+  text-align: left;
+  padding-left: 130px;
 }
