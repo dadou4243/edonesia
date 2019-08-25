@@ -7,6 +7,8 @@ const http = require('http');
 const path = require('path');
 const passport = require('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const mongoose = require('mongoose');
 
 const cors = require('cors');
 
@@ -35,12 +37,37 @@ app.use(
   })
 );
 
+connectMongo();
+
+async function checkInternet(cb) {
+  const isConnected = await Database.init();
+  cb(isConnected);
+}
+
+function connectMongo() {
+  checkInternet(function(isConnected) {
+    if (isConnected === true) {
+      console.log('Connection to Mongo OK');
+      createServer();
+    } else {
+      console.log('Not connected to mongo....');
+      setTimeout(connectMongo, 3000);
+    }
+  });
+  console.log('mongoose connection', mongoose.connection);
+}
+
 app.use(
   session({
     secret: 'secretkey1',
-    resave: false,
+    resave: true,
+    rolling: true,
     saveUninitialized: false,
-    cookie: { maxAge: 24 * 60 * 60 * 1000 }
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection
+      // ttl: 10000
+    })
+    // cookie: { maxAge: 24 * 60 * 60 * 1000 }
   })
 );
 app.use(express.urlencoded({ extended: true })); // express body-parser
