@@ -13,16 +13,17 @@ export class SlideshowComponent implements OnInit, OnDestroy {
     autoplaySpeed: 2000,
     infinite: true,
     dots: true,
-    arrows: true,
+    arrows: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     cssEase: 'ease-out',
+    fade: true,
     // touchThreshold: 1000,
     // cssEase: 'linear'
     // variableWidth: true,
     // variableHeight: true
     // centerMode: true
-    // slide: 'div'
+    // slide: '.carousel-item-content',
     pauseOnHover: false
   };
 
