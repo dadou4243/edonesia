@@ -23,6 +23,7 @@
     justify-content: center;
 
     .activity {
+      position: relative;
       margin: 0 20px;
       // border: 1px solid black;
       // background-color: lightgrey;
@@ -30,10 +31,32 @@
       flex-direction: column;
       cursor: pointer;
 
+      .overlay {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        position: absolute;
+        background-color: #e5e4e6;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s linear;
+        z-index: 4;
+      }
+
       .image {
         height: 200px;
         width: 330px;
         background-size: cover;
+        position: relative;
+
+        &:hover {
+          .overlay {
+            opacity: 0.15;
+          }
+        }
       }
 
       .location {

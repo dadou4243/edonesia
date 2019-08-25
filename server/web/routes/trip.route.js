@@ -34,7 +34,7 @@ router.get(
 
 router.get(
   '/',
-  Auth.isConnected,
+  // Auth.isConnected,
   // Auth.isConnected,
   // Auth.isAdmin,
   TripController.getAllWords
