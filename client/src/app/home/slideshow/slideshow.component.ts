@@ -3,11 +3,11 @@ import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 declare const $: any;
 
 @Component({
-  selector: 'app-main-activities',
-  templateUrl: './main-activities.component.html',
-  styleUrls: ['./main-activities.component.scss']
+  selector: 'app-slideshow',
+  templateUrl: './slideshow.component.html',
+  styleUrls: ['./slideshow.component.scss']
 })
-export class MainActivitiesComponent implements OnInit, OnDestroy {
+export class SlideshowComponent implements OnInit, OnDestroy {
   slideConfig = {
     autoplay: true,
     autoplaySpeed: 2000,

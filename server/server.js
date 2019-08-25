@@ -7,7 +7,6 @@ const http = require('http');
 const path = require('path');
 const passport = require('passport');
 const session = require('express-session');
-const cookieParser = require('cookie-parser');
 
 const cors = require('cors');
 
@@ -20,7 +19,6 @@ app.use(
     credentials: true
   })
 );
-app.use(cookieParser());
 
 // Middlewares
 app.use(morgan('dev'));
