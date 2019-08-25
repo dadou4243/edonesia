@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  }),
+  withCredentials: true
+};
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +25,8 @@ export class TripsService {
     // console.log('GET TRIPS SERVICE', sortOrder, pageNumber, pageSize);
     return this.http
       .get<any>(
-        `${environment.API_URL}/trip/`
+        `${environment.API_URL}/trip/`,
+        httpOptions
         // , {
         //   params: new HttpParams()
         // .set('filter', filter)

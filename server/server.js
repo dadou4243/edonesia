@@ -5,13 +5,22 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const http = require('http');
 const path = require('path');
-// const passport = require('passport');
+const passport = require('passport');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+
 const cors = require('cors');
 
 const Database = require('./core/database.core');
 // const AuthCore = require('./server/core/auth.core');
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:4200',
+    credentials: true
+  })
+);
+app.use(cookieParser());
 
 // Middlewares
 app.use(morgan('dev'));
@@ -28,8 +37,27 @@ app.use(
   })
 );
 
+app.use(
+  session({
+    secret: 'secretkey1',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 }
+  })
+);
+app.use(express.urlencoded({ extended: true })); // express body-parser
+
 // Initialize passport
-// app.use(passport.initialize());
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport');
+
+app.use(function(req, res, next) {
+  console.log(req.body);
+  // console.log(req.session);
+  // console.log(req.user);
+  next();
+});
 
 // app.use(AuthCore.getUserID());
 
