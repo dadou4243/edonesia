@@ -33,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewsletterSubscribeComponent } from './components/newsletter-subscribe/newsletter-subscribe.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BookTripComponent } from './components/booking/book-trip/book-trip.component';
+import { SlideshowComponent } from './home/slideshow/slideshow.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { BookTripComponent } from './components/booking/book-trip/book-trip.comp
     WishlistHomeComponent,
     NewsletterSubscribeComponent,
     NotFoundComponent,
-    BookTripComponent
+    BookTripComponent,
+    SlideshowComponent
   ],
   imports: [
     BrowserModule,

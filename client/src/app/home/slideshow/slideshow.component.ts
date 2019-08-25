@@ -3,26 +3,27 @@ import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 declare const $: any;
 
 @Component({
-  selector: 'app-main-activities',
-  templateUrl: './main-activities.component.html',
-  styleUrls: ['./main-activities.component.scss']
+  selector: 'app-slideshow',
+  templateUrl: './slideshow.component.html',
+  styleUrls: ['./slideshow.component.scss']
 })
-export class MainActivitiesComponent implements OnInit, OnDestroy {
+export class SlideshowComponent implements OnInit, OnDestroy {
   slideConfig = {
     autoplay: true,
     autoplaySpeed: 2000,
     infinite: true,
     dots: true,
-    arrows: true,
+    arrows: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     cssEase: 'ease-out',
+    fade: true,
     // touchThreshold: 1000,
     // cssEase: 'linear'
     // variableWidth: true,
     // variableHeight: true
     // centerMode: true
-    // slide: 'div'
+    // slide: '.carousel-item-content',
     pauseOnHover: false
   };
 

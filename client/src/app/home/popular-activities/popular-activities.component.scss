@@ -23,16 +23,25 @@
     justify-content: center;
 
     .activity {
-      height: 100px;
-      width: 200px;
       margin: 0 20px;
-      border: 1px solid black;
-      background-color: lightgrey;
-      padding: 10px;
+      // border: 1px solid black;
+      // background-color: lightgrey;
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
+      flex-direction: column;
+      cursor: pointer;
+
+      .image {
+        height: 200px;
+        width: 330px;
+        background-size: cover;
+      }
+
+      .location {
+        padding: 10px 0;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #007eff;
+      }
     }
   }
 }
