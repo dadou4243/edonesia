@@ -45,28 +45,6 @@
       console.log('userData:', userData);
       console.log('req.body.email:', req.body.email);
 
-      // UserMongo.register(
-      //   new UserMongo({ email: req.body.email, password: req.body.password }),
-      //   req.body.password,
-      //   function(err, account) {
-      //     console.log('I am here');
-      //     if (err) {
-      //       console.log('err', err);
-      //       // return res.render('register', { account: account });
-      //     }
-
-      //     passport.authenticate('local')(req, res, function() {
-      //       console.log('req.body:', req.body);
-      //       console.log('inside passport authenticate');
-      //       return res.status(200).send({
-      //         auth: true
-      //         // token: token,
-      //         // userID: lodash.get(userCreated, '_id')
-      //       });
-      //     });
-      //   }
-      // );
-
       const user = new UserMongo({ email: req.body.email });
       await user.setPassword(req.body.password);
       await user.save();
@@ -76,9 +54,10 @@
       });
       console.log('user', user);
       return res.status(200).send({
-        auth: true
-        // token: token,
-        // userID: lodash.get(userCreated, '_id')
+        isConnected: true,
+        data: {
+          userId: lodash.get(user, '_id')
+        }
       });
 
       // const userCreated = await UserSvc.createUser(userData, 'user');
