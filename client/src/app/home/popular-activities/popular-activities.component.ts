@@ -4,17 +4,26 @@ const activities = [
   {
     location: 'Yogyakarta',
     description: 'Do a workshop in traditional crafts',
-    imageUrl: 'trip1.jpg'
+    imageUrl: 'trip1.jpg',
+    price: '$246'
   },
   {
     location: 'Prambanan',
     description: 'Admire Prambanan at night',
-    imageUrl: 'trip2.jpg'
+    imageUrl: 'trip2.jpg',
+    price: '$139'
   },
   {
     location: 'Mount Bromo',
     description: 'Hike to the crater of Mount Bromo',
-    imageUrl: 'trip3.jpg'
+    imageUrl: 'trip3.jpg',
+    price: '$433'
+  },
+  {
+    location: 'Mount Bromo',
+    description: 'Hike to the crater of Mount Bromo',
+    imageUrl: 'kayak.jpg',
+    price: '$199'
   }
 ];
 

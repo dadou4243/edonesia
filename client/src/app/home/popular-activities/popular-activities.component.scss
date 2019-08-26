@@ -5,11 +5,11 @@
 }
 
 .popular-activites-container {
-  padding: 40px;
+  padding: 40px 80px;
   // border-bottom: 1px solid grey;
 
   .title {
-    margin: 20px 0 20px 20px;
+    margin: 0 0 40px 0;
     font-size: 28px;
     font-weight: 700;
     text-align: center;
@@ -20,7 +20,7 @@
   .activity-list {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 
     .activity {
@@ -50,7 +50,7 @@
 
       .image {
         height: 200px;
-        width: 330px;
+        // width: 330px;
         background-size: cover;
         position: relative;
         border-radius: 3px;
@@ -65,7 +65,7 @@
       .location {
         padding: 10px 0 5px 0;
         text-transform: uppercase;
-        font-weight: 700;
+        font-weight: 900;
         color: #007eff;
         font-size: 12px;
       }
@@ -74,6 +74,13 @@
         font-size: 18px;
         color: rgb(72, 72, 72);
         font-weight: 700;
+      }
+
+      .price {
+        margin-top: 5px;
+        font-size: 14px;
+        color: rgb(72, 72, 72);
+        font-weight: 400;
       }
     }
   }
