@@ -1,0 +1,17 @@
+<div class="popular-activites-container">
+  <div class="section-title">Destinations</div>
+  <div class="activity-list">
+    <div class="activity" *ngFor="let destination of destinations">
+      <div class="overlay"></div>
+      <div
+        class="image"
+        [ngStyle]="{
+          backgroundImage: 'url(/assets/' + destination.imageUrl + ')'
+        }"
+      ></div>
+      <div class="location">
+        {{ destination.location }}
+      </div>
+    </div>
+  </div>
+</div>

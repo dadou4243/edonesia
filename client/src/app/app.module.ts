@@ -34,6 +34,7 @@ import { NewsletterSubscribeComponent } from './components/newsletter-subscribe/
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BookTripComponent } from './components/booking/book-trip/book-trip.component';
 import { SlideshowComponent } from './home/slideshow/slideshow.component';
+import { DestinationsComponent } from './home/destinations/destinations.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { SlideshowComponent } from './home/slideshow/slideshow.component';
     NewsletterSubscribeComponent,
     NotFoundComponent,
     BookTripComponent,
-    SlideshowComponent
+    SlideshowComponent,
+    DestinationsComponent
   ],
   imports: [
     BrowserModule,
