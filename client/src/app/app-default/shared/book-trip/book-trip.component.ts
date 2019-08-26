@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingsService } from 'src/app/core/services/bookings.service';
+import { switchMap } from 'rxjs/operators';
+import { ParamMap, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-book-trip',
@@ -8,6 +10,7 @@ import { BookingsService } from 'src/app/core/services/bookings.service';
   styleUrls: ['./book-trip.component.scss']
 })
 export class BookTripComponent implements OnInit {
+  @Input() tripId: any;
   tripForm: FormGroup;
 
   constructor(
@@ -17,9 +20,8 @@ export class BookTripComponent implements OnInit {
 
   ngOnInit() {
     this.tripForm = this.fb.group({
-      firstName: ['', [Validators.required]],
+      firstName: ['', [Validators.required]]
       // hebrew: ['', [Validators.required, Validators.pattern(/^[א-ת\s]+$/)]],
-      createdAt: ['']
       // french: ['', [Validators.required]],
       // pronunciation: [''],
       // type: [''],
@@ -29,6 +31,8 @@ export class BookTripComponent implements OnInit {
       // number: [''],
       // infinitif: ['']
     });
+
+    console.log(this.tripId);
   }
 
   onNoClick(): void {}
@@ -37,10 +41,13 @@ export class BookTripComponent implements OnInit {
 
   onSubmit() {
     console.log(this.tripForm.value);
-    this.tripForm.patchValue({
-      createdAt: Date.now()
-    });
-    this.bookingsService.addBooking(this.tripForm.value).subscribe(booking => {
+
+    const dataToSend = {
+      ...this.tripForm.value,
+      createdAt: Date.now(),
+      tripId: this.tripId
+    };
+    this.bookingsService.addBooking(dataToSend).subscribe(booking => {
       console.log('booking', booking);
     });
   }

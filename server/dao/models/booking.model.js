@@ -8,11 +8,11 @@
       firstName: {
         type: String,
         required: true
-      }
-      // french: {
-      //   type: String
-      //   // required: true
-      // },
+      },
+      tripId: {
+        type: String,
+        required: true
+      },
     },
     {
       timestamps: true

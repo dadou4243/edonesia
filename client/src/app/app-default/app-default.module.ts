@@ -13,7 +13,7 @@ import { MainActivitiesComponent } from './home/main-activities/main-activities.
 import { TestimonialsComponent } from './home/testimonials/testimonials.component';
 import { HomeMainComponent } from './home/home-main/home-main.component';
 import { ActivitySuggestionsComponent } from './components/activity-suggestions/activity-suggestions.component';
-import { ActivityDetailsComponent } from './components/activity-details/activity-details.component';
+import { TripDetailsComponent } from './components/trip-details/trip-details.component';
 import { RelatedItemsComponent } from './components/related-items/related-items.component';
 import { RelatedItemComponent } from './components/related-item/related-item.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -31,7 +31,7 @@ import { WishlistHomeComponent } from './wishlist/wishlist-home/wishlist-home.co
 import { HttpClientModule } from '@angular/common/http';
 import { NewsletterSubscribeComponent } from './components/newsletter-subscribe/newsletter-subscribe.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { BookTripComponent } from './components/booking/book-trip/book-trip.component';
+import { BookTripComponent } from './shared/book-trip/book-trip.component';
 import { SlideshowComponent } from './home/slideshow/slideshow.component';
 import { DestinationsComponent } from './home/destinations/destinations.component';
 import { CommonModule } from '@angular/common';
@@ -50,7 +50,7 @@ import { CommonModule } from '@angular/common';
     HomeMainComponent,
     PopularActivitiesComponent,
     ActivitySuggestionsComponent,
-    ActivityDetailsComponent,
+    TripDetailsComponent,
     RelatedItemsComponent,
     RelatedItemComponent,
     FooterComponent,

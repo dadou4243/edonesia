@@ -1,3 +1,7 @@
 <div class="booking-item-container">
-  {{ booking.firstName }}
+  name: {{ booking.firstName }}
+  <div>
+    <span>Created at: </span>
+    {{ booking.createdAt | date: 'long' }}
+  </div>
 </div>

@@ -1,7 +1,14 @@
 <div class="users-lists-container">
+  <h2>Users list</h2>
   <div class="users-list">
     <div class="user" *ngFor="let user of users$ | async">
-      {{ user.email }}
+      <div>
+        {{ user.email }}
+      </div>
+      <div>
+        <span>Created at: </span>
+        {{ user.createdAt | date: 'long' }}
+      </div>
     </div>
   </div>
 </div>

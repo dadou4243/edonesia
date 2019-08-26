@@ -35,11 +35,10 @@
   </div>
 
   <div>
-    <button (click)="resetForm()">Reset Form</button>
-    <button (click)="onNoClick()">Cancel</button>
+    <button (click)="resetForm()" class="ut-btn">Reset Form</button>
+    <button (click)="onNoClick()" class="ut-btn">Cancel</button>
     <button
-      mat-raised-button
-      color="primary"
+      class="ut-btn"
       type="submit"
       [disabled]="!tripForm.valid"
       (click)="onSubmit()"
