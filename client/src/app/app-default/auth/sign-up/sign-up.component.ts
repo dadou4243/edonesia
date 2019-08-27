@@ -23,7 +23,6 @@ export class SignUpComponent implements OnInit {
       password: ['', [Validators.required]],
       firstName: [''],
       lastName: ['']
-      // role: ['', [Validators.required]],
     });
   }
 

@@ -18,6 +18,7 @@ import { BookingItemComponent } from './bookings/booking-item/booking.component'
 import { AdminComponent } from './admin.component';
 import { AdminRoutingModule } from './admin.routing.module';
 import { CommonModule } from '@angular/common';
+import { AddUserComponent } from './users/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CommonModule } from '@angular/common';
     BookingItemComponent,
     TripMainComponent,
     TripItemComponent,
-    BookingsListComponent
+    BookingsListComponent,
+    AddUserComponent
   ],
   imports: [
     CommonModule,

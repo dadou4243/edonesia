@@ -1,6 +1,10 @@
 <div class="login-container">
   <h2>Login</h2>
 
+  <div class="error-message">
+    {{ errorMessage }}
+  </div>
+
   <form [formGroup]="loginForm" autocomplete="off">
     <input
       type="text"
@@ -15,6 +19,8 @@
       formControlName="password"
     />
   </form>
+
+  <div class="loading" *ngIf="isLoading">Loading...</div>
 
   <button class="ut-btn" (click)="onConfirm()">Confirm</button>
 </div>

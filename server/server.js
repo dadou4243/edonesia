@@ -6,14 +6,11 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const path = require('path');
 const passport = require('passport');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-
 const cors = require('cors');
 
 const Database = require('./core/database.core');
-// const AuthCore = require('./server/core/auth.core');
+const AuthCore = require('./core/auth.core');
 
 app.use(
   cors({
@@ -37,25 +34,9 @@ app.use(
   })
 );
 
-app.use(
-  session({
-    secret: 'secretkey1',
-    resave: true,
-    rolling: true,
-    saveUninitialized: false,
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection,
-      ttl: 1000
-    })
-    // cookie: { maxAge: 24 * 60 * 60 * 1000 }
-  })
-);
-app.use(express.urlencoded({ extended: true })); // express body-parser
 
 // Initialize passport
 app.use(passport.initialize());
-app.use(passport.session());
-require('./config/passport');
 
 app.use(function(req, res, next) {
   console.log(req.body);
@@ -64,7 +45,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-// app.use(AuthCore.getUserID());
+
+app.use(AuthCore.getUserID());
 
 function createServer() {
   // const port = Number(process.env.PORT || 4000);
@@ -107,14 +89,6 @@ exports.app = app;
 
 // On charge les routes
 require('./web/index');
-
-// // Static Angular Build
-// app.use(express.static(path.join(__dirname, './dist/')));
-
-// // Serve the index.html Angular file
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, './dist/index.html'));
-// });
 
 // Handling Errors
 app.use((req, res, next) => {

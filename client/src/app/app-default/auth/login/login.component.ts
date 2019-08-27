@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  errorMessage: string;
+  isLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -26,11 +28,22 @@ export class LoginComponent implements OnInit {
 
   onConfirm() {
     console.log('confirm login');
-    this.authService.logIn(this.loginForm.value).subscribe(res => {
-      console.log(res);
-      if (res.isConnected) {
-        this.router.navigate(['/']);
+    this.isLoading = true;
+    this.authService.logIn(this.loginForm.value).subscribe(
+      res => {
+        this.isLoading = false;
+
+        console.log(res);
+        if (res.isConnected) {
+          this.router.navigate(['/']);
+        }
+      },
+      err => {
+        this.isLoading = false;
+
+        console.log('err:', err);
+        this.errorMessage = err.error.message;
       }
-    });
+    );
   }
 }

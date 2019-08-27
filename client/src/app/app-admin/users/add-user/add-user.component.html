@@ -1,0 +1,40 @@
+<div class="add-user-component">
+  <form [formGroup]="addUserForm" autocomplete="disabled">
+    <input
+      type="email"
+      placeholder="Email"
+      class="ut-text-input"
+      formControlName="email"
+      autocomplete="disabled"
+      name="user-email"
+      required
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      class="ut-text-input"
+      formControlName="password"
+      autocomplete="user-password"
+      required
+    />
+    <input
+      type="text"
+      placeholder="First name"
+      class="ut-text-input"
+      formControlName="firstName"
+    />
+    <input
+      type="text"
+      placeholder="Last name"
+      class="ut-text-input"
+      formControlName="lastName"
+    />
+    <select placeholder="Role" formControlName="role">
+      <option *ngFor="let role of roles" [value]="role.value">
+        {{ role.viewValue }}
+      </option>
+    </select>
+  </form>
+
+  <button class="ut-btn" (click)="onConfirm()">Confirm</button>
+</div>

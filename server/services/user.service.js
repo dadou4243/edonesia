@@ -45,6 +45,7 @@
       });
     }
     const hashedPassword = AuthCore.hashPassword(userData.password);
+    console.log('hashedPassword:', hashedPassword)
 
     return await UserDAO.createUser(userData, role, hashedPassword);
   }

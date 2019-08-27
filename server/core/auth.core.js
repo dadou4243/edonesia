@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   // External dependencies
@@ -17,6 +17,8 @@
   exports.isConnected = isConnected;
   exports.isAdmin = isAdmin;
   exports.getUserID = getUserID;
+
+
 
   function getUserID() {
     return async (req, res, next) => {
@@ -40,6 +42,8 @@
     };
   }
 
+
+
   function hashPassword(password) {
     // console.log('hashpassword', password);
 
@@ -50,23 +54,21 @@
     return bcrypt.compareSync(userPassword, existingPassword);
   }
 
+
   function generateToken(userID) {
-    return jwt.sign(
-      {
-        id: userID
-      },
-      Config.mySecret,
-      {
-        expiresIn: 1000000 // expires in ...
-      }
-    );
+
+    return jwt.sign({
+      id: userID
+    }, Config.mySecret, {
+      expiresIn: 1000000 // expires in ...
+    });
   }
 
   async function verifyToken(token) {
-    return new Promise(function(resolve, reject) {
-      return jwt.verify(token, Config.mySecret, function(err, decoded) {
+    return new Promise(function (resolve, reject) {
+      return jwt.verify(token, Config.mySecret, function (err, decoded) {
         if (err) {
-          console.log('verifyToken error', err);
+          console.log('verifyToken error', err)
           return reject(err);
         }
         return resolve(decoded);
@@ -74,43 +76,31 @@
     });
   }
 
+
   // On vérifie qu'un user est bien connecté, sinon on le jette
-  // async function isConnected(req, res, next) {
-  //   try {
-  //     const token = lodash.get(req, 'headers.x-access-token');
-  //     if (!token) {
-  //       return res.status(401).send({
-  //         auth: false,
-  //         message: 'No token provided.'
-  //       });
-  //     }
+  async function isConnected(req, res, next) {
+    try {
+      const token = lodash.get(req, 'headers.x-access-token');
+      if (!token) {
+        return res.status(401).send({
+          auth: false,
+          message: 'No token provided.'
+        });
+      }
 
-  //     if (!lodash.get(req, 'userID')) {
-  //       return res.status(500).send({
-  //         auth: false,
-  //         message: 'Failed to authenticate token.'
-  //       });
-  //     }
+      if (!lodash.get(req, 'userID')) {
+        return res.status(500).send({
+          auth: false,
+          message: 'Failed to authenticate token.'
+        });
+      }
 
-  //     return next();
-  //   } catch (error) {
-  //     return res.status(500).send({
-  //       auth: false,
-  //       message: 'Failed to authenticate token.'
-  //     });
-  //   }
-  // }
-
-  function isConnected(req, res, next) {
-    console.log(req.session);
-    console.log('req.user', req.user);
-    console.log('isAuthenticated:', req.isAuthenticated());
-    if (req.isAuthenticated()) {
       return next();
-    } else {
-      console.log('not authenticated');
-      return res.status(401).send({
-        auth: false
+
+    } catch (error) {
+      return res.status(500).send({
+        auth: false,
+        message: 'Failed to authenticate token.'
       });
     }
   }
@@ -119,6 +109,7 @@
   async function isAdmin(req, res, next) {
     // console.log('isAdmin', req.body);
     try {
+
       if (!req.userID) {
         return res.status(401).send({
           auth: false,
@@ -136,6 +127,7 @@
       }
 
       return next();
+
     } catch (error) {
       return res.status(500).send({
         auth: false,
@@ -143,4 +135,5 @@
       });
     }
   }
+
 })();
