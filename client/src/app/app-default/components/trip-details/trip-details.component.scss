@@ -1,6 +1,6 @@
 .activity-details-container {
   max-width: 1400px;
-  padding: 0 50px;
+  padding: 0 70px;
   margin: 10px auto 0 auto;
 
   .header {
@@ -56,6 +56,13 @@
     }
     .more-info-btn {
       border: 1px solid black;
+    }
+  }
+
+  .trip-description {
+    .trip-description-title {
+      font-size: 22px;
+      font-weight: 700;
     }
   }
 
