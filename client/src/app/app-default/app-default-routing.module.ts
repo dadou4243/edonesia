@@ -18,6 +18,13 @@ const routes: Routes = [
         path: '',
         component: HomeMainComponent
       },
+      {
+        path: 'request',
+        loadChildren: () =>
+          import('./trip-request/trip-request.module').then(
+            mod => mod.TripRequestModule
+          )
+      },
       { path: 'trips', component: TripsComponent },
       { path: 'trips/:id', component: TripDetailsComponent },
       { path: 'activities/:id', component: TripDetailsComponent },

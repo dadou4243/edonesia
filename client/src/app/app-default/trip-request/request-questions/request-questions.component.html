@@ -1,0 +1,56 @@
+<div class="request-container">
+  CurrentStep: {{ currentStep }}
+  <div class="step-one" *ngIf="currentStep === 1">
+    <h1>Where are you going?</h1>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue
+      semper lacus eget elementum. Mauris tincidunt odio justo, ut tincidunt
+      enim accumsan sit amet. Curabitur eu iaculis urna. Etiam pretium aliquam
+      ex, a tempus erat porttitor sed. Integer venenatis lacinia imperdiet.
+    </p>
+    <p>
+      Proin volutpat, metus non venenatis pretium, ipsum elit cursus purus, at
+      ullamcorper dolor elit sed tortor. Nam at malesuada velit. Donec tempor
+      porta augue vel varius. In hac habitasse platea dictumst. Curabitur
+      pretium eros ac eros rutrum vulputate. In quis mattis ex, et consequat
+      justo. Mauris a pellentesque dolor. Aenean dictum, dui vel blandit tempus,
+      nisl ligula fermentum odio, sed fermentum eros augue volutpat massa.
+      Mauris vel maximus lectus, ac placerat eros. Vivamus aliquet pulvinar
+      lectus eget tempus. Orci varius natoque penatibus et magnis dis parturient
+      montes, nascetur ridiculus mus.
+    </p>
+  </div>
+
+  <div class="step-one" *ngIf="currentStep === 2">
+    <h1>Do you have your dates set already?</h1>
+
+    <ul>
+      <li
+        class="date-planned"
+        (click)="onClickDatePlanned(true)"
+        [class.selected]="datePlanned"
+      >
+        Yes, my dates are set
+      </li>
+      <li
+        class="date-planned"
+        (click)="onClickDatePlanned(false)"
+        [class.selected]="!datePlanned"
+      >
+        No, I'm not sure yet
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <button *ngIf="currentStep !== 1" (click)="onClickPrevious()">
+      Previous
+    </button>
+  </div>
+  <div>
+    <button class="next-btn" (click)="onClickNext()" *ngIf="currentStep !== 2">
+      Next
+    </button>
+  </div>
+</div>

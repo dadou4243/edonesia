@@ -1,0 +1,56 @@
+.request-container {
+  //   background-color: red;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  h1 {
+    margin-bottom: 40px;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  button {
+    margin-right: 20px;
+  }
+
+  button.next-btn {
+    background-color: #007eff;
+    color: white;
+    padding: 1.1rem 1.8rem;
+    border-radius: 3px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  ul {
+    max-width: 350px;
+    margin: 0 auto;
+
+    li.date-planned {
+      background-color: #fff;
+      color: #1e2a40;
+      position: relative;
+      height: 60px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      //   padding: 19px 5px;
+      margin-bottom: 20px;
+      cursor: pointer;
+
+      &.selected {
+        background-color: #ff6361 !important;
+        color: #ffffff;
+      }
+
+      &:hover {
+        background-color: #ff6361;
+        color: #fff;
+        opacity: 0.8;
+      }
+    }
+  }
+}
