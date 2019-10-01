@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BookingsService } from '../services/bookings.service';
+import { BookingsService } from 'src/app/core/services/bookings.service';
 
 @Component({
   selector: 'app-bookings',

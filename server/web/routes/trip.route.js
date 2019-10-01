@@ -16,20 +16,20 @@ router.post(
   '/',
   // Auth.isConnected,
   // Auth.isAdmin,
-  TripController.createWord
+  TripController.createTrip
 );
 
 router.post(
   '/:tripID',
   // Auth.isConnected,
   // Auth.isAdmin,
-  TripController.updateWord
+  TripController.updateTrip
 );
 
 router.get(
   '/:tripID',
   // Auth.isConnected,
-  TripController.getWord
+  TripController.getTrip
 );
 
 router.get(

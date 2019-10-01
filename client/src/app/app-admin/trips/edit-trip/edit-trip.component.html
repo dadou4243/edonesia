@@ -1,1 +1,48 @@
-<p>edit-trip works!</p>
+<div class="edit-trip-container">
+  <form [formGroup]="tripForm" autocomplete="off" *ngIf="tripForm">
+    <div class="form-field">
+      <label>Title</label>
+      <input
+        type="text"
+        placeholder="Title"
+        class="ut-text-input"
+        formControlName="title"
+        required
+      />
+    </div>
+
+    <div class="form-field">
+      <label>Description</label>
+      <input
+        type="text"
+        placeholder="Description"
+        class="ut-text-input"
+        formControlName="description"
+        required
+      />
+    </div>
+
+    <div class="form-field">
+      <label>Price</label>
+      <input
+        type="text"
+        placeholder="Price"
+        class="ut-text-input"
+        formControlName="price"
+      />
+    </div>
+
+    <div class="form-field">
+      <label>Category</label>
+      <input
+        type="text"
+        placeholder="Category"
+        class="ut-text-input"
+        formControlName="category"
+      />
+    </div>
+    <div class="buttons">
+      <button class="ut-btn" (click)="onClickSave()">Save</button>
+    </div>
+  </form>
+</div>

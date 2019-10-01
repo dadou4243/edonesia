@@ -4,6 +4,7 @@ import { BookingsComponent } from './bookings/bookings.component';
 import { TripMainComponent } from './trips/trip-main/trip-main.component';
 import { UsersListComponent } from './users/users-list/users-list.component';
 import { AdminComponent } from './admin.component';
+import { EditTripComponent } from './trips/edit-trip/edit-trip.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'trips', pathMatch: 'full' },
       { path: 'trips', component: TripMainComponent },
-      // { path: 'trips/:id', component: ActivityDetailsComponent },
+      { path: 'trips/:id', component: EditTripComponent },
       // { path: 'activities/:id', component: ActivityDetailsComponent },
       { path: 'users', component: UsersListComponent },
       { path: 'bookings', component: BookingsComponent },

@@ -6,12 +6,12 @@
   // Internal dependencies
   const MongoCore = require('../core/database.core');
 
-  const WordMongo = MongoCore.WordMongo;
+  const TripMongo = MongoCore.TripMongo;
 
   // Interface du service
   module.exports = {
-    createWord: createWord,
-    updateWord: updateWord,
+    createTrip: createTrip,
+    updateTrip: updateTrip,
     getWord: getWord,
     searchWord: searchWord,
     getAllWords: getAllWords,
@@ -19,8 +19,8 @@
     deleteWord: deleteWord
   };
 
-  async function createWord(wordData) {
-    console.log('createWord Dao', wordData);
+  async function createTrip(tripData) {
+    console.log('createTrip Dao', tripData);
     return new Promise(async function(resolve, reject) {
       try {
         // const data = {
@@ -29,59 +29,59 @@
         //   pronunciation: lodash.get(wordData, 'pronunciation'),
         //   type: lodash.get(wordData, 'type')
         // };
-        const data = wordData;
+        const data = tripData;
 
-        const newWord = new WordMongo(data);
-        const wordCreated = await newWord.save();
+        const newTrip = new TripMongo(data);
+        const tripCreated = await newTrip.save();
 
-        return resolve(wordCreated);
+        return resolve(tripCreated);
       } catch (err) {
-        console.log('Error in word.dao createWord', err);
+        console.log('Error in trip.dao createTrip', err);
         return reject(err);
       }
     });
   }
 
-  async function updateWord(wordData, overwrite) {
-    console.log('updateWord DAO', wordData);
+  async function updateTrip(tripData) {
+    console.log('updateTrip DAO', tripData);
     return new Promise(async function(resolve, reject) {
       try {
-        let existingWord = await WordMongo.findOne({
-          hebrew: lodash.get(wordData, 'hebrew')
+        // let existingWord = await TripMongo.findOne({
+        //   hebrew: lodash.get(wordData, 'hebrew')
+        // });
+        // if (!!existingWord === false) {
+        //   if (overwrite) {
+        let existingTrip = await TripMongo.findOne({
+          _id: lodash.get(tripData, '_id')
         });
-        if (!!existingWord === false) {
-          if (overwrite) {
-            existingWord = await WordMongo.findOne({
-              _id: lodash.get(wordData, '_id')
-            });
-            existingWord.hebrew = lodash.get(wordData, 'hebrew');
-          } else {
-            return reject('nonExistingWord');
-          }
-        }
+        // existingTrip.hebrew = lodash.get(wordData, 'hebrew');
+        // } else {
+        // return reject('nonExistingTrip');
+        // }
+        // }
 
-        console.log('updateWord DAO existingWord', existingWord);
+        console.log('updateTrip DAO existingTrip', existingTrip);
 
-        if (lodash.get(wordData, 'french')) {
-          existingWord.french = lodash.get(wordData, 'french');
-        }
+        // if (lodash.get(wordData, 'french')) {
+        //   existingWord.french = lodash.get(wordData, 'french');
+        // }
         // lodash.set(existingWord, 'french', lodash.get(wordData, 'french'));
-        existingWord.type = lodash.get(wordData, 'type');
-        existingWord.pronunciation = lodash.get(wordData, 'pronunciation');
-        existingWord.genre = lodash.get(wordData, 'genre');
-        existingWord.number = lodash.get(wordData, 'number');
-        existingWord.forme = lodash.get(wordData, 'forme');
-        existingWord.infinitif = lodash.get(wordData, 'infinitif');
-        existingWord.time = lodash.get(wordData, 'time');
-        existingWord._id = lodash.get(wordData, '_id');
+        existingTrip.title = lodash.get(tripData, 'title');
+        existingTrip.description = lodash.get(tripData, 'description');
+        existingTrip.price = lodash.get(tripData, 'price');
+        existingTrip.category = lodash.get(tripData, 'category');
+        // existingWord.forme = lodash.get(tripData, 'forme');
+        // existingWord.infinitif = lodash.get(tripData, 'infinitif');
+        // existingWord.time = lodash.get(tripData, 'time');
+        // existingWord._id = lodash.get(tripData, '_id');
 
-        console.log('updateWord DAO existingWord', existingWord);
+        console.log('updateTrip DAO existingTrip', existingTrip);
 
-        const wordUpdated = await existingWord.save();
+        const tripUpdated = await existingTrip.save();
 
-        return resolve(wordUpdated);
+        return resolve(tripUpdated);
       } catch (err) {
-        console.log('Error in word.dao updateWord', err);
+        console.log('Error in trip.dao updateTrip', err);
         reject(err);
       }
     });
@@ -89,7 +89,7 @@
 
   async function getWord(wordID) {
     return new Promise(async function(resolve, reject) {
-      await WordMongo.findOne(
+      await TripMongo.findOne(
         {
           _id: wordID
         },
@@ -107,7 +107,7 @@
   async function searchWord(searchString) {
     console.log('searchString:', searchString);
     return new Promise(async function(resolve, reject) {
-      await WordMongo.find(
+      await TripMongo.find(
         {
           $text: {
             $search: searchString
@@ -126,7 +126,7 @@
 
   async function getAllWords(sortOrder, pageNumber, pageSize) {
     return new Promise(async function(resolve, reject) {
-      await WordMongo.find({})
+      await TripMongo.find({})
         .skip(pageSize * pageNumber - pageSize)
         .limit(pageSize)
         .sort({
@@ -144,7 +144,7 @@
 
   async function checkExistingHebrewWord(hebrew) {
     return new Promise(async function(resolve, reject) {
-      await WordMongo.findOne(
+      await TripMongo.findOne(
         {
           hebrew: hebrew
         },
@@ -163,7 +163,7 @@
   async function deleteWord(wordID) {
     // console.log('deleteWord DAO', wordID);
     return new Promise(async function(resolve, reject) {
-      await WordMongo.remove(
+      await TripMongo.remove(
         {
           _id: wordID
         },

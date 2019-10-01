@@ -3,12 +3,42 @@
     <div class="logo" [routerLink]="['/']"></div>
     <nav>
       <ul>
-        <li><a [routerLink]="['admin']">Dash</a></li>
-        <li><a [routerLink]="['trips']">Trips</a></li>
-        <li><a [routerLink]="['users']">Users</a></li>
-        <li><a [routerLink]="['bookings']">Bookings</a></li>
-        <li><a [routerLink]="['trips']">Purchases</a></li>
-        <li><a [routerLink]="['trips']">Analytics</a></li>
+        <li>
+          <a [routerLink]="['admin']" [routerLinkActive]="['active-link']"
+            >Dash</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['trips']" [routerLinkActive]="['active-link']"
+            >Trips</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['users']" [routerLinkActive]="['active-link']"
+            >Users</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['bookings']" [routerLinkActive]="['active-link']"
+            >Bookings</a
+          >
+        </li>
+        <li>
+          <a
+            [routerLink]="['.']"
+            [routerLinkActive]="['active-link']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Purchases</a
+          >
+        </li>
+        <li>
+          <a
+            [routerLink]="['.']"
+            [routerLinkActive]="['active-link']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Analytics</a
+          >
+        </li>
       </ul>
     </nav>
   </div>

@@ -14,9 +14,9 @@
   // transverse
 
   module.exports = {
-    createWord: createWord,
-    updateWord: updateWord,
-    getWord: getWord,
+    createTrip: createTrip,
+    updateTrip: updateTrip,
+    getTrip: getTrip,
     getAllWords: getAllWords,
     searchWord: searchWord,
     deleteWord: deleteWord,
@@ -29,18 +29,18 @@
    * @param {object} res - la réponse
    * @return {*} la requête
    */
-  async function createWord(req, res) {
+  async function createTrip(req, res) {
     // console.log(req.body);
     try {
-      const wordData = lodash.get(req, 'body');
-      const wordCreated = await WordSvc.createWord(wordData);
+      const tripData = lodash.get(req, 'body');
+      const tripCreated = await WordSvc.createTrip(tripData);
 
       return res.status(200).send({
-        data: wordCreated
+        data: tripCreated
       });
     } catch (err) {
       return res.status(500).send({
-        message: 'error in word creation',
+        message: 'error in trip creation',
         error: err.toString()
       });
     }
@@ -52,17 +52,16 @@
    * @param {object} res - la réponse
    * @return {*} la requête
    */
-  async function updateWord(req, res) {
+  async function updateTrip(req, res) {
+    console.log('updateTrip controller', req.body);
     try {
-      const wordData = lodash.get(req, 'body.wordData');
-      console.log('wordData:', wordData);
-      const overwrite = lodash.get(req, 'body.overwrite');
-      console.log('overwrite:', overwrite);
+      const tripData = lodash.get(req, 'body.tripData');
+      console.log('tripData:', tripData);
 
-      const wordUpdated = await WordSvc.updateWord(wordData, overwrite);
+      const tripUpdated = await WordSvc.updateTrip(tripData);
 
       return res.status(200).send({
-        data: wordUpdated
+        data: tripUpdated
       });
     } catch (err) {
       return res.status(500).send({
@@ -78,14 +77,15 @@
    * @param {object} res - la réponse
    * @return {*} la requête
    */
-  async function getWord(req, res) {
+  async function getTrip(req, res) {
+    console.log('getTrip params', req.params);
     try {
-      const wordID = lodash.get(req, 'params.wordID');
+      const tripID = lodash.get(req, 'params.tripID');
 
-      const word = await WordSvc.getWord(wordID);
+      const trip = await WordSvc.getWord(tripID);
 
       return res.status(200).send({
-        data: word
+        data: trip
       });
     } catch (err) {
       return res.status(500).send({

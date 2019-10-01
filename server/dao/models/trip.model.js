@@ -5,21 +5,14 @@
 
   const TripSchema = new mongoose.Schema(
     {
-      name: {
+      title: {
         type: String,
         // unique: true,
         required: true
       },
-      // french: {
-      //   type: String
-      //   // required: true
-      // },
-      pronunciation: String,
-      type: String,
-      genre: String,
-      number: String,
-      forme: String,
-      time: String
+      description: String,
+      price: String,
+      category: String
     },
     {
       timestamps: true

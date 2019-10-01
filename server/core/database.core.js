@@ -17,7 +17,7 @@
   //   const ContextSchema = require('../dao/models/context.model').ContextSchema;
 
   exports.UserMongo = mongoose.model('User', UserSchema);
-  exports.WordMongo = mongoose.model('Trip', TripSchema);
+  exports.TripMongo = mongoose.model('Trip', TripSchema);
   exports.BookingMongo = mongoose.model('Booking', BookingSchema);
   //   exports.CollectionMongo = mongoose.model('Collection', CollectionSchema);
   //   exports.VideoMongo = mongoose.model('Video', VideoSchema);

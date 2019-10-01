@@ -19,7 +19,7 @@ export class AddTripComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.fb.group({
-      name: ['', [Validators.required]]
+      title: ['', [Validators.required]]
       // lastName: ['', [Validators.required]],
       // email: ['', [Validators.required]],
       // role: ['', [Validators.required]],

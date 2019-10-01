@@ -1,7 +1,10 @@
-<div class="activity-details-container">
+<div
+  class="activity-details-container"
+  *ngIf="tripDetails$ | async as tripDetails"
+>
   <div class="trip-top-info">
     <div class="title">
-      Indonesia landing on beach
+      {{ tripDetails?.name }}
     </div>
     <div class="price">Price: 240$</div>
   </div>
@@ -23,7 +26,8 @@
       What to expect
     </div>
     <p class="trip-description-text">
-      This trip has an activity rating of light/moderate; travelers should be in
+      {{ tripDetails?.description }}
+      <!-- This trip has an activity rating of light/moderate; travelers should be in
       good health; comfortable climbing stairs and walking or standing for
       extended periods; and prepared for multiple hours of activity on some
       days. Daily activities may include city walking tours, visits to historic
@@ -33,12 +37,13 @@
       certain activities, such as visiting high-altitude areas. Alternative
       destinations or activities can be arranged if necessary. Any physical
       condition requiring special attention, diet, or treatment should be
-      reported when booking so accommodations can be made.
+      reported when booking so accommodations can be made. -->
     </p>
   </div>
 
   <div class="image-container">
     <div class="image"></div>
+    {{ tripDetails?.image }}
   </div>
 
   <app-book-trip [tripId]="tripId"></app-book-trip>

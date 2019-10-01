@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 import { ParamMap, ActivatedRoute } from '@angular/router';
+import { TripsService } from 'src/app/core/services/trips.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-trip-details',
@@ -9,8 +11,12 @@ import { ParamMap, ActivatedRoute } from '@angular/router';
 })
 export class TripDetailsComponent implements OnInit {
   tripId;
+  tripDetails$: Observable<any>;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private tripsSevice: TripsService
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.pipe(
@@ -19,6 +25,8 @@ export class TripDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       console.log('res:', params);
       this.tripId = params.get('id');
+
+      this.tripDetails$ = this.tripsSevice.getTrip(this.tripId);
     });
   }
 }

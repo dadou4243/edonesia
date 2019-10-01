@@ -8,15 +8,15 @@
   // core
   const AuthCore = require('../core/auth.core');
   // dao
-  const WordDAO = require('../dao/trip.dao');
+  const TripDAO = require('../dao/trip.dao');
   // service
   //   const ContextSvc = require('./context.service');
   //   const FavoriteSvc = require('./favorite.service');
 
   // Interface du service
   module.exports = {
-    createWord: createWord,
-    updateWord: updateWord,
+    createTrip: createTrip,
+    updateTrip: updateTrip,
     getWord: getWord,
     searchWord: searchWord,
     getAllWords: getAllWords,
@@ -26,71 +26,60 @@
   // Implémentation
 
   /**
-   * @description Création d'un word
+   * @description Création d'un trip
    *
-   * @param {string} wordData - data du word
+   * @param {string} tripData - data du trip
    *
-   * @return {Promise<object>} - Les data du word
+   * @return {Promise<object>} - Les data du trip
    */
-  async function createWord(wordData) {
-    console.log('createWord service', wordData);
+  async function createTrip(tripData) {
+    console.log('createTrip service', tripData);
 
     // if (!lodash.get(wordData, 'hebrew') || !lodash.get(wordData, 'french')) {
-    if (!lodash.get(wordData, 'name')) {
+    if (!lodash.get(tripData, 'title')) {
       throw new Error({
         error: 'Invalid parameters'
       });
     }
 
-    // IMPORTANT NOTE
-    // In here, if the user wants to create a word but there already is an existing one with the same field hebrew,
-    // the word is automatically updated to the new params
-    // const existingWord = await checkExistingHebrewWord(
-    //   lodash.get(wordData, 'name')
-    // );
-    // if (existingWord) {
-    //   // console.log("existingWord", existingWord);
-    //   return await updateWord(wordData);
-    // }
-
-    return await WordDAO.createWord(wordData);
+    return await TripDAO.createTrip(tripData);
   }
 
   /**
    * @description Update d'un word
    *
-   * @param {string} wordData - data du word
+   * @param {string} tripData - data du word
    *
    * @return {Promise<object>} - Les data du word
    */
-  async function updateWord(wordData, overwrite) {
-    console.log('updateWord service wordData', wordData);
-    console.log('updateWord service overwite', overwrite);
+  async function updateTrip(tripData) {
+    console.log('updateWord service wordData', tripData);
 
     // if (!lodash.get(wordData, 'hebrew') || !lodash.get(wordData, 'french')) {
-    if (!lodash.get(wordData, 'hebrew')) {
-      throw new Error({
-        error: 'Invalid parameters'
-      });
-    }
+    // if (!lodash.get(tripData, 'hebrew')) {
+    //   throw new Error({
+    //     error: 'Invalid parameters'
+    //   });
+    // }
 
-    const existingWord = await checkExistingHebrewWord(
-      lodash.get(wordData, 'hebrew')
-    );
-    console.log('updateWord service existingWord', existingWord);
+    // const existingWord = await checkExistingHebrewWord(
+    //   lodash.get(tripData, 'hebrew')
+    // );
 
-    if (!existingWord) {
-      if (!overwrite) {
-        throw new Error({
-          error: 'Invalid parameters'
-        });
-      } else {
-        return await WordDAO.updateWord(wordData, overwrite);
-      }
-    } else {
-      lodash.set(wordData, '_id', existingWord._id);
-      return await WordDAO.updateWord(wordData, overwrite);
-    }
+    // if (!existingWord) {
+    //   if (!overwrite) {
+    //     throw new Error({
+    //       error: 'Invalid parameters'
+    //     });
+    //   } else
+    // {
+    return await TripDAO.updateTrip(tripData);
+    // }
+    // }
+    // else {
+    //   lodash.set(wordData, '_id', existingWord._id);
+    //   return await WordDAO.updateWord(wordData, overwrite);
+    // }
   }
 
   /**
@@ -101,7 +90,7 @@
    * @return {Promise<object>} - Le word
    */
   async function getWord(wordID) {
-    return await WordDAO.getWord(wordID);
+    return await TripDAO.getWord(wordID);
   }
 
   /**
@@ -112,7 +101,7 @@
    * @return {Promise<object>} - Le word
    */
   async function searchWord(searchString) {
-    return await WordDAO.searchWord(searchString);
+    return await TripDAO.searchWord(searchString);
   }
 
   /**
@@ -125,7 +114,7 @@
   async function getAllWords(sortOrer, pageNumber, pageSize) {
     pageNumber = parseInt(pageNumber, 10);
     pageSize = parseInt(pageSize, 10);
-    return await WordDAO.getAllWords(sortOrer, pageNumber, pageSize);
+    return await TripDAO.getAllWords(sortOrer, pageNumber, pageSize);
   }
 
   /**
@@ -147,16 +136,16 @@
 
     // await FavoriteSvc.deleteAllFavoritesWithWord(wordID);
 
-    return await WordDAO.deleteWord(wordID);
+    return await TripDAO.deleteWord(wordID);
   }
 
   /* private function */
 
   // Check si un mot contenant le champ hebrew est déjà présent
   // Renvoie true or false
-  async function checkExistingHebrewWord(hebrewWord) {
-    return await WordDAO.checkExistingHebrewWord(hebrewWord);
-    // console.log("checkExistingHebrewWord service", existingHebrewWord);
-    // return existingHebrewWord;
-  }
+  // async function checkExistingHebrewWord(hebrewWord) {
+  //   return await TripDAO.checkExistingHebrewWord(hebrewWord);
+  //   // console.log("checkExistingHebrewWord service", existingHebrewWord);
+  //   // return existingHebrewWord;
+  // }
 })();

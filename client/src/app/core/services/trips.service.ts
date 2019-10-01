@@ -39,8 +39,10 @@ export class TripsService {
   }
 
   getTrip(id): Observable<any> {
-    // console.log(id);
-    return this.http.get<any>(`${environment.API_URL}/trip/${id}`);
+    console.log('GET TRIP SERVICE', id);
+    return this.http
+      .get<any>(`${environment.API_URL}/trip/${id}`)
+      .pipe(map(result => result.data));
   }
 
   addTrip(trip): Observable<any> {
@@ -73,11 +75,10 @@ export class TripsService {
     );
   }
 
-  updateTrip(trip, overwrite): Observable<any> {
+  updateTrip(trip): Observable<any> {
     console.log('UPDATE TRIP SERVICE', trip);
     return this.http.post<any>(`${environment.API_URL}/trip/${trip._id}`, {
-      tripData: trip,
-      overwrite
+      tripData: trip
     });
   }
 
