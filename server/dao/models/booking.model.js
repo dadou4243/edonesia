@@ -10,9 +10,9 @@
         required: true
       },
       tripId: {
-        type: String,
-        required: true
-      },
+        type: String
+        // required: true
+      }
     },
     {
       timestamps: true

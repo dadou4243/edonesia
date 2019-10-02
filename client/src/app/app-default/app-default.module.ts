@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppDefaultRoutingModule } from './app-default-routing.module';
 import { AppDefaultComponent } from './app-default.component';
@@ -35,6 +34,7 @@ import { BookTripComponent } from './shared/book-trip/book-trip.component';
 import { SlideshowComponent } from './home/slideshow/slideshow.component';
 import { DestinationsComponent } from './home/destinations/destinations.component';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -66,7 +66,6 @@ import { CommonModule } from '@angular/common';
     WishlistHomeComponent,
     NewsletterSubscribeComponent,
     NotFoundComponent,
-    BookTripComponent,
     SlideshowComponent,
     DestinationsComponent
   ],
@@ -74,8 +73,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     AppDefaultRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule
   ]
 })
 export class AppDefaultModule {}

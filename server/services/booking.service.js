@@ -9,6 +9,9 @@
   const AuthCore = require('../core/auth.core');
   // dao
   const BookingDAO = require('../dao/booking.dao');
+
+  const nodemailer = require('nodemailer');
+
   // service
   //   const ContextSvc = require('./context.service');
   //   const FavoriteSvc = require('./favorite.service');
@@ -33,6 +36,28 @@
    * @return {Promise<object>} - Les data du word
    */
   async function createBooking(bookingData) {
+    let transporter = nodemailer.createTransport({
+      host: 'smtp.googlemail.com', // Gmail Host
+      port: 465, // Port
+      secure: true, // this is true as port is 465
+      auth: {
+        user: 'lasry.david@gmail.com', //Gmail username
+        pass: 'dadoufeuj42' // Gmail password
+      }
+    });
+
+    const mailOptions = {
+      from: 'DADAD <lasry.david@gmail.com>', // sender address
+      to: 'lasry.david@gmail.com', // list of receivers
+      subject: 'Subject of your email', // Subject line
+      html: '<p>Your html here</p>' // plain text body
+    };
+
+    transporter.sendMail(mailOptions, function(err, info) {
+      if (err) console.log(err);
+      else console.log(info);
+    });
+
     console.log('createBooking service', bookingData);
 
     // if (!lodash.get(wordData, 'hebrew') || !lodash.get(wordData, 'french')) {

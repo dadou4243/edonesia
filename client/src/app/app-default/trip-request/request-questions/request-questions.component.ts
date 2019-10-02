@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { BookingsService } from 'src/app/core/services/bookings.service';
 
 @Component({
   selector: 'app-request-questions',
@@ -8,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class RequestQuestionsComponent implements OnInit {
   currentStep = 1;
   datePlanned = true;
+  requestForm: FormGroup;
 
-  constructor() {}
+  constructor(
+    private fb: FormBuilder,
+    private bookingsService: BookingsService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.requestForm = this.fb.group({
+      firstName: ['', [Validators.required]]
+    });
+  }
 
   onClickNext() {
     this.currentStep++;
@@ -24,5 +34,11 @@ export class RequestQuestionsComponent implements OnInit {
   onClickDatePlanned(answer) {
     this.datePlanned = answer;
     this.onClickNext();
+  }
+
+  submitRequest() {
+    this.bookingsService.addBooking(this.requestForm.value).subscribe(res => {
+      console.log('res', res);
+    });
   }
 }

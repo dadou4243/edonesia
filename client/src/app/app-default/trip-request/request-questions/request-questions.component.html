@@ -43,6 +43,21 @@
     </ul>
   </div>
 
+  <div class="step-two" *ngIf="currentStep === 3">
+    <h2>Please enter your information</h2>
+
+    <form [formGroup]="requestForm">
+      <input
+        type="text"
+        matInput
+        placeholder="First Name"
+        formControlName="firstName"
+        required
+      />
+      <button (click)="submitRequest()">Submit request</button>
+    </form>
+  </div>
+
   <div>
     <button *ngIf="currentStep !== 1" (click)="onClickPrevious()">
       Previous

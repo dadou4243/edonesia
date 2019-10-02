@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingsService } from 'src/app/core/services/bookings.service';
-import { switchMap } from 'rxjs/operators';
-import { ParamMap, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-book-trip',
