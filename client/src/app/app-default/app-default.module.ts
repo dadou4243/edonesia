@@ -35,6 +35,7 @@ import { SlideshowComponent } from './home/slideshow/slideshow.component';
 import { DestinationsComponent } from './home/destinations/destinations.component';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
+import { GiftCardComponent } from './components/gift-card/gift-card.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { SharedModule } from './shared/shared.module';
     NewsletterSubscribeComponent,
     NotFoundComponent,
     SlideshowComponent,
-    DestinationsComponent
+    DestinationsComponent,
+    GiftCardComponent
   ],
   imports: [
     CommonModule,

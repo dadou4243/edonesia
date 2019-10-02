@@ -6,36 +6,30 @@
   // Internal dependencies
   const MongoCore = require('../core/database.core');
 
-  const BookingMongo = MongoCore.BookingMongo;
+  const GiftCardMongo = MongoCore.GiftCardMongo;
 
   // Interface du service
   module.exports = {
-    createBooking: createBooking,
+    createGiftCard: createGiftCard,
     updateWord: updateWord,
-    getWord: getWord,
+    getGiftCard: getGiftCard,
     searchWord: searchWord,
-    getAllWords: getAllWords,
+    getAllGiftCards: getAllGiftCards,
     deleteWord: deleteWord
   };
 
-  async function createBooking(wordData) {
-    console.log('createBooking Dao', wordData);
+  async function createGiftCard(giftCardData) {
+    console.log('createGiftCard Dao', giftCardData);
     return new Promise(async function(resolve, reject) {
       try {
-        // const data = {
-        //   hebrew: lodash.get(wordData, 'hebrew'),
-        //   french: lodash.get(wordData, 'french'),
-        //   pronunciation: lodash.get(wordData, 'pronunciation'),
-        //   type: lodash.get(wordData, 'type')
-        // };
-        const data = wordData;
+        const data = giftCardData;
 
-        const newWord = new BookingMongo(data);
-        const wordCreated = await newWord.save();
+        const newGiftCard = new GiftCardMongo(data);
+        const giftCardCreated = await newGiftCard.save();
 
-        return resolve(wordCreated);
+        return resolve(giftCardCreated);
       } catch (err) {
-        console.log('Error in booking.dao createBooking', err);
+        console.log('Error in giftCard.dao createGiftCard', err);
         return reject(err);
       }
     });
@@ -80,22 +74,25 @@
 
         return resolve(wordUpdated);
       } catch (err) {
-        console.log('Error in booking.dao updateWord', err);
+        console.log('Error in giftCard.dao updateWord', err);
         reject(err);
       }
     });
   }
 
-  async function getWord(wordID) {
+  async function getGiftCard(giftCardCode) {
     return new Promise(async function(resolve, reject) {
-      await BookingMongo.findOne(
+      await GiftCardMongo.findOne(
         {
-          _id: wordID
+          code: giftCardCode
         },
         async function(err, res) {
           if (err) {
-            console.log('Error in word.dao getWord', err);
+            console.log('Error in giftCard.dao getGiftCard', err);
             return reject(err);
+          }
+          if (!!res === false) {
+            return reject('nonexisting giftCard');
           }
           return resolve(res);
         }
@@ -123,21 +120,15 @@
     });
   }
 
-  async function getAllWords(sortOrder, pageNumber, pageSize) {
+  async function getAllGiftCards() {
     return new Promise(async function(resolve, reject) {
-      await BookingMongo.find({})
-        .skip(pageSize * pageNumber - pageSize)
-        .limit(pageSize)
-        .sort({
-          hebrew: sortOrder
-        })
-        .exec(function(err, res) {
-          if (err) {
-            console.log('Error in word.dao getAllWords', err);
-            return reject(err);
-          }
-          return resolve(res);
-        });
+      await BookingMongo.find({}).exec(function(err, res) {
+        if (err) {
+          console.log('Error in word.dao getAllWords', err);
+          return reject(err);
+        }
+        return resolve(res);
+      });
     });
   }
 

@@ -7,6 +7,7 @@
   const UserSchema = require('../dao/models/user.model').UserSchema;
   const TripSchema = require('../dao/models/trip.model').TripSchema;
   const BookingSchema = require('../dao/models/booking.model').BookingSchema;
+  const GiftCardSchema = require('../dao/models/giftCard.model').GiftCardSchema;
   //   const CollectionSchema = require('../dao/models/collection.model')
   //     .CollectionSchema;
   //   const VideoSchema = require('../dao/models/video.model').VideoSchema;
@@ -19,6 +20,7 @@
   exports.UserMongo = mongoose.model('User', UserSchema);
   exports.TripMongo = mongoose.model('Trip', TripSchema);
   exports.BookingMongo = mongoose.model('Booking', BookingSchema);
+  exports.GiftCardMongo = mongoose.model('GiftCard', GiftCardSchema);
   //   exports.CollectionMongo = mongoose.model('Collection', CollectionSchema);
   //   exports.VideoMongo = mongoose.model('Video', VideoSchema);
   //   exports.FavoriteWordMongo = mongoose.model(

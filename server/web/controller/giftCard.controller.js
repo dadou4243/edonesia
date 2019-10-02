@@ -5,7 +5,7 @@
   const lodash = require('lodash');
 
   // Internal dependencies
-  const BookingSvc = require('../../services/booking.service');
+  const GiftCardSvc = require('../../services/giftCard.service');
 
   const AuthCore = require('../../core/auth.core');
 
@@ -14,33 +14,33 @@
   // transverse
 
   module.exports = {
-    createBooking: createBooking,
+    createGiftCard: createGiftCard,
     updateWord: updateWord,
-    getWord: getWord,
-    getAllWords: getAllWords,
+    getGiftCard: getGiftCard,
+    getAllGiftCards: getAllGiftCards,
     searchWord: searchWord,
     deleteWord: deleteWord,
     deleteWords: deleteWords
   };
 
   /**
-   * @description Création d'un Booking
+   * @description Création d'une GiftCard
    * @param {object} req - la requête
    * @param {object} res - la réponse
    * @return {*} la requête
    */
-  async function createBooking(req, res) {
+  async function createGiftCard(req, res) {
     console.log('create booking controller', req.body);
     try {
-      const bookingData = lodash.get(req, 'body');
-      const bookingCreated = await BookingSvc.createBooking(bookingData);
+      const giftCardData = lodash.get(req, 'body');
+      const giftCardCreated = await GiftCardSvc.createGiftCard(giftCardData);
 
       return res.status(200).send({
-        data: bookingCreated
+        data: giftCardCreated
       });
     } catch (err) {
       return res.status(500).send({
-        message: 'error in booking creation',
+        message: 'error in giftCard creation',
         error: err.toString()
       });
     }
@@ -78,14 +78,14 @@
    * @param {object} res - la réponse
    * @return {*} la requête
    */
-  async function getWord(req, res) {
+  async function getGiftCard(req, res) {
     try {
-      const wordID = lodash.get(req, 'params.wordID');
+      const giftCardCode = lodash.get(req, 'params.giftCardCode');
 
-      const word = await BookingSvc.getWord(wordID);
+      const giftCard = await GiftCardSvc.getGiftCard(giftCardCode);
 
       return res.status(200).send({
-        data: word
+        data: giftCard
       });
     } catch (err) {
       return res.status(500).send({
@@ -120,29 +120,17 @@
   }
 
   /**
-   * @description Récupération de tous les words
+   * @description Récupération de toutes les giftCards
    * @param {object} req - la requête
    * @param {object} res - la réponse
    * @return {*} la requête
    */
-  async function getAllWords(req, res) {
-    console.log('req.body', req.body);
-    console.log('req.query', req.query);
-    // console.log('req', req);
-
-    const sortOrder = lodash.get(req, 'query.sortOrder');
-    const pageNumber = lodash.get(req, 'query.pageNumber');
-    const pageSize = lodash.get(req, 'query.pageSize');
-
+  async function getAllGiftCards(req, res) {
     try {
-      const words = await BookingSvc.getAllWords(
-        sortOrder,
-        pageNumber,
-        pageSize
-      );
+      const giftCards = await GiftCardSvc.getAllGiftCards();
 
       return res.status(200).send({
-        data: words
+        data: giftCards
       });
     } catch (err) {
       return res.status(500).send({
@@ -153,7 +141,7 @@
   }
 
   /**
-   * @description Suppression d'un word
+   * @description Suppression d'une giftCard
    * @param {object} req - la requête
    * @param {object} res - la réponse
    * @return {*} la requête

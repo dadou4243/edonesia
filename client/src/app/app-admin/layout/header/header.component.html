@@ -33,6 +33,14 @@
         </li>
         <li>
           <a
+            [routerLink]="['gift-cards']"
+            [routerLinkActive]="['active-link']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Gift cards</a
+          >
+        </li>
+        <li>
+          <a
             [routerLink]="['.']"
             [routerLinkActive]="['active-link']"
             [routerLinkActiveOptions]="{ exact: true }"
