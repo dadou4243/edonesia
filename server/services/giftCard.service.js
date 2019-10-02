@@ -17,7 +17,6 @@
     createGiftCard: createGiftCard,
     updateWord: updateWord,
     getGiftCard: getGiftCard,
-    searchWord: searchWord,
     getAllGiftCards: getAllGiftCards,
     deleteWord: deleteWord
   };
@@ -25,14 +24,14 @@
   // Implémentation
 
   /**
-   * @description Création d'un word
+   * @description Création d'une giftCard
    *
-   * @param {string} giftCardData - data du word
+   * @param {string} giftCardData - data de la giftCard
    *
-   * @return {Promise<object>} - Les data du word
+   * @return {Promise<object>} - Les data de la giftCard
    */
   async function createGiftCard(giftCardData) {
-    console.log('createGiftCard service', giftCardData);
+    // console.log('createGiftCard service', giftCardData);
 
     // if (!lodash.get(wordData, 'hebrew') || !lodash.get(wordData, 'french')) {
     if (!lodash.get(giftCardData, 'amount')) {
@@ -56,15 +55,15 @@
   }
 
   /**
-   * @description Update d'un word
+   * @description Update d'une giftCard
    *
    * @param {string} wordData - data du word
    *
    * @return {Promise<object>} - Les data du word
    */
   async function updateWord(wordData, overwrite) {
-    console.log('updateWord service wordData', wordData);
-    console.log('updateWord service overwite', overwrite);
+    // console.log('updateWord service wordData', wordData);
+    // console.log('updateWord service overwite', overwrite);
 
     // if (!lodash.get(wordData, 'hebrew') || !lodash.get(wordData, 'french')) {
     if (!lodash.get(wordData, 'hebrew')) {
@@ -104,17 +103,6 @@
   }
 
   /**
-   * @description Récupère les data d'un word par son ID
-   *
-   * @param {string} uid - id du word
-   *
-   * @return {Promise<object>} - Le word
-   */
-  async function searchWord(searchString) {
-    return await GiftCardDAO.searchWord(searchString);
-  }
-
-  /**
    * @description Récupère les data de tous les words
    *
    * @param {string} uid - id du word
@@ -122,8 +110,6 @@
    * @return {Promise<object>} - Les data de tous les words
    */
   async function getAllGiftCards() {
-    pageNumber = parseInt(pageNumber, 10);
-    pageSize = parseInt(pageSize, 10);
     return await GiftCardDAO.getAllGiftCards();
   }
 

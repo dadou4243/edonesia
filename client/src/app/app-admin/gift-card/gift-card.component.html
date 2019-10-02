@@ -1,1 +1,4 @@
-<p>gift-card works!</p>
+<div class="gift-card-container">
+  <h2>Gift cards</h2>
+  <div *ngFor="let card of giftCards">{{ card.code }} - {{ card.amount }}$</div>
+</div>

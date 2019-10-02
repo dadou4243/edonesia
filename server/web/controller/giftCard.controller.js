@@ -18,7 +18,6 @@
     updateWord: updateWord,
     getGiftCard: getGiftCard,
     getAllGiftCards: getAllGiftCards,
-    searchWord: searchWord,
     deleteWord: deleteWord,
     deleteWords: deleteWords
   };
@@ -96,36 +95,13 @@
   }
 
   /**
-   * @description Récupération d'un word
-   * @param {object} req - la requête
-   * @param {object} res - la réponse
-   * @return {*} la requête
-   */
-  async function searchWord(req, res) {
-    try {
-      const searchString = lodash.get(req, 'params.searchString');
-      // console.log('searchString:', searchString);
-
-      const words = await BookingSvc.searchWord(searchString);
-
-      return res.status(200).send({
-        data: words
-      });
-    } catch (err) {
-      return res.status(500).send({
-        auth: false,
-        error: err.toString()
-      });
-    }
-  }
-
-  /**
    * @description Récupération de toutes les giftCards
    * @param {object} req - la requête
    * @param {object} res - la réponse
    * @return {*} la requête
    */
   async function getAllGiftCards(req, res) {
+    console.log('req:', req);
     try {
       const giftCards = await GiftCardSvc.getAllGiftCards();
 

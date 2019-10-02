@@ -13,7 +13,6 @@
     createGiftCard: createGiftCard,
     updateWord: updateWord,
     getGiftCard: getGiftCard,
-    searchWord: searchWord,
     getAllGiftCards: getAllGiftCards,
     deleteWord: deleteWord
   };
@@ -122,9 +121,9 @@
 
   async function getAllGiftCards() {
     return new Promise(async function(resolve, reject) {
-      await BookingMongo.find({}).exec(function(err, res) {
+      await GiftCardMongo.find({}).exec(function(err, res) {
         if (err) {
-          console.log('Error in word.dao getAllWords', err);
+          console.log('Error in giftCard.dao getAllGiftCards', err);
           return reject(err);
         }
         return resolve(res);
@@ -135,7 +134,7 @@
   async function deleteWord(wordID) {
     // console.log('deleteWord DAO', wordID);
     return new Promise(async function(resolve, reject) {
-      await BookingMongo.remove(
+      await GiftCardMongo.remove(
         {
           _id: wordID
         },
