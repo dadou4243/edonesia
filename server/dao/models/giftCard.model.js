@@ -12,6 +12,14 @@
       amount: {
         type: Number,
         required: true
+      },
+      isActive: {
+        type: Boolean,
+        default: true
+      },
+      expireDate: {
+        type: Date,
+        required: true
       }
     },
     {

@@ -22,6 +22,7 @@
     return new Promise(async function(resolve, reject) {
       try {
         const data = giftCardData;
+        data.expireDate = new Date(new Date().valueOf() + 60000);
 
         const newGiftCard = new GiftCardMongo(data);
         const giftCardCreated = await newGiftCard.save();
@@ -92,26 +93,6 @@
           }
           if (!!res === false) {
             return reject('nonexisting giftCard');
-          }
-          return resolve(res);
-        }
-      );
-    });
-  }
-
-  async function searchWord(searchString) {
-    console.log('searchString:', searchString);
-    return new Promise(async function(resolve, reject) {
-      await BookingMongo.find(
-        {
-          $text: {
-            $search: searchString
-          }
-        },
-        async function(err, res) {
-          if (err) {
-            console.log('Error in word.dao searchWord', err);
-            return reject(err);
           }
           return resolve(res);
         }

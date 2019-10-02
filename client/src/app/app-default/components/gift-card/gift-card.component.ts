@@ -24,7 +24,7 @@ export class GiftCardComponent implements OnInit {
     this.giftCardsService
       .addGiftCard(this.giftCardForm.value)
       .subscribe(res => console.log(res));
-    console.log(this.giftCardForm.value);
+    // console.log(this.giftCardForm.value);
   }
 
   onClickCheckGiftCard() {

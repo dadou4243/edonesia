@@ -99,7 +99,11 @@
    * @return {Promise<object>} - La giftCard
    */
   async function getGiftCard(code) {
-    return await GiftCardDAO.getGiftCard(code);
+    const giftCard = await GiftCardDAO.getGiftCard(code);
+    // console.log('giftCard:', giftCard);
+    if (giftCard.expireDate < new Date()) {
+      throw new Error('Gift card expired');
+    } else return giftCard;
   }
 
   /**
