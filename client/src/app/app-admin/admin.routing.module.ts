@@ -5,6 +5,7 @@ import { TripMainComponent } from './trips/trip-main/trip-main.component';
 import { UsersListComponent } from './users/users-list/users-list.component';
 import { AdminComponent } from './admin.component';
 import { EditTripComponent } from './trips/edit-trip/edit-trip.component';
+import { GiftCardComponent } from './gift-card/gift-card.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'trips/:id', component: EditTripComponent },
       // { path: 'activities/:id', component: ActivityDetailsComponent },
       { path: 'users', component: UsersListComponent },
+      { path: 'gift-cards', component: GiftCardComponent },
       { path: 'bookings', component: BookingsComponent },
       { path: '', redirectTo: '/trips', pathMatch: 'full' }
       // { path: 'signup', component: SignUpComponent },

@@ -8,6 +8,7 @@ import { BookTripComponent } from './shared/book-trip/book-trip.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { AppDefaultComponent } from './app-default.component';
+import { GiftCardComponent } from './components/gift-card/gift-card.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: 'trips/:id', component: TripDetailsComponent },
       { path: 'activities/:id', component: TripDetailsComponent },
       { path: 'wishlist', component: WishlistHomeComponent },
+      { path: 'giftcard', component: GiftCardComponent },
       { path: 'book', component: BookTripComponent },
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignUpComponent }

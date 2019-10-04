@@ -7,6 +7,7 @@ router.use('/auth', require('./auth.route'));
 router.use('/trip', require('./trip.route'));
 router.use('/booking', require('./booking.route'));
 router.use('/charge', require('./charge.route'));
+router.use('/giftcard', require('./giftCard.route'));
 // router.use('/collection', require('./collection.route'));
 // router.use('/video', require('./video.route'));
 // router.use('/favorite', require('./favorite.route'));

@@ -19,6 +19,7 @@ import { AdminComponent } from './admin.component';
 import { AdminRoutingModule } from './admin.routing.module';
 import { CommonModule } from '@angular/common';
 import { AddUserComponent } from './users/add-user/add-user.component';
+import { GiftCardComponent } from './gift-card/gift-card.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddUserComponent } from './users/add-user/add-user.component';
     TripMainComponent,
     TripItemComponent,
     BookingsListComponent,
-    AddUserComponent
+    AddUserComponent,
+    GiftCardComponent
   ],
   imports: [
     CommonModule,

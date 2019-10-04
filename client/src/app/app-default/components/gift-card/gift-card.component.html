@@ -1,0 +1,23 @@
+<div class="gift-card-container">
+  <h2>Gift card</h2>
+  <form [formGroup]="giftCardForm">
+    <select name="" id="" formControlName="amount"
+      ><option value="50">50$</option>
+      <option value="100">100$</option>
+      <option value="200">200$</option>
+    </select>
+    <button class="ut-btn" (click)="onClickSubmit()">Submit</button>
+  </form>
+  <div>
+    <label for="">Enter your gift card number</label>
+  </div>
+  <input
+    type="text"
+    placeholder="Enter your giftcard number"
+    [(ngModel)]="giftCardCode"
+  />
+  <button class="ut-btn" (click)="onClickCheckGiftCard()">Check</button>
+  <div class="errors">
+    {{ errors }}
+  </div>
+</div>

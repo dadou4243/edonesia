@@ -9,43 +9,18 @@
           formControlName="title"
           required
         />
-        <!-- <input
-          type="text"
-          placeholder="Last Name"
-          matInput
-          formControlName="lastName"
-          required
-          autocomplete="off"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          matInput
-          formControlName="email"
-          required
-          autocomplete="off"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          matInput
-          formControlName="password"
-          required
-          autocomplete="new-password"
-        /> -->
-        <!-- <label>Privacy</label>
-        <select formControlName="role">
-          <option *ngFor="let role of roles" [value]="role.value">
-            {{ role.viewValue }}
-          </option>
-        </select> -->
       </form>
     </div>
 
     <div>
-      <button (click)="resetForm()">Reset Form</button>
-      <button>Cancel</button>
-      <button type="submit" [disabled]="!userForm.valid" (click)="onSubmit()">
+      <button class="ut-btn" (click)="resetForm()">Reset Form</button>
+      <button class="ut-btn">Cancel</button>
+      <button
+        class="ut-btn"
+        type="submit"
+        [disabled]="!userForm.valid"
+        (click)="onSubmit()"
+      >
         Save
       </button>
     </div>

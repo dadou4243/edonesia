@@ -30,7 +30,6 @@
    * @return {*} la requête
    */
   async function createTrip(req, res) {
-    // console.log(req.body);
     try {
       const tripData = lodash.get(req, 'body');
       const tripCreated = await WordSvc.createTrip(tripData);
@@ -78,7 +77,6 @@
    * @return {*} la requête
    */
   async function getTrip(req, res) {
-    console.log('getTrip params', req.params);
     try {
       const tripID = lodash.get(req, 'params.tripID');
 
@@ -120,23 +118,18 @@
   }
 
   /**
-   * @description Récupération de tous les words
+   * @description Récupération de tous les trips
    * @param {object} req - la requête
    * @param {object} res - la réponse
    * @return {*} la requête
    */
   async function getAllWords(req, res) {
-    console.log('req.body', req.body);
-    console.log('req.query', req.query);
-    // console.log('req', req);
-
     const sortOrder = lodash.get(req, 'query.sortOrder');
     const pageNumber = lodash.get(req, 'query.pageNumber');
     const pageSize = lodash.get(req, 'query.pageSize');
 
     try {
       const words = await WordSvc.getAllWords(sortOrder, pageNumber, pageSize);
-      console.log('words:', words);
 
       return res.status(200).send({
         data: words
