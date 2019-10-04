@@ -34,7 +34,6 @@ app.use(
   })
 );
 
-
 // Initialize passport
 app.use(passport.initialize());
 
@@ -44,7 +43,6 @@ app.use(function(req, res, next) {
   // console.log(req.user);
   next();
 });
-
 
 app.use(AuthCore.getUserID());
 
