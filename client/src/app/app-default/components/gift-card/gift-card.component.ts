@@ -12,19 +12,29 @@ export class GiftCardComponent implements OnInit {
   giftCardCode: string;
   errors: string;
 
+  myGiftCards;
+
+  userID = '5d65023435a0033378f476fc';
+
   constructor(private giftCardsService: GiftCardsService) {}
 
   ngOnInit() {
     this.giftCardForm = new FormGroup({
       amount: new FormControl('50')
     });
+
+    this.myGiftCards = this.giftCardsService.getGiftCardsUser(this.userID);
+
+    // this.giftCardsService.getGiftCardsUser(this.userID).subscribe(res => {
+    //   console.log('res:', res);
+    //   this.myGiftCards = res;
+    // });
   }
 
   onClickSubmit() {
     this.giftCardsService
-      .addGiftCard(this.giftCardForm.value)
+      .addGiftCard(this.giftCardForm.value, this.userID)
       .subscribe(res => console.log(res));
-    // console.log(this.giftCardForm.value);
   }
 
   onClickCheckGiftCard() {

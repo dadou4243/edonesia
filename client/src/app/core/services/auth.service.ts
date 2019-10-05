@@ -10,9 +10,7 @@ export class AuthService {
 
   logIn(logInForm) {
     console.log('loginForm service', logInForm);
-    return this.http.post<any>(`${environment.API_URL}/auth/login`, logInForm, {
-      withCredentials: true
-    });
+    return this.http.post<any>(`${environment.API_URL}/auth/login`, logInForm);
   }
 
   logOut() {

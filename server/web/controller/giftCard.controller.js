@@ -17,6 +17,7 @@
     createGiftCard: createGiftCard,
     updateWord: updateWord,
     getGiftCard: getGiftCard,
+    getGiftCardsUser: getGiftCardsUser,
     getAllGiftCards: getAllGiftCards,
     deleteWord: deleteWord,
     deleteWords: deleteWords
@@ -72,7 +73,7 @@
   }
 
   /**
-   * @description Récupération d'un word
+   * @description Récupération d'une giftCard
    * @param {object} req - la requête
    * @param {object} res - la réponse
    * @return {*} la requête
@@ -85,6 +86,29 @@
 
       return res.status(200).send({
         data: giftCard
+      });
+    } catch (err) {
+      return res.status(500).send({
+        auth: false,
+        error: err.toString()
+      });
+    }
+  }
+
+  /**
+   * @description Récupération des giftCards pour un User
+   * @param {object} req - la requête
+   * @param {object} res - la réponse
+   * @return {*} la requête
+   */
+  async function getGiftCardsUser(req, res) {
+    try {
+      const userID = lodash.get(req, 'params.userID');
+
+      const giftCards = await GiftCardSvc.getGiftCardsUser(userID);
+
+      return res.status(200).send({
+        data: giftCards
       });
     } catch (err) {
       return res.status(500).send({

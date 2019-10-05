@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   // External dependencies
@@ -17,8 +17,6 @@
   exports.isConnected = isConnected;
   exports.isAdmin = isAdmin;
   exports.getUserID = getUserID;
-
-
 
   function getUserID() {
     return async (req, res, next) => {
@@ -42,8 +40,6 @@
     };
   }
 
-
-
   function hashPassword(password) {
     // console.log('hashpassword', password);
 
@@ -51,31 +47,34 @@
   }
 
   function comparePassword(userPassword, existingPassword) {
+    console.log('existingPassword:', existingPassword);
+    console.log('userPassword:', userPassword);
     return bcrypt.compareSync(userPassword, existingPassword);
   }
 
-
   function generateToken(userID) {
-
-    return jwt.sign({
-      id: userID
-    }, Config.mySecret, {
-      expiresIn: 1000000 // expires in ...
-    });
+    return jwt.sign(
+      {
+        id: userID
+      },
+      Config.mySecret,
+      {
+        expiresIn: 1000000 // expires in ...
+      }
+    );
   }
 
   async function verifyToken(token) {
-    return new Promise(function (resolve, reject) {
-      return jwt.verify(token, Config.mySecret, function (err, decoded) {
+    return new Promise(function(resolve, reject) {
+      return jwt.verify(token, Config.mySecret, function(err, decoded) {
         if (err) {
-          console.log('verifyToken error', err)
+          console.log('verifyToken error', err);
           return reject(err);
         }
         return resolve(decoded);
       });
     });
   }
-
 
   // On vérifie qu'un user est bien connecté, sinon on le jette
   async function isConnected(req, res, next) {
@@ -96,7 +95,6 @@
       }
 
       return next();
-
     } catch (error) {
       return res.status(500).send({
         auth: false,
@@ -109,7 +107,6 @@
   async function isAdmin(req, res, next) {
     // console.log('isAdmin', req.body);
     try {
-
       if (!req.userID) {
         return res.status(401).send({
           auth: false,
@@ -127,7 +124,6 @@
       }
 
       return next();
-
     } catch (error) {
       return res.status(500).send({
         auth: false,
@@ -135,5 +131,4 @@
       });
     }
   }
-
 })();

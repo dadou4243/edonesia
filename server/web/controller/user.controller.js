@@ -95,18 +95,19 @@
    * @return {*} la requête
    */
   async function getUser(req, res) {
+    console.log('getUser controller', req.params);
     try {
       const userIDFromParam = lodash.get(req, 'params.userID');
       const userIDFromToken = lodash.get(req, 'userID');
 
-      if (userIDFromToken !== userIDFromParam) {
-        return res.status(500).send({
-          error: 'Incorrect parameters'
-        });
-      }
+      // if (userIDFromToken !== userIDFromParam) {
+      //   return res.status(500).send({
+      //     error: 'Incorrect parameters'
+      //   });
+      // }
 
-      const user = await UserSvc.getUserForFront(userIDFromToken);
-      // console.log('user', user);
+      const user = await UserSvc.getUserForFront(userIDFromParam);
+      console.log('user', user);
 
       return res.status(200).send({
         data: user

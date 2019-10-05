@@ -15,13 +15,14 @@
   };
 
   async function login(req, res) {
-    // console.log('login');
-    // console.log(req.body);
+    console.log('login');
+    console.log(req.body);
 
     const email = lodash.get(req, 'body.email');
     const password = lodash.get(req, 'body.password');
 
     const existingUser = await UserSvc.getUserByEmail(email);
+    console.log('existingUser:', existingUser);
     if (!existingUser) {
       console.log('no user');
       return res.status(404).send('No user found.');

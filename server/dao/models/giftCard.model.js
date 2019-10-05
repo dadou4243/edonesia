@@ -13,6 +13,10 @@
         type: Number,
         required: true
       },
+      userID: {
+        type: String,
+        required: true
+      },
       isActive: {
         type: Boolean,
         default: true

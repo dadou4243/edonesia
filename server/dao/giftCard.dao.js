@@ -13,6 +13,7 @@
     createGiftCard: createGiftCard,
     updateWord: updateWord,
     getGiftCard: getGiftCard,
+    getGiftCardsUser: getGiftCardsUser,
     getAllGiftCards: getAllGiftCards,
     deleteWord: deleteWord
   };
@@ -97,6 +98,19 @@
           return resolve(res);
         }
       );
+    });
+  }
+
+  async function getGiftCardsUser(userID) {
+    console.log('userID:', userID);
+    return new Promise(async function(resolve, reject) {
+      await GiftCardMongo.find({ userID }).exec(function(err, res) {
+        if (err) {
+          console.log('Error in giftCard.dao getAllGiftCards', err);
+          return reject(err);
+        }
+        return resolve(res);
+      });
     });
   }
 

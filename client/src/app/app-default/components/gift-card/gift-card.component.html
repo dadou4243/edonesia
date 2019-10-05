@@ -20,4 +20,14 @@
   <div class="errors">
     {{ errors }}
   </div>
+
+  <div>
+    <h2>My gift cards</h2>
+    <div *ngFor="let myGiftCard of myGiftCards | async">
+      <div>Amount: {{ myGiftCard.amount }}$</div>
+      <div>Code: {{ myGiftCard.code }}</div>
+      <div>Created at: {{ myGiftCard.createdAt | date }}</div>
+      <div>Expiration date: {{ myGiftCard.expireDate | date }}</div>
+    </div>
+  </div>
 </div>

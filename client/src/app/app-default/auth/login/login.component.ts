@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
+import { JwtService } from 'src/app/core/services/jwt.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private jwtService: JwtService
   ) {}
 
   ngOnInit() {
@@ -33,9 +35,10 @@ export class LoginComponent implements OnInit {
       res => {
         this.isLoading = false;
 
-        console.log(res);
-        if (res.isConnected) {
-          this.router.navigate(['/']);
+        console.log('res authService login in component', res);
+        if (res.auth) {
+          this.jwtService.saveToken(res.token);
+          // this.router.navigate(['/']);
         }
       },
       err => {

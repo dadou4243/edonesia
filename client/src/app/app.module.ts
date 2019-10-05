@@ -7,6 +7,12 @@ import { AppComponent } from './app.component';
 import { AdminModule } from './app-admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { userReducer } from './store/user';
+import { UserEffects } from './store/user/user.effects';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -15,7 +21,12 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AdminModule
+    AdminModule,
+    StoreModule.forRoot({ user: userReducer }),
+    StoreDevtoolsModule.instrument({
+      name: 'Unique Trip app'
+    }),
+    EffectsModule.forRoot([UserEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

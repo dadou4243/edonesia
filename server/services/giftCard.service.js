@@ -17,6 +17,7 @@
     createGiftCard: createGiftCard,
     updateWord: updateWord,
     getGiftCard: getGiftCard,
+    getGiftCardsUser: getGiftCardsUser,
     getAllGiftCards: getAllGiftCards,
     deleteWord: deleteWord
   };
@@ -100,6 +101,21 @@
    */
   async function getGiftCard(code) {
     const giftCard = await GiftCardDAO.getGiftCard(code);
+    // console.log('giftCard:', giftCard);
+    if (giftCard.expireDate < new Date()) {
+      throw new Error('Gift card expired');
+    } else return giftCard;
+  }
+
+  /**
+   * @description Récupère les data d'une giftCard pour un user
+   *
+   * @param {string} userID - code de la giftCard
+   *
+   * @return {Promise<object>} - La giftCard
+   */
+  async function getGiftCardsUser(userID) {
+    const giftCard = await GiftCardDAO.getGiftCardsUser(userID);
     // console.log('giftCard:', giftCard);
     if (giftCard.expireDate < new Date()) {
       throw new Error('Gift card expired');

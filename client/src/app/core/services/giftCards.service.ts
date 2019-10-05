@@ -11,7 +11,7 @@ export class GiftCardsService {
   constructor(private http: HttpClient) {}
 
   getGiftCards(): Observable<any> {
-    console.log('payload GET Gift Cards SERVICE:');
+    console.log('payload GET All Gift Cards SERVICE:');
 
     return this.http
       .get<any>(`${environment.API_URL}/giftcard/`)
@@ -23,9 +23,17 @@ export class GiftCardsService {
     return this.http.get<any>(`${environment.API_URL}/giftcard/${id}`);
   }
 
-  addGiftCard(giftCard): Observable<any> {
+  getGiftCardsUser(userID): Observable<any> {
+    console.log('payload GET Gift Cards User SERVICE:', userID);
+    return this.http
+      .get<any>(`${environment.API_URL}/giftcard/user/${userID}`)
+      .pipe(map(res => res.data));
+  }
+
+  addGiftCard(giftCard, userID): Observable<any> {
     console.log('ADD GiftCard SERVICE', giftCard);
-    return this.http.post<any>(`${environment.API_URL}/giftcard`, giftCard);
+    const data = { ...giftCard, userID };
+    return this.http.post<any>(`${environment.API_URL}/giftcard`, data);
   }
 
   searchBooking(searchString): Observable<any> {
@@ -63,10 +71,4 @@ export class GiftCardsService {
       }
     );
   }
-
-  // deleteManyBookings(bookingsIds): Observable<any> {
-  //   return this.http.delete<any>(`${environment.API_URL}/booking`, {
-  //     bookingsIds
-  //   });
-  // }
 }

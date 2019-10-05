@@ -37,13 +37,6 @@ app.use(
 // Initialize passport
 app.use(passport.initialize());
 
-app.use(function(req, res, next) {
-  console.log(req.body);
-  // console.log(req.session);
-  // console.log(req.user);
-  next();
-});
-
 app.use(AuthCore.getUserID());
 
 function createServer() {

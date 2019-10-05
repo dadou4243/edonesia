@@ -33,6 +33,12 @@ router.get(
 );
 
 router.get(
+  '/user/:userID',
+  // Auth.isConnected,
+  GiftCardController.getGiftCardsUser
+);
+
+router.get(
   '/',
   // Auth.isConnected,
   // Auth.isAdmin,
