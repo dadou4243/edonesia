@@ -14,13 +14,14 @@
 
   <div class="buttons">
     <div class="auth-links">
-      <a *ngIf="firstName; else loggedOut" [routerLink]="['/login']">{{
-        firstName
-      }}</a>
+      <ng-container *ngIf="firstName; else loggedOut">
+        <a [routerLink]="['/login']">{{ firstName }}</a>
+        <button class="ut-btn" (click)="logout()">Logout</button>
+      </ng-container>
       <ng-template #loggedOut>
         <a [routerLink]="['/login']">Login</a>
+        <a [routerLink]="['/signup']">Sign up</a>
       </ng-template>
-      <a [routerLink]="['/signup']">Sign up</a>
     </div>
     <!-- <div class="btn wishlist-btn">
       <a [routerLink]="['/wishlist']">Wishlist</a>
