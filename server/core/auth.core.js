@@ -78,6 +78,7 @@
 
   // On vérifie qu'un user est bien connecté, sinon on le jette
   async function isConnected(req, res, next) {
+    console.log('isConnected', req.body);
     try {
       const token = lodash.get(req, 'headers.x-access-token');
       if (!token) {
@@ -105,7 +106,7 @@
 
   // On vérifie qu'un user est bien Admin, sinon on le jette
   async function isAdmin(req, res, next) {
-    // console.log('isAdmin', req.body);
+    console.log('isAdmin userID', req.userID);
     try {
       if (!req.userID) {
         return res.status(401).send({
@@ -115,6 +116,7 @@
       }
 
       const userData = await UserSvc.getUser(req.userID);
+      console.log('userData:', userData);
 
       if (lodash.get(userData, 'role') !== 'admin') {
         return res.status(401).send({

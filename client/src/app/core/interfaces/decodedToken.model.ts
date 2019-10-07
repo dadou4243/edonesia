@@ -1,5 +1,5 @@
-export interface DecodedToken {
-  _id: string;
+export interface IDecodedToken {
+  id: string;
   email: string;
   firstName: string;
   lastName: string;

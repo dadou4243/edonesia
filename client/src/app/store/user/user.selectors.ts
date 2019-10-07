@@ -13,6 +13,11 @@ export const getUserInfo = createSelector(
   (userState: UserState): any => userState.userInfo
 );
 
+export const getIsLoginLoading = createSelector(
+  getUserState,
+  (stepperState: UserState) => stepperState.isLoginLoading
+);
+
 // export const getStepsData = createSelector(
 //   getStepperState,
 //   (stepperState: StepperState): IStepData[] => stepperState.stepsData
@@ -29,9 +34,4 @@ export const getUserInfo = createSelector(
 //   getStepsData,
 //   (stepsData: IStepData[]): boolean =>
 //     stepsData.every(step => step.value !== '')
-// );
-
-// export const getIsFormSubmitted = createSelector(
-//   getStepperState,
-//   (stepperState: StepperState) => stepperState.isFormSubmitted
 // );

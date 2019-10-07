@@ -26,19 +26,9 @@ router.post(
   TripController.updateTrip
 );
 
-router.get(
-  '/:tripID',
-  // Auth.isConnected,
-  TripController.getTrip
-);
+router.get('/:tripID', Auth.isConnected, TripController.getTrip);
 
-router.get(
-  '/',
-  // Auth.isConnected,
-  // Auth.isConnected,
-  // Auth.isAdmin,
-  TripController.getAllWords
-);
+router.get('/', Auth.isConnected, Auth.isAdmin, TripController.getAllWords);
 
 router.get(
   '/search/:searchString',

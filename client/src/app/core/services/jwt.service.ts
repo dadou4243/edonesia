@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import * as jwt_decode from 'jwt-decode';
-import { DecodedToken } from '../interfaces/decodedToken.model';
+import { IDecodedToken } from '../interfaces/decodedToken.model';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -42,7 +42,7 @@ export class JwtService {
     window.localStorage.removeItem('jwt_token');
   }
 
-  get currentUser(): DecodedToken {
+  get currentUser(): IDecodedToken {
     // console.log(this.decodeToken(this.getToken()));
     return this.decodedToken();
   }
