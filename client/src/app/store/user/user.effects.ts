@@ -3,7 +3,14 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError, tap } from 'rxjs/operators';
 import { GiftCardsService } from '../../core/services/giftCards.service';
-import { LoadUserInfo, SetUserInfo, LoginSuccess, Login } from './user.actions';
+import {
+  LoadUserInfo,
+  SetUserInfo,
+  LoginSuccess,
+  Login,
+  LogoutSuccess,
+  Logout
+} from './user.actions';
 import { UserService } from 'src/app/core/services/user.service';
 import { JwtService } from 'src/app/core/services/jwt.service';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -21,10 +28,11 @@ export class UserEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(Login),
-      mergeMap(payload =>
-        this.authService.logIn(payload).pipe(
+      mergeMap(action =>
+        this.authService.logIn(action.loginInfo).pipe(
           map((res: any) => {
             console.log('userInfo:', res);
+            this.jwtService.saveToken(res.token);
             const userInfo = res.user;
             return LoginSuccess({ userInfo });
           })
@@ -37,14 +45,24 @@ export class UserEffects {
   loadUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(LoadUserInfo),
-      mergeMap(({ userID }) => {
-        console.log('userID LoadUserInfo Effect:', userID);
-        return this.userService.getUserInfo(userID).pipe(
+      mergeMap(action => {
+        console.log('userID LoadUserInfo Effect:', action.userID);
+        return this.userService.getUserInfo(action.userID).pipe(
           map((userInfo: any) => {
             console.log('userInfo:', userInfo);
             return SetUserInfo({ userInfo });
           })
         );
+      })
+    )
+  );
+
+  logout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(Logout),
+      map(() => {
+        this.jwtService.destroyToken();
+        return LogoutSuccess();
       })
     )
   );

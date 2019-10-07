@@ -14,7 +14,9 @@
 
   <div class="buttons">
     <div class="auth-links">
-      <ng-container *ngIf="firstName; else loggedOut">
+      <ng-container
+        *ngIf="(userInfo | async).firstName as firstName; else loggedOut"
+      >
         <a [routerLink]="['/login']">{{ firstName }}</a>
         <button class="ut-btn" (click)="logout()">Logout</button>
       </ng-container>

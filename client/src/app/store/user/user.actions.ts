@@ -11,6 +11,10 @@ export const LoginSuccess = createAction(
   props<{ userInfo: any }>()
 );
 
+export const Logout = createAction('[User] Logout');
+
+export const LogoutSuccess = createAction('[User] Logout Success');
+
 export const LoadUserInfo = createAction(
   '[User] Load User Info',
   props<{ userID: any }>()

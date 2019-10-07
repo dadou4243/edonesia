@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { UserState, getUserInfo } from 'src/app/store/user';
@@ -11,23 +11,17 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  firstName: string;
+  userInfo: Observable<any>;
+  @Output() clickLogout = new EventEmitter();
 
-  constructor(
-    private store: Store<UserState>,
-    private authService: AuthService
-  ) {}
+  constructor(private store: Store<UserState>) {}
 
   ngOnInit() {
-    this.store.pipe(select(getUserInfo)).subscribe(userInfo => {
-      console.log('userInfo:', userInfo);
-      if (userInfo.firstName) {
-        this.firstName = userInfo.firstName;
-      }
-    });
+    this.userInfo = this.store.pipe(select(getUserInfo));
   }
 
   logout() {
-    this.authService.logOut();
+    console.log('LOGOUT');
+    this.clickLogout.emit();
   }
 }

@@ -20,7 +20,7 @@
     />
   </form>
 
-  <div class="loading" *ngIf="isLoading">Loading...</div>
+  <div class="loading" *ngIf="isLoading | async">Loading...</div>
 
   <button class="ut-btn" (click)="onConfirm()">Confirm</button>
 </div>

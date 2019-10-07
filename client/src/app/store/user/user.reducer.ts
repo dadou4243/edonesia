@@ -29,7 +29,8 @@ const featureReducer = createReducer(
     isLoggedIn: true,
     userInfo,
     isLoginLoading: false
-  }))
+  })),
+  on(userActions.LogoutSuccess, () => initialState)
 );
 
 export function userReducer(state: UserState | undefined, action: Action) {
