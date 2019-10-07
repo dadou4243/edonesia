@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { UserState, getUserInfo } from 'src/app/store/user';
+import { JwtService } from 'src/app/core/services/jwt.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,10 @@ import { UserState, getUserInfo } from 'src/app/store/user';
 export class HeaderComponent implements OnInit {
   firstName: string;
 
-  constructor(private store: Store<UserState>) {}
+  constructor(
+    private store: Store<UserState>,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.store.pipe(select(getUserInfo)).subscribe(userInfo => {
@@ -23,6 +28,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    console.log('LOGOUT');
+    this.authService.logOut();
   }
 }

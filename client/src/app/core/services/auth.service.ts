@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { JwtService } from './jwt.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private jwtService: JwtService) {}
 
   logIn(logInForm) {
     console.log('loginForm service', logInForm);
@@ -14,7 +15,8 @@ export class AuthService {
   }
 
   logOut() {
-    return this.http.get<any>(`${environment.API_URL}/auth/logout`);
+    this.jwtService.destroyToken();
+    // return this.http.get<any>(`${environment.API_URL}/auth/logout`);
   }
 
   signUp(signUpForm) {
