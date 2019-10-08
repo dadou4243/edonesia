@@ -13,9 +13,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { userReducer } from './store/user';
 import { UserEffects } from './store/user/user.effects';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { LogoutComponent } from './shared/components/logout/logout.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LogoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

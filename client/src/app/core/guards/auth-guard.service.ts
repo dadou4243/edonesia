@@ -14,7 +14,7 @@ import { map, take } from 'rxjs/operators';
 // } from 'src/app/authentication/state/user.actions';
 // import { JwtService } from '../services/jwt.service';
 
-const isAdmin = true;
+const isLoggedIn = true;
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,6 @@ export class AuthGuard implements CanActivate {
     //     return true;
     //   })
     // );
-    return isAdmin;
+    return isLoggedIn;
   }
 }
