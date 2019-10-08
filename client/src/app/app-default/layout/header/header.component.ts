@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    console.log('LOGOUT');
+    // console.log('LOGOUT');
     this.clickLogout.emit();
   }
 }

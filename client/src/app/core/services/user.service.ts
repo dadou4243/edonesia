@@ -10,7 +10,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUserInfo(userID) {
-    console.log('userID:', userID);
+    // console.log('userID:', userID);
     return this.http
       .get<any>(`${environment.API_URL}/user/${userID}`)
       .pipe(map(res => res.data));

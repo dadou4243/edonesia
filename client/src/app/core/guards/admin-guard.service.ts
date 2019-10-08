@@ -1,19 +1,7 @@
 import { Injectable } from '@angular/core';
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  Router
-} from '@angular/router';
-// import { Store, select } from '@ngrx/store';
+import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
-// import { getLoggedIn } from 'src/app/authentication/state/user.selectors';
-// import {
-//   LoginRedirect,
-//   UserSignOut
-// } from 'src/app/authentication/state/user.actions';
-import { JwtService } from '../services/jwt.service';
+import { map } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { getUserInfo } from 'src/app/store/user';
 
@@ -27,7 +15,6 @@ export class AdminGuard implements CanActivate {
     return this.store.pipe(
       select(getUserInfo),
       map(userInfo => {
-        console.log('userInfo:', userInfo);
         const isAdmin = userInfo.role === 'admin';
         if (!isAdmin) {
           this.router.navigate(['', 'login']);

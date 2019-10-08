@@ -11,7 +11,7 @@ export class AppDefaultComponent {
   constructor(private store: Store<any>) {}
 
   onClickLogout() {
-    console.log('LOGOUT APP DEFAULT');
+    // console.log('LOGOUT APP DEFAULT');
     this.store.dispatch(Logout());
   }
 }

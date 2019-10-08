@@ -31,7 +31,7 @@ export class UserEffects {
       mergeMap(action =>
         this.authService.logIn(action.loginInfo).pipe(
           map((res: any) => {
-            console.log('userInfo:', res);
+            // console.log('userInfo:', res);
             this.jwtService.saveToken(res.token);
             const userInfo = res.user;
             return LoginSuccess({ userInfo });
@@ -46,10 +46,10 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(LoadUserInfo),
       mergeMap(action => {
-        console.log('userID LoadUserInfo Effect:', action.userID);
+        // console.log('userID LoadUserInfo Effect:', action.userID);
         return this.userService.getUserInfo(action.userID).pipe(
           map((userInfo: any) => {
-            console.log('userInfo:', userInfo);
+            // console.log('userInfo:', userInfo);
             return SetUserInfo({ userInfo });
           })
         );

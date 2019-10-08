@@ -18,7 +18,7 @@ export class TripsService {
   constructor(private http: HttpClient) {}
 
   getTrips(): Observable<any> {
-    console.log('payload GET TRIPS SERVICE:');
+    // console.log('payload GET TRIPS SERVICE:');
     // const sortOrder = payload.sortOrder;
     // const pageNumber = payload.pageNumber;
     // const pageSize = payload.pageSize;
@@ -39,14 +39,14 @@ export class TripsService {
   }
 
   getTrip(id): Observable<any> {
-    console.log('GET TRIP SERVICE', id);
+    // console.log('GET TRIP SERVICE', id);
     return this.http
       .get<any>(`${environment.API_URL}/trip/${id}`)
       .pipe(map(result => result.data));
   }
 
   addTrip(trip): Observable<any> {
-    console.log('ADD TRIP SERVICE', trip);
+    // console.log('ADD TRIP SERVICE', trip);
     return this.http.post<any>(`${environment.API_URL}/trip`, trip);
   }
 
@@ -76,7 +76,7 @@ export class TripsService {
   }
 
   updateTrip(trip): Observable<any> {
-    console.log('UPDATE TRIP SERVICE', trip);
+    // console.log('UPDATE TRIP SERVICE', trip);
     return this.http.post<any>(`${environment.API_URL}/trip/${trip._id}`, {
       tripData: trip
     });
