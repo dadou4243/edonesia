@@ -1,50 +1,24 @@
 <div class="request-container">
-  <app-stripe-payment></app-stripe-payment>
+  <!-- <app-stripe-payment></app-stripe-payment> -->
   CurrentStep: {{ currentStep }}
-  <div class="step-one" *ngIf="currentStep === 1">
-    <h1>Where are you going?</h1>
 
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue
-      semper lacus eget elementum. Mauris tincidunt odio justo, ut tincidunt
-      enim accumsan sit amet. Curabitur eu iaculis urna. Etiam pretium aliquam
-      ex, a tempus erat porttitor sed. Integer venenatis lacinia imperdiet.
-    </p>
-    <p>
-      Proin volutpat, metus non venenatis pretium, ipsum elit cursus purus, at
-      ullamcorper dolor elit sed tortor. Nam at malesuada velit. Donec tempor
-      porta augue vel varius. In hac habitasse platea dictumst. Curabitur
-      pretium eros ac eros rutrum vulputate. In quis mattis ex, et consequat
-      justo. Mauris a pellentesque dolor. Aenean dictum, dui vel blandit tempus,
-      nisl ligula fermentum odio, sed fermentum eros augue volutpat massa.
-      Mauris vel maximus lectus, ac placerat eros. Vivamus aliquet pulvinar
-      lectus eget tempus. Orci varius natoque penatibus et magnis dis parturient
-      montes, nascetur ridiculus mus.
-    </p>
+  <app-date-planned
+    *ngIf="currentStep === 1"
+    (clickedDatePlanned)="onClickDatePlanned($event)"
+  ></app-date-planned>
+
+  <div class="step-two" [class.hidden]="currentStep !== 2 || !datePlanned">
+    <h2>When will you be staying in Indonesia?</h2>
+
+    <form [formGroup]="requestForm">
+      <input type="text" id="start-date" />
+      <input type="text" id="end-date" />
+    </form>
+
+    <div><button class="ut-btn" (click)="onClickNext()">Confirm</button></div>
   </div>
 
-  <div class="step-one" *ngIf="currentStep === 2">
-    <h1>Do you have your dates set already?</h1>
-
-    <ul>
-      <li
-        class="date-planned"
-        (click)="onClickDatePlanned(true)"
-        [class.selected]="datePlanned"
-      >
-        Yes, my dates are set
-      </li>
-      <li
-        class="date-planned"
-        (click)="onClickDatePlanned(false)"
-        [class.selected]="!datePlanned"
-      >
-        No, I'm not sure yet
-      </li>
-    </ul>
-  </div>
-
-  <div class="step-two" *ngIf="currentStep === 3">
+  <!-- <div class="step-two" >
     <h2>Please enter your information</h2>
 
     <form [formGroup]="requestForm">
@@ -57,16 +31,71 @@
       />
       <button (click)="submitRequest()">Submit request</button>
     </form>
+  </div> -->
+
+  <div class="step-three" *ngIf="currentStep === 2 && !datePlanned">
+    <h2>
+      Can you give us a rough estimation of your travel plans?
+    </h2>
+    <div class="form-field">
+      <label for="">When would you go?</label>
+      <select name="" id="">
+        <option
+          value=""
+          *ngFor="let month of ['january', 'february', 'march', 'april']"
+          >{{ month }}</option
+        >
+      </select>
+    </div>
+    <div class="form-field">
+      <label for="">For how long?</label>
+      <input type="number" />
+    </div>
+    <div><button class="ut-btn" (click)="onClickNext()">Confirm</button></div>
   </div>
 
-  <div>
-    <button *ngIf="currentStep !== 1" (click)="onClickPrevious()">
-      Previous
-    </button>
+  <div class="step-four" *ngIf="currentStep === 3">
+    <h2>
+      Where are you going?
+    </h2>
+    <div>Select your dream regions</div>
+    <div class="destination-options">
+      <button class="ut-btn" (click)="onClickNext()">I don't know yet</button>
+      <div class="destination-card">Sumatra</div>
+      <div class="destination-card">Jakarta</div>
+      <div class="destination-card">Bali</div>
+    </div>
+    <div>
+      Do you have precise areas or places of interest in mind? Share them with
+      us.
+    </div>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <div><button class="ut-btn" (click)="onClickNext()">Confirm</button></div>
   </div>
-  <div>
-    <button class="next-btn" (click)="onClickNext()" *ngIf="currentStep !== 2">
-      Next
-    </button>
+
+  <app-who-travel
+    *ngIf="currentStep === 4"
+    [showConfirm]="true"
+  ></app-who-travel>
+
+  <app-purpose-trip *ngIf="currentStep === 5"></app-purpose-trip>
+
+  <app-hotel-type *ngIf="currentStep === 6"></app-hotel-type>
+
+  <div class="step-buttons">
+    <div>
+      <button
+        class="next-btn"
+        (click)="onClickPrevious()"
+        *ngIf="currentStep !== 1"
+      >
+        Previous
+      </button>
+    </div>
+    <div>
+      <button class="next-btn" (click)="onClickNext()">
+        Next
+      </button>
+    </div>
   </div>
 </div>

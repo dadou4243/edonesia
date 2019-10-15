@@ -1,0 +1,29 @@
+ul {
+  max-width: 350px;
+  margin: 0 auto;
+
+  li.date-planned {
+    background-color: #fff;
+    color: #1e2a40;
+    position: relative;
+    height: 60px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //   padding: 19px 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    &.selected {
+      background-color: #ff6361 !important;
+      color: #ffffff;
+    }
+
+    &:hover {
+      background-color: #ff6361;
+      color: #fff;
+      opacity: 0.8;
+    }
+  }
+}

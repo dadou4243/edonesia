@@ -1,0 +1,20 @@
+<div class="step-one">
+  <h1>Do you have your dates set already?</h1>
+
+  <ul>
+    <li
+      class="date-planned"
+      (click)="onClickDatePlanned(true)"
+      [class.selected]="datePlanned"
+    >
+      Yes, my dates are set
+    </li>
+    <li
+      class="date-planned"
+      (click)="onClickDatePlanned(false)"
+      [class.selected]="!datePlanned"
+    >
+      No, I'm not sure yet
+    </li>
+  </ul>
+</div>

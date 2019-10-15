@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BookingsService } from 'src/app/core/services/bookings.service';
+import Lightpick from 'lightpick';
 
 @Component({
   selector: 'app-request-questions',
@@ -20,6 +21,18 @@ export class RequestQuestionsComponent implements OnInit {
   ngOnInit() {
     this.requestForm = this.fb.group({
       firstName: ['', [Validators.required]]
+    });
+
+    const picker = new Lightpick({
+      field: document.getElementById('start-date'),
+      secondField: document.getElementById('end-date'),
+      singleDate: false,
+      onSelect(start, end) {
+        let str = '';
+        str += start ? start.format('Do MMMM YYYY') + ' to ' : '';
+        str += end ? end.format('Do MMMM YYYY') : '...';
+        console.log('str:', str);
+      }
     });
   }
 

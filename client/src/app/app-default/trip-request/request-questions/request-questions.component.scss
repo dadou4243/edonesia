@@ -24,6 +24,10 @@
     font-weight: 600;
   }
 
+  .hidden {
+    display: none;
+  }
+
   ul {
     max-width: 350px;
     margin: 0 auto;
@@ -52,5 +56,11 @@
         opacity: 0.8;
       }
     }
+  }
+
+  .step-buttons {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
   }
 }
