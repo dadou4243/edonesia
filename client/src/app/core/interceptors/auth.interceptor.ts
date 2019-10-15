@@ -22,9 +22,8 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const idToken = this.jwtService.getToken();
-    console.log('idToken:', idToken);
-
-    console.log(req.url);
+    // console.log('idToken:', idToken);
+    // console.log(req.url);
 
     if (
       idToken &&
