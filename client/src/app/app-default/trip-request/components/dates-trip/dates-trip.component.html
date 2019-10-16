@@ -5,9 +5,23 @@
   <div>arrivalDate: {{ arrivalDate }}</div> -->
 
   <!-- <form [formGroup]="requestForm"> -->
-  <input type="text" id="start-date" [value]="departureDate" />
-  <input type="text" id="end-date" [value]="arrivalDate" />
+  <input
+    type="text"
+    id="start-date"
+    [value]="departureDate"
+    (keyup)="onDepartureDateChange($event.target.value)"
+  />
+  <input
+    type="text"
+    id="end-date"
+    [value]="arrivalDate"
+    (keyup)="onArrivaleDateChange($event.target.value)"
+  />
   <!-- </form> -->
+
+  <div class="error">
+    {{ error }}
+  </div>
 
   <div><button class="ut-btn" (click)="onClickConfirm()">Confirm</button></div>
 </div>
