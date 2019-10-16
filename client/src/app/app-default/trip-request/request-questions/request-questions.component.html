@@ -1,13 +1,15 @@
 <div class="request-container">
   <!-- <app-stripe-payment></app-stripe-payment> -->
-  CurrentStep: {{ currentStep }}
+  <div>CurrentStep: {{ currentStepIndex }}</div>
+  <div>CurrentStep: {{ stepsValues | json }}</div>
 
   <app-date-planned
-    *ngIf="currentStep === 1"
-    (clickedDatePlanned)="onClickDatePlanned($event)"
+    [value]="stepsValues.isDatePlanned"
+    *ngIf="currentStepIndex === 0"
+    (clickedDatePlanned)="onUpdateStepValues($event)"
   ></app-date-planned>
 
-  <div class="step-two" [class.hidden]="currentStep !== 2 || !datePlanned">
+  <div class="step-two" [class.hidden]="currentStepIndex !== 1 || !datePlanned">
     <h2>When will you be staying in Indonesia?</h2>
 
     <form [formGroup]="requestForm">
@@ -18,22 +20,7 @@
     <div><button class="ut-btn" (click)="onClickNext()">Confirm</button></div>
   </div>
 
-  <!-- <div class="step-two" >
-    <h2>Please enter your information</h2>
-
-    <form [formGroup]="requestForm">
-      <input
-        type="text"
-        matInput
-        placeholder="First Name"
-        formControlName="firstName"
-        required
-      />
-      <button (click)="submitRequest()">Submit request</button>
-    </form>
-  </div> -->
-
-  <div class="step-three" *ngIf="currentStep === 2 && !datePlanned">
+  <div class="step-three" *ngIf="currentStepIndex === 1 && !datePlanned">
     <h2>
       Can you give us a rough estimation of your travel plans?
     </h2>
@@ -54,7 +41,7 @@
     <div><button class="ut-btn" (click)="onClickNext()">Confirm</button></div>
   </div>
 
-  <div class="step-four" *ngIf="currentStep === 3">
+  <div class="step-four" *ngIf="currentStepIndex === 2">
     <h2>
       Where are you going?
     </h2>
@@ -74,21 +61,32 @@
   </div>
 
   <app-who-travel
-    *ngIf="currentStep === 4"
+    *ngIf="currentStepIndex === 3"
     [showConfirm]="true"
   ></app-who-travel>
 
-  <app-purpose-trip *ngIf="currentStep === 5"></app-purpose-trip>
+  <app-purpose-trip *ngIf="currentStepIndex === 4"></app-purpose-trip>
 
-  <app-hotel-type *ngIf="currentStep === 6"></app-hotel-type>
+  <app-hotel-type *ngIf="currentStepIndex === 5"></app-hotel-type>
+
+  <!-- <div class="step-two" >
+    <h2>Please enter your information</h2>
+
+    <form [formGroup]="requestForm">
+      <input
+        type="text"
+        matInput
+        placeholder="First Name"
+        formControlName="firstName"
+        required
+      />
+      <button (click)="submitRequest()">Submit request</button>
+    </form>
+  </div> -->
 
   <div class="step-buttons">
     <div>
-      <button
-        class="next-btn"
-        (click)="onClickPrevious()"
-        *ngIf="currentStep !== 1"
-      >
+      <button class="next-btn" (click)="onClickPrevious()">
         Previous
       </button>
     </div>

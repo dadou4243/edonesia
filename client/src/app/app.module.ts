@@ -14,6 +14,7 @@ import { userReducer } from './store/user';
 import { UserEffects } from './store/user/user.effects';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { LogoutComponent } from './shared/components/logout/logout.component';
+import { requestReducer } from './store/request';
 
 @NgModule({
   declarations: [AppComponent, LogoutComponent],
@@ -24,7 +25,7 @@ import { LogoutComponent } from './shared/components/logout/logout.component';
     FormsModule,
     ReactiveFormsModule,
     AdminModule,
-    StoreModule.forRoot({ user: userReducer }),
+    StoreModule.forRoot({ user: userReducer, request: requestReducer }),
     StoreDevtoolsModule.instrument({
       name: 'Unique Trip app'
     }),

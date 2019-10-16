@@ -2,6 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BookingsService } from 'src/app/core/services/bookings.service';
 import Lightpick from 'lightpick';
+import { Store, select } from '@ngrx/store';
+import {
+  RequestState,
+  SetCurrentIndex,
+  getCurrentStepIndex,
+  getStepsValues,
+  SetStepValues
+} from 'src/app/store/request';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-request-questions',
@@ -9,14 +18,23 @@ import Lightpick from 'lightpick';
   styleUrls: ['./request-questions.component.scss']
 })
 export class RequestQuestionsComponent implements OnInit {
-  currentStep = 1;
   datePlanned = true;
   requestForm: FormGroup;
+  currentStepIndex: number;
+  stepsValues: any;
 
   constructor(
     private fb: FormBuilder,
-    private bookingsService: BookingsService
-  ) {}
+    private bookingsService: BookingsService,
+    private store: Store<RequestState>
+  ) {
+    this.store.pipe(select(getCurrentStepIndex)).subscribe(index => {
+      this.currentStepIndex = index;
+    });
+    this.store.pipe(select(getStepsValues)).subscribe(index => {
+      this.stepsValues = index;
+    });
+  }
 
   ngOnInit() {
     this.requestForm = this.fb.group({
@@ -37,15 +55,21 @@ export class RequestQuestionsComponent implements OnInit {
   }
 
   onClickNext() {
-    this.currentStep++;
+    this.store.dispatch(
+      SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
+    );
   }
 
   onClickPrevious() {
-    this.currentStep--;
+    this.store.dispatch(
+      SetCurrentIndex({ currentStepIndex: this.currentStepIndex - 1 })
+    );
   }
 
-  onClickDatePlanned(answer) {
-    this.datePlanned = answer;
+  onUpdateStepValues(answer) {
+    this.store.dispatch(
+      SetStepValues({ stepValues: { isDatePlanned: answer } })
+    );
     this.onClickNext();
   }
 

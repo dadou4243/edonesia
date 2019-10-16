@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-date-planned',
@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class DatePlannedComponent implements OnInit {
   datePlanned = true;
+  @Input() value;
 
   @Output() clickedDatePlanned = new EventEmitter();
 

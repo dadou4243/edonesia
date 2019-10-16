@@ -5,14 +5,14 @@
     <li
       class="date-planned"
       (click)="onClickDatePlanned(true)"
-      [class.selected]="datePlanned"
+      [class.selected]="value"
     >
       Yes, my dates are set
     </li>
     <li
       class="date-planned"
       (click)="onClickDatePlanned(false)"
-      [class.selected]="!datePlanned"
+      [class.selected]="!value"
     >
       No, I'm not sure yet
     </li>
