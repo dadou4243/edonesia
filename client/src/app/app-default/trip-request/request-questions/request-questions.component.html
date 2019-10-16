@@ -4,67 +4,42 @@
   <div>CurrentStep: {{ formValue | json }}</div>
 
   <app-date-planned
+    *ngIf="currentStepIndex === 0"
     [value]="formValue.isDatePlanned"
     (clickedDatePlanned)="onUpdateStepValues($event)"
-    *ngIf="currentStepIndex === 0"
   ></app-date-planned>
 
   <app-dates-trip
+    *ngIf="currentStepIndex === 1 && formValue.isDatePlanned"
     [departureDate]="formValue.departureDate"
     [arrivalDate]="formValue.arrivalDate"
     (dateConfirmed)="onUpdateStepValues($event)"
-    *ngIf="currentStepIndex === 1 && formValue.isDatePlanned"
   ></app-dates-trip>
 
-  <div
-    class="step-three"
+  <app-estimate-date
     *ngIf="currentStepIndex === 1 && !formValue.isDatePlanned"
-  >
-    <h2>
-      Can you give us a rough estimation of your travel plans?
-    </h2>
-    <div class="form-field">
-      <label for="">When would you go?</label>
-      <select name="" id="">
-        <option
-          value=""
-          *ngFor="let month of ['january', 'february', 'march', 'april']"
-          >{{ month }}</option
-        >
-      </select>
-    </div>
-    <div class="form-field">
-      <label for="">For how long?</label>
-      <input type="number" />
-    </div>
-    <div><button class="ut-btn" (click)="onClickNext()">Confirm</button></div>
-  </div>
+  ></app-estimate-date>
 
-  <div class="step-four" *ngIf="currentStepIndex === 2">
-    <h2>
-      Where are you going?
-    </h2>
-    <div>Select your dream regions</div>
-    <div class="destination-options">
-      <button class="ut-btn" (click)="onClickNext()">I don't know yet</button>
-      <div class="destination-card">Sumatra</div>
-      <div class="destination-card">Jakarta</div>
-      <div class="destination-card">Bali</div>
-    </div>
-    <div>
-      Do you have precise areas or places of interest in mind? Share them with
-      us.
-    </div>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
-    <div><button class="ut-btn" (click)="onClickNext()">Confirm</button></div>
-  </div>
+  <app-trip-destination
+    *ngIf="currentStepIndex === 2"
+    (destinationPicked)="onUpdateStepValues($event)"
+    [destinations]="destinations"
+    [destination]="formValue.destination"
+  ></app-trip-destination>
 
   <app-who-travel
     *ngIf="currentStepIndex === 3"
     [showConfirm]="true"
+    [numberPeople]="formValue.numberPeople"
+    (pickedNumberPeople)="onUpdateStepValues($event)"
   ></app-who-travel>
 
-  <app-purpose-trip *ngIf="currentStepIndex === 4"></app-purpose-trip>
+  <app-purpose-trip
+    *ngIf="currentStepIndex === 4"
+    [purpose]="formValue.purpose"
+    [purposeOptions]="purposeOptions"
+    (purposePicked)="onUpdateStepValues($event)"
+  ></app-purpose-trip>
 
   <app-hotel-type *ngIf="currentStepIndex === 5"></app-hotel-type>
 

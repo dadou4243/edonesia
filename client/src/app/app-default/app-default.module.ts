@@ -30,7 +30,7 @@ import { WishlistHomeComponent } from './wishlist/wishlist-home/wishlist-home.co
 import { HttpClientModule } from '@angular/common/http';
 import { NewsletterSubscribeComponent } from './components/newsletter-subscribe/newsletter-subscribe.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { BookTripComponent } from './shared/book-trip/book-trip.component';
+import { BookTripComponent } from './shared/components/book-trip/book-trip.component';
 import { SlideshowComponent } from './home/slideshow/slideshow.component';
 import { DestinationsComponent } from './home/destinations/destinations.component';
 import { CommonModule } from '@angular/common';

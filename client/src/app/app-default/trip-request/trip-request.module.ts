@@ -9,6 +9,8 @@ import { WhoTravelComponent } from './components/who-travel/who-travel.component
 import { PurposeTripComponent } from './components/purpose-trip/purpose-trip.component';
 import { HotelTypeComponent } from './components/hotel-type/hotel-type.component';
 import { DatesTripComponent } from './components/dates-trip/dates-trip.component';
+import { TripDestinationComponent } from './components/trip-destination/trip-destination.component';
+import { EstimateDateComponent } from './components/estimate-date/estimate-date.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DatesTripComponent } from './components/dates-trip/dates-trip.component
     WhoTravelComponent,
     PurposeTripComponent,
     HotelTypeComponent,
-    DatesTripComponent
+    DatesTripComponent,
+    TripDestinationComponent,
+    EstimateDateComponent
   ],
   imports: [CommonModule, TripRequestRoutingModule, SharedModule]
 })

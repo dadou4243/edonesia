@@ -1,0 +1,10 @@
+.choice-card-container {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+
+  &.active {
+    background: yellow;
+  }
+}

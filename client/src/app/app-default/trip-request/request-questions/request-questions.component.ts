@@ -9,7 +9,7 @@ import {
   getFormValue,
   SetFormValue
 } from 'src/app/store/request';
-import { Observable } from 'rxjs';
+import { destinations, purposeOptions } from '../data';
 
 @Component({
   selector: 'app-request-questions',
@@ -21,6 +21,8 @@ export class RequestQuestionsComponent implements OnInit {
   requestForm: FormGroup;
   currentStepIndex: number;
   formValue: any;
+  destinations = destinations;
+  purposeOptions = purposeOptions;
 
   constructor(
     private fb: FormBuilder,
@@ -57,7 +59,7 @@ export class RequestQuestionsComponent implements OnInit {
   onUpdateStepValues(value) {
     console.log('value:', value);
     this.store.dispatch(SetFormValue({ stepValues: value }));
-    this.onClickNext();
+    // this.onClickNext();
   }
 
   submitRequest() {

@@ -1,0 +1,24 @@
+<div class="step-four">
+  <h2>
+    Where are you going?
+  </h2>
+  <div>Select your dream regions</div>
+  <div class="destination-options">
+    <button class="ut-btn" (click)="onPickDestination('Unknown')">
+      I don't know yet
+    </button>
+    <app-choice-card
+      *ngFor="let destinationOption of destinations"
+      (click)="onPickDestination(destinationOption)"
+      [isActive]="destination.includes(destinationOption)"
+      >{{ destinationOption }}</app-choice-card
+    >
+  </div>
+  <div>
+    Do you have precise areas or places of interest in mind? Share them with us.
+  </div>
+  <textarea name="" id="" cols="30" rows="10"></textarea>
+  <div>
+    <button class="ut-btn" (click)="onClickConfirm()">Confirm</button>
+  </div>
+</div>

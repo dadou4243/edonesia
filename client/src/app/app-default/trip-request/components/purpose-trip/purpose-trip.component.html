@@ -3,9 +3,12 @@
     What is the purpose of your trip?
   </h2>
   <div class="destination-options">
-    <div class="destination-card">Romantic gateway</div>
-    <div class="destination-card">Family holiday</div>
-    <div class="destination-card">Honeymoon</div>
+    <app-choice-card
+      *ngFor="let purposeOption of purposeOptions"
+      (click)="onPickPurpose(purposeOption)"
+      [isActive]="purpose.includes(purposeOption)"
+      >{{ purposeOption }}</app-choice-card
+    >
   </div>
   <div>Is it your first time in Indonesia</div>
   <div>

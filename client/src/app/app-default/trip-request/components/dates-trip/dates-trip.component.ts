@@ -1,4 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  OnChanges
+} from '@angular/core';
 import Lightpick from 'lightpick';
 
 @Component({
@@ -6,7 +13,7 @@ import Lightpick from 'lightpick';
   templateUrl: './dates-trip.component.html',
   styleUrls: ['./dates-trip.component.scss']
 })
-export class DatesTripComponent implements OnInit {
+export class DatesTripComponent implements OnInit, OnChanges {
   @Input() departureDate;
   @Input() arrivalDate;
   @Output() dateConfirmed = new EventEmitter();
@@ -24,17 +31,16 @@ export class DatesTripComponent implements OnInit {
       onSelect: (start, end) => {
         this.tempDepartureDate = start ? start.format('DD/MM/YYYY') : '';
         this.tempArrivalDate = end ? end.format('DD/MM/YYYY') : '';
-
-        let str = '';
-        str += start ? start.format('Do MMMM YYYY') + ' to ' : '';
-        str += end ? end.format('Do MMMM YYYY') : '...';
-        console.log('str:', str);
       }
     });
   }
 
+  ngOnChanges() {
+    this.tempDepartureDate = this.departureDate;
+    this.tempArrivalDate = this.arrivalDate;
+  }
+
   onClickConfirm() {
-    console.log('this.tempArrivalDate:', this.tempArrivalDate);
     this.dateConfirmed.emit({
       arrivalDate: this.tempArrivalDate,
       departureDate: this.tempDepartureDate

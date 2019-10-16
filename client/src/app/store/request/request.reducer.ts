@@ -3,6 +3,15 @@ import * as requestActions from './request.actions';
 
 import * as moment from 'moment';
 
+export interface IFormValue {
+  isDatePlanned: boolean;
+  departureDate: string;
+  arrivalDate: string;
+  destination: string[];
+  numberPeople: number;
+  purpose: string[];
+}
+
 export interface RequestState {
   formValue: any;
   isValid: boolean;
@@ -13,11 +22,14 @@ export const initialState: RequestState = {
   formValue: {
     isDatePlanned: false,
     departureDate: moment(new Date())
-      .add(5, 'days')
+      .add(1, 'days')
       .format('DD/MM/YYYY'),
     arrivalDate: moment(new Date())
-      .add(1, 'days')
-      .format('DD/MM/YYYY')
+      .add(5, 'days')
+      .format('DD/MM/YYYY'),
+    destination: [],
+    numberPeople: 1,
+    purpose: []
   },
   isValid: false,
   currentStepIndex: 0

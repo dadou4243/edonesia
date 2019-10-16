@@ -4,7 +4,7 @@ import { HomeMainComponent } from './home/home-main/home-main.component';
 import { TripsComponent } from './components/trips/trips.component';
 import { TripDetailsComponent } from './components/trip-details/trip-details.component';
 import { WishlistHomeComponent } from './wishlist/wishlist-home/wishlist-home.component';
-import { BookTripComponent } from './shared/book-trip/book-trip.component';
+import { BookTripComponent } from './shared/components/book-trip/book-trip.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { AppDefaultComponent } from './app-default.component';
