@@ -6,9 +6,12 @@
     Select as many as you like
   </div>
   <div class="destination-options">
-    <div class="destination-card">Urban and Business Hotels</div>
-    <div class="destination-card">Eco-Lodges</div>
-    <div class="destination-card">Intimate Small Hotels</div>
+    <app-choice-card
+      *ngFor="let hotelOption of hotelOptions"
+      (click)="onPickHotelType(hotelOption)"
+      [isActive]="selectedTypes.includes(hotelOption)"
+      >{{ hotelOption }}</app-choice-card
+    >
   </div>
   <div>What is your budget per night and per room?</div>
   <div>cursor!!!</div>

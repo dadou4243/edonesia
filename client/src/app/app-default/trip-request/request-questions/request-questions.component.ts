@@ -9,7 +9,12 @@ import {
   getFormValue,
   SetFormValue
 } from 'src/app/store/request';
-import { destinations, purposeOptions } from '../data';
+import {
+  destinations,
+  purposeOptions,
+  hotelOptions,
+  activityOptions
+} from '../data';
 
 @Component({
   selector: 'app-request-questions',
@@ -23,6 +28,8 @@ export class RequestQuestionsComponent implements OnInit {
   formValue: any;
   destinations = destinations;
   purposeOptions = purposeOptions;
+  hotelOptions = hotelOptions;
+  activityOptions = activityOptions;
 
   constructor(
     private fb: FormBuilder,

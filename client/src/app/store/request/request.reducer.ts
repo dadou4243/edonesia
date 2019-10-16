@@ -10,6 +10,8 @@ export interface IFormValue {
   destination: string[];
   numberPeople: number;
   purpose: string[];
+  hotelType: string[];
+  activities: string[];
 }
 
 export interface RequestState {
@@ -29,7 +31,9 @@ export const initialState: RequestState = {
       .format('DD/MM/YYYY'),
     destination: [],
     numberPeople: 1,
-    purpose: []
+    purpose: [],
+    hotelType: [],
+    activities: []
   },
   isValid: false,
   currentStepIndex: 0

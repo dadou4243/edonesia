@@ -1,0 +1,16 @@
+<div>
+  <h2>
+    Which types of hotels would make your stay unique?
+  </h2>
+  <div>
+    Select as many as you like
+  </div>
+  <div class="destination-options">
+    <app-choice-card
+      *ngFor="let activityOption of activityOptions"
+      (click)="onPickActivity(activityOption)"
+      [isActive]="selectedActivities.includes(activityOption)"
+      >{{ activityOption }}</app-choice-card
+    >
+  </div>
+</div>

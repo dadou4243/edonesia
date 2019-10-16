@@ -41,7 +41,19 @@
     (purposePicked)="onUpdateStepValues($event)"
   ></app-purpose-trip>
 
-  <app-hotel-type *ngIf="currentStepIndex === 5"></app-hotel-type>
+  <app-hotel-type
+    *ngIf="currentStepIndex === 5"
+    [hotelOptions]="hotelOptions"
+    [selectedTypes]="formValue.hotelType"
+    (pickedHotelType)="onUpdateStepValues($event)"
+  ></app-hotel-type>
+
+  <app-trip-activities
+    *ngIf="currentStepIndex === 6"
+    [activityOptions]="activityOptions"
+    [selectedActivities]="formValue.activities"
+    (pickedActivityType)="onUpdateStepValues($event)"
+  ></app-trip-activities>
 
   <!-- <div class="step-two" >
     <h2>Please enter your information</h2>
