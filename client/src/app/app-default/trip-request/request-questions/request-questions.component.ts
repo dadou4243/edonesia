@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BookingsService } from 'src/app/core/services/bookings.service';
-import Lightpick from 'lightpick';
 import { Store, select } from '@ngrx/store';
 import {
   RequestState,
   SetCurrentIndex,
   getCurrentStepIndex,
-  getStepsValues,
-  SetStepValues
+  getFormValue,
+  SetFormValue
 } from 'src/app/store/request';
 import { Observable } from 'rxjs';
 
@@ -21,7 +20,7 @@ export class RequestQuestionsComponent implements OnInit {
   datePlanned = true;
   requestForm: FormGroup;
   currentStepIndex: number;
-  stepsValues: any;
+  formValue: any;
 
   constructor(
     private fb: FormBuilder,
@@ -31,26 +30,15 @@ export class RequestQuestionsComponent implements OnInit {
     this.store.pipe(select(getCurrentStepIndex)).subscribe(index => {
       this.currentStepIndex = index;
     });
-    this.store.pipe(select(getStepsValues)).subscribe(index => {
-      this.stepsValues = index;
+    this.store.pipe(select(getFormValue)).subscribe(formValue => {
+      console.log('formValue:', formValue);
+      this.formValue = formValue;
     });
   }
 
   ngOnInit() {
     this.requestForm = this.fb.group({
       firstName: ['', [Validators.required]]
-    });
-
-    const picker = new Lightpick({
-      field: document.getElementById('start-date'),
-      secondField: document.getElementById('end-date'),
-      singleDate: false,
-      onSelect(start, end) {
-        let str = '';
-        str += start ? start.format('Do MMMM YYYY') + ' to ' : '';
-        str += end ? end.format('Do MMMM YYYY') : '...';
-        console.log('str:', str);
-      }
     });
   }
 
@@ -66,10 +54,9 @@ export class RequestQuestionsComponent implements OnInit {
     );
   }
 
-  onUpdateStepValues(answer) {
-    this.store.dispatch(
-      SetStepValues({ stepValues: { isDatePlanned: answer } })
-    );
+  onUpdateStepValues(value) {
+    console.log('value:', value);
+    this.store.dispatch(SetFormValue({ stepValues: value }));
     this.onClickNext();
   }
 

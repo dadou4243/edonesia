@@ -1,26 +1,25 @@
 <div class="request-container">
   <!-- <app-stripe-payment></app-stripe-payment> -->
   <div>CurrentStep: {{ currentStepIndex }}</div>
-  <div>CurrentStep: {{ stepsValues | json }}</div>
+  <div>CurrentStep: {{ formValue | json }}</div>
 
   <app-date-planned
-    [value]="stepsValues.isDatePlanned"
-    *ngIf="currentStepIndex === 0"
+    [value]="formValue.isDatePlanned"
     (clickedDatePlanned)="onUpdateStepValues($event)"
+    *ngIf="currentStepIndex === 0"
   ></app-date-planned>
 
-  <div class="step-two" [class.hidden]="currentStepIndex !== 1 || !datePlanned">
-    <h2>When will you be staying in Indonesia?</h2>
+  <app-dates-trip
+    [departureDate]="formValue.departureDate"
+    [arrivalDate]="formValue.arrivalDate"
+    (dateConfirmed)="onUpdateStepValues($event)"
+    *ngIf="currentStepIndex === 1 && formValue.isDatePlanned"
+  ></app-dates-trip>
 
-    <form [formGroup]="requestForm">
-      <input type="text" id="start-date" />
-      <input type="text" id="end-date" />
-    </form>
-
-    <div><button class="ut-btn" (click)="onClickNext()">Confirm</button></div>
-  </div>
-
-  <div class="step-three" *ngIf="currentStepIndex === 1 && !datePlanned">
+  <div
+    class="step-three"
+    *ngIf="currentStepIndex === 1 && !formValue.isDatePlanned"
+  >
     <h2>
       Can you give us a rough estimation of your travel plans?
     </h2>

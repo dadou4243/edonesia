@@ -8,7 +8,7 @@ export const getCurrentStepIndex = createSelector(
   (requestState: RequestState): number => requestState.currentStepIndex
 );
 
-export const getStepsValues = createSelector(
+export const getFormValue = createSelector(
   getRequestState,
-  (requestState: RequestState): number => requestState.steps
+  (requestState: RequestState): any => requestState.formValue
 );

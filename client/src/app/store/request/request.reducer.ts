@@ -1,14 +1,24 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as requestActions from './request.actions';
 
+import * as moment from 'moment';
+
 export interface RequestState {
-  steps: any;
+  formValue: any;
   isValid: boolean;
   currentStepIndex: number;
 }
 
 export const initialState: RequestState = {
-  steps: { isDatePlanned: false },
+  formValue: {
+    isDatePlanned: false,
+    departureDate: moment(new Date())
+      .add(5, 'days')
+      .format('DD/MM/YYYY'),
+    arrivalDate: moment(new Date())
+      .add(1, 'days')
+      .format('DD/MM/YYYY')
+  },
   isValid: false,
   currentStepIndex: 0
 };
@@ -19,9 +29,9 @@ const featureReducer = createReducer(
     ...state,
     currentStepIndex
   })),
-  on(requestActions.SetStepValues, (state, { stepValues }) => ({
+  on(requestActions.SetFormValue, (state, { stepValues }) => ({
     ...state,
-    steps: { ...state.steps, ...stepValues }
+    formValue: { ...state.formValue, ...stepValues }
   }))
 );
 

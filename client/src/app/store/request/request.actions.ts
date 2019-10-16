@@ -6,8 +6,8 @@ export const SetCurrentIndex = createAction(
   props<{ currentStepIndex: number }>()
 );
 
-export const SetStepValues = createAction(
-  '[User] Set Steps Values',
+export const SetFormValue = createAction(
+  '[User] Set Form Value',
   props<{ stepValues: any }>()
 );
 

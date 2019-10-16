@@ -1,1 +1,13 @@
-<p>dates-trip works!</p>
+<div class="step-two">
+  <h2>When will you be staying in Indonesia?</h2>
+
+  <!-- <div>departureDate: {{ departureDate }}</div>
+  <div>arrivalDate: {{ arrivalDate }}</div> -->
+
+  <!-- <form [formGroup]="requestForm"> -->
+  <input type="text" id="start-date" [value]="departureDate" />
+  <input type="text" id="end-date" [value]="arrivalDate" />
+  <!-- </form> -->
+
+  <div><button class="ut-btn" (click)="onClickConfirm()">Confirm</button></div>
+</div>
