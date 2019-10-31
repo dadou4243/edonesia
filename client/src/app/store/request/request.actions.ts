@@ -8,7 +8,7 @@ export const SetCurrentIndex = createAction(
 
 export const SetFormValue = createAction(
   '[User] Set Form Value',
-  props<{ stepValues: any }>()
+  props<{ stepValues: any; validationErrors: string[] }>()
 );
 
 export const SubmitForm = createAction('[Stepper] Submit Form');

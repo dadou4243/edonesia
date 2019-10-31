@@ -16,11 +16,13 @@ import Lightpick from 'lightpick';
 export class DatesTripComponent implements OnInit, OnChanges {
   @Input() departureDate;
   @Input() arrivalDate;
+  @Input() airport;
   @Output() dateConfirmed = new EventEmitter();
 
   tempDepartureDate;
   tempArrivalDate;
   error: string;
+  stepValidationObject: any;
 
   constructor() {}
 
@@ -29,12 +31,32 @@ export class DatesTripComponent implements OnInit, OnChanges {
       field: document.getElementById('start-date'),
       secondField: document.getElementById('end-date'),
       singleDate: false,
-      onSelect: (start, end) => {
-        this.tempDepartureDate = start ? start.format('DD/MM/YYYY') : '';
-        this.tempArrivalDate = end ? end.format('DD/MM/YYYY') : '';
-      }
+      onSelect: this.onSelect
     });
+
+    this.stepValidationObject = {
+      arrivalDate: {
+        message: 'You must enter a valid arrival date',
+        isValid: !(this.arrivalDate === '')
+      },
+      departureDate: {
+        message: 'You must enter a valid departure date',
+        isValid: !(this.departureDate === '')
+      }
+    };
   }
+
+  onSelect = (start, end) => {
+    this.tempDepartureDate = start ? start.format('DD/MM/YYYY') : '';
+    this.tempArrivalDate = end ? end.format('DD/MM/YYYY') : '';
+    this.dateConfirmed.emit({
+      stepValues: {
+        arrivalDate: this.tempArrivalDate,
+        departureDate: this.tempDepartureDate
+      },
+      validationErrors: []
+    });
+  };
 
   ngOnChanges() {
     this.tempDepartureDate = this.departureDate;
@@ -42,34 +64,54 @@ export class DatesTripComponent implements OnInit, OnChanges {
   }
 
   onDepartureDateChange(date) {
+    console.log('date:', date);
     this.tempDepartureDate = date;
+
+    this.stepValidationObject.departureDate.isValid =
+      this.tempDepartureDate === '' ? false : true;
+
     this.dateConfirmed.emit({
-      arrivalDate: this.tempArrivalDate,
-      departureDate: this.tempDepartureDate
+      stepValues: {
+        departureDate: this.tempDepartureDate
+      },
+      validationErrors: this.stepValidationObject
     });
   }
 
   onArrivaleDateChange(date) {
+    console.log('date:', date);
     this.tempArrivalDate = date;
+
+    this.stepValidationObject.arrivalDate.isValid =
+      this.tempArrivalDate === '' ? false : true;
+
     this.dateConfirmed.emit({
-      arrivalDate: this.tempArrivalDate,
-      departureDate: this.tempDepartureDate
+      stepValues: {
+        arrivalDate: this.tempArrivalDate
+      },
+      validationErrors: this.stepValidationObject
     });
   }
 
-  onClickConfirm() {
-    this.error = '';
-
-    console.log('this.tempDepartureDate:', this.tempDepartureDate);
-    console.log('this.tempArrivalDate:', this.tempArrivalDate);
-    if (!this.tempDepartureDate || !this.tempArrivalDate) {
-      this.error = 'You must fill a departure and arrival date.';
-      return;
-    }
-
-    // this.dateConfirmed.emit({
-    //   arrivalDate: this.tempArrivalDate,
-    //   departureDate: this.tempDepartureDate
-    // });
+  onAirportChange(airport) {
+    this.dateConfirmed.emit({
+      airport
+    });
   }
+
+  // onClickConfirm() {
+  //   this.error = '';
+
+  //   console.log('this.tempDepartureDate:', this.tempDepartureDate);
+  //   console.log('this.tempArrivalDate:', this.tempArrivalDate);
+  //   if (!this.tempDepartureDate || !this.tempArrivalDate) {
+  //     this.error = 'You must fill a departure and arrival date.';
+  //     return;
+  //   }
+
+  //   // this.dateConfirmed.emit({
+  //   //   arrivalDate: this.tempArrivalDate,
+  //   //   departureDate: this.tempDepartureDate
+  //   // });
+  // }
 }

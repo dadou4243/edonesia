@@ -1,30 +1,35 @@
 <div class="request-container">
   <!-- <app-stripe-payment></app-stripe-payment> -->
-  <div>CurrentStep: {{ currentStepIndex }}</div>
-  <div>CurrentStep: {{ formValue | json }}</div>
+  <div>STEP {{ currentStepIndex }}</div>
+  <div style="font-size: 10px;">CurrentStep: {{ formValue | json }}</div>
+  <div style="font-size: 10px;">Validation: {{ errors | json }}</div>
 
   <app-date-planned
     *ngIf="currentStepIndex === 0"
     [value]="formValue.isDatePlanned"
-    (clickedDatePlanned)="onUpdateStepValues($event)"
+    (clickedDatePlanned)="onUpdateStepValues($event); onClickNext()"
   ></app-date-planned>
 
   <app-dates-trip
     *ngIf="currentStepIndex === 1 && formValue.isDatePlanned"
     [departureDate]="formValue.departureDate"
     [arrivalDate]="formValue.arrivalDate"
+    [airport]="formValue.airport"
     (dateConfirmed)="onUpdateStepValues($event)"
   ></app-dates-trip>
 
   <app-estimate-date
     *ngIf="currentStepIndex === 1 && !formValue.isDatePlanned"
+    [estimateMonth]="formValue.estimateMonth"
+    [estimateDays]="formValue.estimateDays"
+    (estimateDateChanged)="onUpdateStepValues($event)"
   ></app-estimate-date>
 
   <app-trip-destination
     *ngIf="currentStepIndex === 2"
     (destinationPicked)="onUpdateStepValues($event)"
-    [destinations]="destinations"
-    [destination]="formValue.destination"
+    [destinationOptions]="destinationOptions"
+    [destinations]="formValue.destinations"
   ></app-trip-destination>
 
   <app-who-travel
@@ -55,6 +60,25 @@
     (pickedActivityType)="onUpdateStepValues($event)"
   ></app-trip-activities>
 
+  <div class="errors" *ngIf="showErrors">
+    <div *ngFor="let error of errors">
+      {{ error.message }}
+    </div>
+  </div>
+
+  <div class="step-buttons">
+    <div *ngIf="currentStepIndex > 0">
+      <button class="next-btn" (click)="onClickPrevious()">
+        Previous
+      </button>
+    </div>
+    <div *ngIf="!(currentStepIndex > 7) && currentStepIndex !== 0">
+      <button class="next-btn" (click)="onClickNext()">
+        Next
+      </button>
+    </div>
+  </div>
+
   <!-- <div class="step-two" >
     <h2>Please enter your information</h2>
 
@@ -69,17 +93,4 @@
       <button (click)="submitRequest()">Submit request</button>
     </form>
   </div> -->
-
-  <div class="step-buttons">
-    <div>
-      <button class="next-btn" (click)="onClickPrevious()">
-        Previous
-      </button>
-    </div>
-    <div>
-      <button class="next-btn" (click)="onClickNext()">
-        Next
-      </button>
-    </div>
-  </div>
 </div>

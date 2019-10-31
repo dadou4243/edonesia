@@ -8,6 +8,16 @@ export const getCurrentStepIndex = createSelector(
   (requestState: RequestState): number => requestState.currentStepIndex
 );
 
+export const getCurrentValidationErrors = createSelector(
+  getRequestState,
+  (requestState: RequestState): any[] => {
+    const stepValidationValues = Object.values(
+      requestState.currentValidationErrors
+    );
+    return stepValidationValues.filter(val => val.isValid === false);
+  }
+);
+
 export const getFormValue = createSelector(
   getRequestState,
   (requestState: RequestState): any => requestState.formValue

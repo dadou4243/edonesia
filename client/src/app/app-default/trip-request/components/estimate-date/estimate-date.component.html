@@ -1,20 +1,33 @@
 <div class="step-three">
+  <!-- <div>{{ stepValidationObject | json }}</div> -->
   <h2>
     Can you give us a rough estimation of your travel plans?
   </h2>
+
   <div class="form-field">
     <label for="">When would you go?</label>
-    <select name="" id="">
+    <select
+      name=""
+      id=""
+      [value]="estimateMonth"
+      (change)="onEstimateMonthChange($event.target.value)"
+    >
+      <option value="">Select a month</option>
       <option
-        value=""
+        [value]="month"
         *ngFor="let month of ['january', 'february', 'march', 'april']"
         >{{ month }}</option
       >
     </select>
   </div>
+
   <div class="form-field">
     <label for="">For how long?</label>
-    <input type="number" />
+    <input
+      type="number"
+      [ngModel]="estimateDays"
+      (keyup)="onEstimateDaysChange($event.target.value)"
+    />
   </div>
-  <div><button class="ut-btn" (click)="onClickConfirm()">Confirm</button></div>
+  <!-- <div><button class="ut-btn" (click)="onClickConfirm()">Confirm</button></div> -->
 </div>

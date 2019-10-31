@@ -7,7 +7,10 @@ export interface IFormValue {
   isDatePlanned: boolean;
   departureDate: string;
   arrivalDate: string;
-  destination: string[];
+  airport: string;
+  estimateMonth: string;
+  estimateDays: number;
+  destinations: string[];
   numberPeople: number;
   purpose: string[];
   hotelType: string[];
@@ -18,6 +21,7 @@ export interface RequestState {
   formValue: any;
   isValid: boolean;
   currentStepIndex: number;
+  currentValidationErrors: any[];
 }
 
 export const initialState: RequestState = {
@@ -29,26 +33,35 @@ export const initialState: RequestState = {
     arrivalDate: moment(new Date())
       .add(5, 'days')
       .format('DD/MM/YYYY'),
-    destination: [],
+    airport: '',
+    estimateMonth: '',
+    estimateDays: null,
+    destinations: [],
     numberPeople: 1,
     purpose: [],
     hotelType: [],
     activities: []
   },
   isValid: false,
-  currentStepIndex: 0
+  currentStepIndex: 0,
+  currentValidationErrors: []
 };
 
 const featureReducer = createReducer(
   initialState,
   on(requestActions.SetCurrentIndex, (state, { currentStepIndex }) => ({
     ...state,
-    currentStepIndex
+    currentStepIndex,
+    currentValidationErrors: []
   })),
-  on(requestActions.SetFormValue, (state, { stepValues }) => ({
-    ...state,
-    formValue: { ...state.formValue, ...stepValues }
-  }))
+  on(
+    requestActions.SetFormValue,
+    (state, { stepValues, validationErrors }) => ({
+      ...state,
+      formValue: { ...state.formValue, ...stepValues },
+      currentValidationErrors: validationErrors
+    })
+  )
 );
 
 export function requestReducer(

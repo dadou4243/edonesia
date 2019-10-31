@@ -7,7 +7,8 @@ import {
   SetCurrentIndex,
   getCurrentStepIndex,
   getFormValue,
-  SetFormValue
+  SetFormValue,
+  getCurrentValidationErrors
 } from 'src/app/store/request';
 import {
   destinations,
@@ -26,10 +27,12 @@ export class RequestQuestionsComponent implements OnInit {
   requestForm: FormGroup;
   currentStepIndex: number;
   formValue: any;
-  destinations = destinations;
+  destinationOptions = destinations;
   purposeOptions = purposeOptions;
   hotelOptions = hotelOptions;
   activityOptions = activityOptions;
+  errors: any[];
+  showErrors = false;
 
   constructor(
     private fb: FormBuilder,
@@ -38,6 +41,9 @@ export class RequestQuestionsComponent implements OnInit {
   ) {
     this.store.pipe(select(getCurrentStepIndex)).subscribe(index => {
       this.currentStepIndex = index;
+    });
+    this.store.pipe(select(getCurrentValidationErrors)).subscribe(index => {
+      this.errors = index;
     });
     this.store.pipe(select(getFormValue)).subscribe(formValue => {
       console.log('formValue:', formValue);
@@ -52,9 +58,17 @@ export class RequestQuestionsComponent implements OnInit {
   }
 
   onClickNext() {
-    this.store.dispatch(
-      SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
-    );
+    console.log('CLICK NEXT');
+    console.log('this.errors', this.errors);
+    // Check if step valid
+    if (this.errors.length === 0) {
+      this.showErrors = false;
+      this.store.dispatch(
+        SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
+      );
+    } else {
+      this.showErrors = true;
+    }
   }
 
   onClickPrevious() {
@@ -65,7 +79,12 @@ export class RequestQuestionsComponent implements OnInit {
 
   onUpdateStepValues(value) {
     console.log('value:', value);
-    this.store.dispatch(SetFormValue({ stepValues: value }));
+    this.store.dispatch(
+      SetFormValue({
+        stepValues: value.stepValues,
+        validationErrors: value.validationErrors
+      })
+    );
     // this.onClickNext();
   }
 

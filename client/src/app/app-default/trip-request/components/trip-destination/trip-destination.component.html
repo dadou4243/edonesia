@@ -8,9 +8,9 @@
       I don't know yet
     </button>
     <app-choice-card
-      *ngFor="let destinationOption of destinations"
+      *ngFor="let destinationOption of destinationOptions"
       (click)="onPickDestination(destinationOption)"
-      [isActive]="destination.includes(destinationOption)"
+      [isActive]="destinations.includes(destinationOption)"
       >{{ destinationOption }}</app-choice-card
     >
   </div>

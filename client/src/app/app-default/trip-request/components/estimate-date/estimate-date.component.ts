@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-estimate-date',
@@ -6,11 +6,59 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./estimate-date.component.scss']
 })
 export class EstimateDateComponent implements OnInit {
+  @Input() estimateMonth;
+  @Input() estimateDays;
+  @Output() estimateDateChanged = new EventEmitter();
+
+  stepValidationObject: any;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('this.estimateMonth:', this.estimateMonth);
 
-  onClickConfirm() {
-    console.log('confirm');
+    this.stepValidationObject = {
+      estimateMonth: {
+        message: 'You must chose a month',
+        isValid: !(this.estimateMonth === '')
+      },
+      estimateDays: {
+        message: 'You must enter a number of days',
+        isValid: !(this.estimateDays === '')
+      }
+    };
+
+    this.estimateDateChanged.emit({
+      stepValues: {},
+      validationErrors: this.stepValidationObject
+    });
   }
+
+  onEstimateDaysChange(value) {
+    this.stepValidationObject.estimateDays.isValid =
+      value === '' ? false : true;
+
+    this.estimateDateChanged.emit({
+      stepValues: {
+        estimateDays: value
+      },
+      validationErrors: this.stepValidationObject
+    });
+  }
+
+  onEstimateMonthChange(value) {
+    this.stepValidationObject.estimateMonth.isValid =
+      value === '' ? false : true;
+
+    this.estimateDateChanged.emit({
+      stepValues: {
+        estimateMonth: value
+      },
+      validationErrors: this.stepValidationObject
+    });
+  }
+
+  // onClickConfirm() {
+  //   console.log('confirm');
+  // }
 }

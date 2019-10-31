@@ -4,20 +4,30 @@
   <!-- <div>departureDate: {{ departureDate }}</div>
   <div>arrivalDate: {{ arrivalDate }}</div> -->
 
-  <!-- <form [formGroup]="requestForm"> -->
   <input
     type="text"
     id="start-date"
     [value]="departureDate"
     (keyup)="onDepartureDateChange($event.target.value)"
   />
+
   <input
     type="text"
     id="end-date"
     [value]="arrivalDate"
     (keyup)="onArrivaleDateChange($event.target.value)"
   />
-  <!-- </form> -->
+
+  <label for="airport">
+    Which airport will you be landing at?
+  </label>
+  <input
+    type="text"
+    id="airport"
+    [value]="airport"
+    (keyup)="onAirportChange($event.target.value)"
+    placeholder="Airport name"
+  />
 
   <div class="error">
     {{ error }}
