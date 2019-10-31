@@ -13,16 +13,22 @@ import {
   styleUrls: ['./trip-destination.component.scss']
 })
 export class TripDestinationComponent implements OnInit, OnChanges {
-  pickedDestinations: string[];
-
   @Input() destinationOptions: string[];
   @Input() destinations: string[];
   @Output() destinationPicked = new EventEmitter();
 
+  pickedDestinations: string[];
+  stepValidationObject: any;
+
   constructor() {}
 
   ngOnInit() {
-    // console.log(this.destinationOptions);
+    this.stepValidationObject = {
+      destination: {
+        message: 'You must select at least one choice',
+        isValid: this.pickedDestinations.length > 0
+      }
+    };
   }
 
   ngOnChanges() {
@@ -48,9 +54,15 @@ export class TripDestinationComponent implements OnInit, OnChanges {
       this.pickedDestinations = ['Unknown'];
     }
 
+    this.stepValidationObject.destination.isValid =
+      this.pickedDestinations.length > 0 ? true : false;
+
     // console.log('pickedDestinations:', this.pickedDestinations);
     this.destinationPicked.emit({
-      destinations: this.pickedDestinations
+      stepValues: {
+        destinations: this.pickedDestinations
+      },
+      validationErrors: this.stepValidationObject
     });
   }
 

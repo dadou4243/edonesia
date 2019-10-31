@@ -4,7 +4,11 @@
   </h2>
   <div>Select your dream regions</div>
   <div class="destination-options">
-    <button class="ut-btn" (click)="onPickDestination('Unknown')">
+    <button
+      class="ut-btn"
+      (click)="onPickDestination('Unknown')"
+      [class.isActive]="destinations.includes('Unknown')"
+    >
       I don't know yet
     </button>
     <app-choice-card

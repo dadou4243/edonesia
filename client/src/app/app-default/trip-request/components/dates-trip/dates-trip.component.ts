@@ -49,6 +49,7 @@ export class DatesTripComponent implements OnInit, OnChanges {
   onSelect = (start, end) => {
     this.tempDepartureDate = start ? start.format('DD/MM/YYYY') : '';
     this.tempArrivalDate = end ? end.format('DD/MM/YYYY') : '';
+
     this.dateConfirmed.emit({
       stepValues: {
         arrivalDate: this.tempArrivalDate,

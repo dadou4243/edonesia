@@ -60,8 +60,8 @@
     (pickedActivityType)="onUpdateStepValues($event)"
   ></app-trip-activities>
 
-  <div class="errors" *ngIf="showErrors">
-    <div *ngFor="let error of errors">
+  <div class="errors" *ngIf="showErrors" class="alert">
+    <div *ngFor="let error of errors" class="error">
       {{ error.message }}
     </div>
   </div>
