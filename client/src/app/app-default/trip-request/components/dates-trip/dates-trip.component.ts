@@ -99,20 +99,4 @@ export class DatesTripComponent implements OnInit, OnChanges {
       airport
     });
   }
-
-  // onClickConfirm() {
-  //   this.error = '';
-
-  //   console.log('this.tempDepartureDate:', this.tempDepartureDate);
-  //   console.log('this.tempArrivalDate:', this.tempArrivalDate);
-  //   if (!this.tempDepartureDate || !this.tempArrivalDate) {
-  //     this.error = 'You must fill a departure and arrival date.';
-  //     return;
-  //   }
-
-  //   // this.dateConfirmed.emit({
-  //   //   arrivalDate: this.tempArrivalDate,
-  //   //   departureDate: this.tempDepartureDate
-  //   // });
-  // }
 }

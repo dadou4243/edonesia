@@ -24,7 +24,7 @@ export class EstimateDateComponent implements OnInit {
       },
       estimateDays: {
         message: 'You must enter a number of days',
-        isValid: !(this.estimateDays === '')
+        isValid: !(this.estimateDays === null)
       }
     };
 
@@ -36,7 +36,7 @@ export class EstimateDateComponent implements OnInit {
 
   onEstimateDaysChange(value) {
     this.stepValidationObject.estimateDays.isValid =
-      value === '' ? false : true;
+      value === null || '' ? false : true;
 
     this.estimateDateChanged.emit({
       stepValues: {
@@ -57,8 +57,4 @@ export class EstimateDateComponent implements OnInit {
       validationErrors: this.stepValidationObject
     });
   }
-
-  // onClickConfirm() {
-  //   console.log('confirm');
-  // }
 }

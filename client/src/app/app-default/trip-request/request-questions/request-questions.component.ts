@@ -42,8 +42,11 @@ export class RequestQuestionsComponent implements OnInit {
     this.store.pipe(select(getCurrentStepIndex)).subscribe(index => {
       this.currentStepIndex = index;
     });
-    this.store.pipe(select(getCurrentValidationErrors)).subscribe(index => {
-      this.errors = index;
+    this.store.pipe(select(getCurrentValidationErrors)).subscribe(err => {
+      this.errors = err;
+      if (this.errors.length === 0) {
+        this.showErrors = false;
+      }
     });
     this.store.pipe(select(getFormValue)).subscribe(formValue => {
       console.log('formValue:', formValue);
@@ -79,6 +82,7 @@ export class RequestQuestionsComponent implements OnInit {
 
   onUpdateStepValues(value) {
     console.log('value:', value);
+
     this.store.dispatch(
       SetFormValue({
         stepValues: value.stepValues,

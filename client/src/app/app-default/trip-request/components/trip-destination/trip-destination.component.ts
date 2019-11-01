@@ -65,10 +65,4 @@ export class TripDestinationComponent implements OnInit, OnChanges {
       validationErrors: this.stepValidationObject
     });
   }
-
-  onClickConfirm() {
-    this.destinationPicked.emit({
-      destination: this.pickedDestinations
-    });
-  }
 }
