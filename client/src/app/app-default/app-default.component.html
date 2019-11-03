@@ -1,6 +1,7 @@
 <div class="app-container">
-  <app-header (clickLogout)="onClickLogout()"></app-header>
+  <app-header *ngIf="showHeader" (clickLogout)="onClickLogout()"></app-header>
   <div class="router-outlet-container">
+    {{ showHeader }}
     <router-outlet></router-outlet>
   </div>
 
