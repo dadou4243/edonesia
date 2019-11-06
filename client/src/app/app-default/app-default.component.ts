@@ -11,6 +11,7 @@ import { filter } from 'rxjs/operators';
 })
 export class AppDefaultComponent implements OnInit {
   showHeader: boolean;
+  showFooter: boolean;
 
   constructor(private store: Store<any>, private router: Router) {}
 
@@ -21,6 +22,7 @@ export class AppDefaultComponent implements OnInit {
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((location: NavigationEnd) => {
         this.showHeader = location.url === '/request' ? false : true;
+        this.showFooter = location.url === '/request' ? false : true;
       });
   }
 

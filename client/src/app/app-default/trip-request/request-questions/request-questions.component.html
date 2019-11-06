@@ -1,86 +1,85 @@
-<div class="request-container">
-  <!-- <app-stripe-payment></app-stripe-payment> -->
-  <div>STEP {{ currentStepIndex }}</div>
-  <div>Show errors: {{ showErrors }}</div>
-  <div style="font-size: 10px;">CurrentStep: {{ formValue | json }}</div>
-  <div style="font-size: 10px;">Validation: {{ errors | json }}</div>
+<!-- <app-stripe-payment></app-stripe-payment> -->
+<div>STEP {{ currentStepIndex }}</div>
+<div>Show errors: {{ showErrors }}</div>
+<div style="font-size: 10px;">CurrentStep: {{ formValue | json }}</div>
+<div style="font-size: 10px;">Validation: {{ errors | json }}</div>
 
-  <app-date-planned
-    *ngIf="currentStepIndex === 0"
-    [value]="formValue.isDatePlanned"
-    (clickedDatePlanned)="onUpdateStepValues($event); onClickNext()"
-  ></app-date-planned>
+<app-date-planned
+  *ngIf="currentStepIndex === 0"
+  [value]="formValue.isDatePlanned"
+  (clickedDatePlanned)="onUpdateStepValues($event); onClickNext()"
+></app-date-planned>
 
-  <app-dates-trip
-    *ngIf="currentStepIndex === 1 && formValue.isDatePlanned"
-    [departureDate]="formValue.departureDate"
-    [arrivalDate]="formValue.arrivalDate"
-    [airport]="formValue.airport"
-    (dateConfirmed)="onUpdateStepValues($event)"
-  ></app-dates-trip>
+<app-dates-trip
+  *ngIf="currentStepIndex === 1 && formValue.isDatePlanned"
+  [departureDate]="formValue.departureDate"
+  [arrivalDate]="formValue.arrivalDate"
+  [airport]="formValue.airport"
+  (dateConfirmed)="onUpdateStepValues($event)"
+></app-dates-trip>
 
-  <app-estimate-date
-    *ngIf="currentStepIndex === 1 && !formValue.isDatePlanned"
-    [estimateMonth]="formValue.estimateMonth"
-    [estimateDays]="formValue.estimateDays"
-    (estimateDateChanged)="onUpdateStepValues($event)"
-  ></app-estimate-date>
+<app-estimate-date
+  *ngIf="currentStepIndex === 1 && !formValue.isDatePlanned"
+  [estimateMonth]="formValue.estimateMonth"
+  [estimateDays]="formValue.estimateDays"
+  (estimateDateChanged)="onUpdateStepValues($event)"
+></app-estimate-date>
 
-  <app-trip-destination
-    *ngIf="currentStepIndex === 2"
-    (destinationPicked)="onUpdateStepValues($event)"
-    [destinationOptions]="destinationOptions"
-    [destinations]="formValue.destinations"
-  ></app-trip-destination>
+<app-trip-destination
+  *ngIf="currentStepIndex === 2"
+  (destinationPicked)="onUpdateStepValues($event)"
+  [destinationOptions]="destinationOptions"
+  [destinations]="formValue.destinations"
+></app-trip-destination>
 
-  <app-who-travel
-    *ngIf="currentStepIndex === 3"
-    [showConfirm]="true"
-    [numberPeople]="formValue.numberPeople"
-    (pickedNumberPeople)="onUpdateStepValues($event)"
-  ></app-who-travel>
+<app-who-travel
+  *ngIf="currentStepIndex === 3"
+  [showConfirm]="true"
+  [numberPeople]="formValue.numberPeople"
+  (pickedNumberPeople)="onUpdateStepValues($event)"
+></app-who-travel>
 
-  <app-purpose-trip
-    *ngIf="currentStepIndex === 4"
-    [purpose]="formValue.purpose"
-    [purposeOptions]="purposeOptions"
-    (purposePicked)="onUpdateStepValues($event)"
-  ></app-purpose-trip>
+<app-purpose-trip
+  *ngIf="currentStepIndex === 4"
+  [purpose]="formValue.purpose"
+  [purposeOptions]="purposeOptions"
+  (purposePicked)="onUpdateStepValues($event)"
+></app-purpose-trip>
 
-  <app-hotel-type
-    *ngIf="currentStepIndex === 5"
-    [hotelOptions]="hotelOptions"
-    [selectedTypes]="formValue.hotelType"
-    (pickedHotelType)="onUpdateStepValues($event)"
-  ></app-hotel-type>
+<app-hotel-type
+  *ngIf="currentStepIndex === 5"
+  [hotelOptions]="hotelOptions"
+  [selectedTypes]="formValue.hotelType"
+  (pickedHotelType)="onUpdateStepValues($event)"
+></app-hotel-type>
 
-  <app-trip-activities
-    *ngIf="currentStepIndex === 6"
-    [activityOptions]="activityOptions"
-    [selectedActivities]="formValue.activities"
-    (pickedActivityType)="onUpdateStepValues($event)"
-  ></app-trip-activities>
+<app-trip-activities
+  *ngIf="currentStepIndex === 6"
+  [activityOptions]="activityOptions"
+  [selectedActivities]="formValue.activities"
+  (pickedActivityType)="onUpdateStepValues($event)"
+></app-trip-activities>
 
-  <div class="errors" *ngIf="showErrors" class="alert">
-    <div *ngFor="let error of errors" class="error">
-      {{ error.message }}
-    </div>
+<div class="errors" *ngIf="showErrors" class="alert">
+  <div *ngFor="let error of errors" class="error">
+    {{ error.message }}
   </div>
+</div>
 
-  <div class="step-buttons">
-    <div *ngIf="currentStepIndex > 0">
-      <button class="next-btn" (click)="onClickPrevious()">
-        Previous
-      </button>
-    </div>
-    <div *ngIf="!(currentStepIndex > 7) && currentStepIndex !== 0">
-      <button class="next-btn" (click)="onClickNext()">
-        Next
-      </button>
-    </div>
+<div class="step-buttons">
+  <div *ngIf="currentStepIndex > 0">
+    <button class="next-btn" (click)="onClickPrevious()">
+      Previous
+    </button>
   </div>
+  <div *ngIf="!(currentStepIndex > 7) && currentStepIndex !== 0">
+    <button class="next-btn" (click)="onClickNext()">
+      Next
+    </button>
+  </div>
+</div>
 
-  <!-- <div class="step-two" >
+<!-- <div class="step-two" >
     <h2>Please enter your information</h2>
 
     <form [formGroup]="requestForm">
@@ -94,4 +93,3 @@
       <button (click)="submitRequest()">Submit request</button>
     </form>
   </div> -->
-</div>
