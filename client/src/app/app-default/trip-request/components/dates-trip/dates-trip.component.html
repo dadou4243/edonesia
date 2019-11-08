@@ -4,19 +4,25 @@
   <!-- <div>departureDate: {{ departureDate }}</div>
   <div>arrivalDate: {{ arrivalDate }}</div> -->
 
-  <input
-    type="text"
-    id="start-date"
-    [value]="departureDate"
-    (keyup)="onDepartureDateChange($event.target.value)"
-  />
+  <div class="form-group-row">
+    <div class="datepicker-wrap">
+      <input
+        type="text"
+        id="start-date"
+        [value]="departureDate"
+        (keyup)="onDepartureDateChange($event.target.value)"
+      />
+    </div>
 
-  <input
-    type="text"
-    id="end-date"
-    [value]="arrivalDate"
-    (keyup)="onArrivaleDateChange($event.target.value)"
-  />
+    <div class="datepicker-wrap">
+      <input
+        type="text"
+        id="end-date"
+        [value]="arrivalDate"
+        (keyup)="onArrivaleDateChange($event.target.value)"
+      />
+    </div>
+  </div>
 
   <label for="airport">
     Which airport will you be landing at?

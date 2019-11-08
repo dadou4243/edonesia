@@ -55,7 +55,7 @@ export class DatesTripComponent implements OnInit, OnChanges {
         arrivalDate: this.tempArrivalDate,
         departureDate: this.tempDepartureDate
       },
-      validationErrors: []
+      validationErrors: {}
     });
   };
 
@@ -96,7 +96,10 @@ export class DatesTripComponent implements OnInit, OnChanges {
 
   onAirportChange(airport) {
     this.dateConfirmed.emit({
-      airport
+      stepValues: {
+        airport
+      },
+      validationErrors: this.stepValidationObject
     });
   }
 }

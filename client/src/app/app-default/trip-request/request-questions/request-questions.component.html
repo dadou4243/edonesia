@@ -60,6 +60,11 @@
   (pickedActivityType)="onUpdateStepValues($event)"
 ></app-trip-activities>
 
+<app-museums
+  *ngIf="currentStepIndex === 7 && formValue.activities.includes('museums')"
+>
+</app-museums>
+
 <div class="errors" *ngIf="showErrors" class="alert">
   <div *ngFor="let error of errors" class="error">
     {{ error.message }}

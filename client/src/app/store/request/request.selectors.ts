@@ -14,7 +14,7 @@ export const getCurrentValidationErrors = createSelector(
     const stepValidationValues = Object.values(
       requestState.currentValidationErrors
     );
-    return stepValidationValues.filter(val => val.isValid === false);
+    return stepValidationValues.filter((val: any) => val.isValid === false);
   }
 );
 

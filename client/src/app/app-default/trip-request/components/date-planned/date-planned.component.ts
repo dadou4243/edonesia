@@ -19,7 +19,7 @@ export class DatePlannedComponent implements OnInit {
     this.datePlanned = answer;
     this.clickedDatePlanned.emit({
       stepValues: { isDatePlanned: answer },
-      validationErrors: []
+      validationErrors: {}
     });
   }
 }

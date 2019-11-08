@@ -8,9 +8,9 @@
   <div class="destination-options">
     <app-choice-card
       *ngFor="let activityOption of activityOptions"
-      (click)="onPickActivity(activityOption)"
-      [isActive]="selectedActivities.includes(activityOption)"
-      >{{ activityOption }}</app-choice-card
+      (click)="onPickActivity(activityOption.value)"
+      [isActive]="selectedActivities.includes(activityOption.value)"
+      >{{ activityOption.label }}</app-choice-card
     >
   </div>
 </div>

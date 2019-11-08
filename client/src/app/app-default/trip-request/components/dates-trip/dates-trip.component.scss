@@ -1,0 +1,17 @@
+.step-two {
+  max-width: 643px;
+  margin: 0 auto;
+}
+
+.form-group-row {
+  display: flex;
+  justify-content: center;
+  margin: 0 -15px;
+
+  .datepicker-wrap {
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    flex: 1;
+  }
+}
