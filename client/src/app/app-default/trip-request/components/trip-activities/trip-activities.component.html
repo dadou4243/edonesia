@@ -6,11 +6,16 @@
     Select as many as you like
   </div>
   <div class="activity-options">
-    <app-choice-card
-      *ngFor="let activityOption of activityOptions"
-      (click)="onPickActivity(activityOption.value)"
-      [isActive]="selectedActivities.includes(activityOption.value)"
-      >{{ activityOption.label }}</app-choice-card
+    <app-multiple-choice
+      (optionPicked)="onPickActivity($event)"
+      [selectedOptions]="selectedActivities"
     >
+      <app-choice-card
+        *ngFor="let activityOption of activityOptions"
+        [isActive]="selectedActivities.includes(activityOption.value)"
+        [choiceData]="activityOption"
+        >{{ activityOption.label }}</app-choice-card
+      >
+    </app-multiple-choice>
   </div>
 </div>

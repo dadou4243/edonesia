@@ -4,19 +4,24 @@
   </h2>
   <div>Select your dream regions</div>
   <div class="destination-options">
-    <button
+    <app-multiple-choice
+      (optionPicked)="onPickDestination($event)"
+      [selectedOptions]="selectedDestinations"
+    >
+      <app-choice-card
+        *ngFor="let destinationOption of destinationOptions"
+        [isActive]="selectedDestinations.includes(destinationOption.value)"
+        [choiceData]="destinationOption"
+        >{{ destinationOption.label }}</app-choice-card
+      >
+    </app-multiple-choice>
+    <!-- <button
       class="ut-btn"
       (click)="onPickDestination('Unknown')"
       [class.isActive]="destinations.includes('Unknown')"
     >
       I don't know yet
-    </button>
-    <app-choice-card
-      *ngFor="let destinationOption of destinationOptions"
-      (click)="onPickDestination(destinationOption)"
-      [isActive]="destinations.includes(destinationOption)"
-      >{{ destinationOption }}</app-choice-card
-    >
+    </button> -->
   </div>
   <div>
     Do you have precise areas or places of interest in mind? Share them with us.

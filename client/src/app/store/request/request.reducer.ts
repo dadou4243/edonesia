@@ -44,7 +44,7 @@ export const initialState: RequestState = {
     activities: []
   },
   isValid: false,
-  currentStepIndex: 6,
+  currentStepIndex: 2,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };
@@ -55,7 +55,9 @@ const featureReducer = createReducer(
     ...state,
     currentStepIndex,
     currentActivitiesStepIndex:
-      currentStepIndex === 6 ? 0 : state.currentActivitiesStepIndex,
+      currentStepIndex === 6 && state.currentStepIndex === 5
+        ? -1
+        : state.currentActivitiesStepIndex,
     currentValidationErrors: {}
   })),
   on(

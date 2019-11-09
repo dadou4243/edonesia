@@ -1,4 +1,21 @@
-export const destinations = ['Jakarta', 'Bali', 'Java', 'Sumatra'];
+export const destinations = [
+  {
+    value: 'jakarta',
+    label: 'Jakarta'
+  },
+  {
+    value: 'bali',
+    label: 'Bali'
+  },
+  {
+    value: 'java',
+    label: 'Java'
+  },
+  {
+    value: 'sumatra',
+    label: 'Sumatra'
+  }
+];
 
 export const purposeOptions = [
   'Romantic gateway',
@@ -78,5 +95,9 @@ export const activityOptions = [
   {
     value: 'religious',
     label: 'Religious Sights'
+  },
+  {
+    value: 'another-activity',
+    label: 'Another activity'
   }
 ];

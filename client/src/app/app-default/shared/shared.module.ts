@@ -20,7 +20,8 @@ import { MultipleChoiceComponent } from './components/multiple-choice/multiple-c
     FormsModule,
     ReactiveFormsModule,
     StripePaymentComponent,
-    ChoiceCardComponent
+    ChoiceCardComponent,
+    MultipleChoiceComponent
   ]
 })
 export class SharedModule {}

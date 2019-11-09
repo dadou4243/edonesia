@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-choice-card',
@@ -7,8 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChoiceCardComponent implements OnInit {
   @Input() isActive: boolean;
+  @Input() choiceData: any;
+  @Output() choiceClicked = new EventEmitter();
 
   constructor() {}
 
   ngOnInit() {}
+
+  onChoiceClicked() {
+    this.choiceClicked.emit(this.choiceData);
+  }
 }

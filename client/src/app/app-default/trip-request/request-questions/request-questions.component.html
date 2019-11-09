@@ -30,7 +30,7 @@
   *ngIf="currentStepIndex === 2"
   (destinationPicked)="onUpdateStepValues($event)"
   [destinationOptions]="destinationOptions"
-  [destinations]="formValue.destinations"
+  [selectedDestinations]="formValue.destinations"
 ></app-trip-destination>
 
 <app-who-travel
@@ -60,11 +60,11 @@
   [selectedActivities]="formValue.activities"
   (pickedActivityType)="onUpdateStepValues($event)"
 ></app-trip-activities>
-
+<!-- 
 currentActivitiesStepIndex:
 {{ currentActivitiesStepIndex }}
 formValue.activities[currentActivitiesStepIndex]:
-{{ formValue.activities[currentActivitiesStepIndex] }}
+{{ formValue.activities[currentActivitiesStepIndex] }} -->
 
 <app-museums
   *ngIf="
@@ -92,6 +92,41 @@ formValue.activities[currentActivitiesStepIndex]:
   "
 >
 </app-beverages>
+
+<app-diving
+  *ngIf="
+    currentStepIndex === 6 &&
+    formValue.activities[currentActivitiesStepIndex] === 'diving'
+  "
+></app-diving>
+
+<app-natural-wonders
+  *ngIf="
+    currentStepIndex === 6 &&
+    formValue.activities[currentActivitiesStepIndex] === 'natural'
+  "
+></app-natural-wonders>
+
+<app-volcano
+  *ngIf="
+    currentStepIndex === 6 &&
+    formValue.activities[currentActivitiesStepIndex] === 'volcano'
+  "
+></app-volcano>
+
+<app-hiking-trip
+  *ngIf="
+    currentStepIndex === 6 &&
+    formValue.activities[currentActivitiesStepIndex] === 'trekking'
+  "
+></app-hiking-trip>
+
+<app-sports
+  *ngIf="
+    currentStepIndex === 6 &&
+    formValue.activities[currentActivitiesStepIndex] === 'sports'
+  "
+></app-sports>
 
 <app-diving
   *ngIf="

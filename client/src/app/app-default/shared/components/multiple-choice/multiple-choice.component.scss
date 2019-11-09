@@ -1,0 +1,9 @@
+.multiple-choice-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  width: 500px;
+  margin: 0 auto;
+}

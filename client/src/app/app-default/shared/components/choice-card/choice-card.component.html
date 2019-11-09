@@ -1,3 +1,7 @@
-<div class="choice-card-container" [class.active]="isActive">
+<div
+  class="choice-card-container"
+  (click)="onChoiceClicked()"
+  [class.active]="isActive"
+>
   <ng-content></ng-content>
 </div>

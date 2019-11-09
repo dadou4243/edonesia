@@ -55,7 +55,7 @@ export class RequestQuestionsComponent implements OnInit {
       }
     });
     this.store.pipe(select(getFormValue)).subscribe(formValue => {
-      console.log('formValue:', formValue);
+      // console.log('formValue:', formValue);
       this.formValue = formValue;
     });
   }
@@ -93,13 +93,31 @@ export class RequestQuestionsComponent implements OnInit {
   }
 
   onClickPrevious() {
+    console.log('on Click Previous');
+    this.showErrors = false;
+
+    if (this.currentStepIndex === 6 && this.currentActivitiesStepIndex > -1) {
+      this.store.dispatch(
+        SetActivitiesCurrentIndex({
+          currentActivitiesStepIndex: this.currentActivitiesStepIndex - 1
+        })
+      );
+      return;
+    } else if (this.currentStepIndex === 7) {
+      this.store.dispatch(
+        SetActivitiesCurrentIndex({
+          currentActivitiesStepIndex: this.formValue.activities.length - 1
+        })
+      );
+    }
+
     this.store.dispatch(
       SetCurrentIndex({ currentStepIndex: this.currentStepIndex - 1 })
     );
   }
 
   onUpdateStepValues(value) {
-    console.log('value:', value);
+    // console.log('value:', value);
 
     this.store.dispatch(
       SetFormValue({

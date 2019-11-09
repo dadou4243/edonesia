@@ -1,11 +1,29 @@
+$primary-dark: #494936;
+$primary-dark: #494936;
+
+:host {
+  width: 100%;
+}
+
 .choice-card-container {
-  border: 1px solid black;
+  border: 1px solid #9ea758;
   border-radius: 5px;
   padding: 10px;
-  width: 200px;
+  height: 80px;
+  background-color: #ffffff;
   cursor: pointer;
+  color: #3a3b3d;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &.active {
     background: #b4b98a;
+    color: $primary-dark;
+  }
+
+  &:hover {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   }
 }

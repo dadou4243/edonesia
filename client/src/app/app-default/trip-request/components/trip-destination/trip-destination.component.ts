@@ -13,8 +13,8 @@ import {
   styleUrls: ['./trip-destination.component.scss']
 })
 export class TripDestinationComponent implements OnInit, OnChanges {
-  @Input() destinationOptions: string[];
-  @Input() destinations: string[];
+  @Input() destinationOptions: any;
+  @Input() selectedDestinations: string[];
   @Output() destinationPicked = new EventEmitter();
 
   pickedDestinations: string[];
@@ -26,41 +26,25 @@ export class TripDestinationComponent implements OnInit, OnChanges {
     this.stepValidationObject = {
       destination: {
         message: 'You must select at least one choice',
-        isValid: this.pickedDestinations.length > 0
+        isValid: this.selectedDestinations.length > 0
       }
     };
   }
 
   ngOnChanges() {
-    this.pickedDestinations = this.destinations;
+    console.log('this.selectedDestinations', this.selectedDestinations);
+    // this.pickedDestinations = this.selectedDestinations;
   }
 
-  onPickDestination(destination) {
-    // console.log('destination:', destination);
-    // console.log('this.destinations:', this.destinations);
-    const isDestinationAlreadyPicked = this.destinations.includes(destination);
-    if (destination !== 'Unknown') {
-      this.pickedDestinations = this.destinations.filter(
-        dest => dest !== 'Unknown'
-      );
-      if (isDestinationAlreadyPicked) {
-        this.pickedDestinations = this.destinations.filter(
-          dest => dest !== destination
-        );
-      } else {
-        this.pickedDestinations.push(destination);
-      }
-    } else {
-      this.pickedDestinations = ['Unknown'];
-    }
+  onPickDestination(destinationsFromEvent) {
+    console.log('destinationsFromEvent:', destinationsFromEvent);
 
     this.stepValidationObject.destination.isValid =
-      this.pickedDestinations.length > 0 ? true : false;
+      destinationsFromEvent.length > 0 ? true : false;
 
-    // console.log('pickedDestinations:', this.pickedDestinations);
     this.destinationPicked.emit({
       stepValues: {
-        destinations: this.pickedDestinations
+        destinations: destinationsFromEvent
       },
       validationErrors: this.stepValidationObject
     });

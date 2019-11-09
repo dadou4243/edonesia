@@ -26,43 +26,24 @@ export class TripActivitiesComponent implements OnInit, OnChanges {
     this.stepValidationObject = {
       destination: {
         message: 'You must select at least one choice',
-        isValid: this.pickedActivities.length > 0
+        isValid: this.selectedActivities.length > 0
       }
     };
   }
 
   ngOnChanges() {
-    this.pickedActivities = this.selectedActivities;
+    // this.pickedActivities = this.selectedActivities;
   }
 
-  onPickActivity(activity) {
-    console.log('activity', activity);
-    const isDestinationAlreadyPicked = this.selectedActivities.includes(
-      activity
-    );
-    console.log('isDestinationAlreadyPicked:', isDestinationAlreadyPicked);
-
-    if (activity !== 'Unknown') {
-      this.pickedActivities = this.selectedActivities.filter(
-        (dest: any) => dest !== 'Unknown'
-      );
-      if (isDestinationAlreadyPicked) {
-        this.pickedActivities = this.selectedActivities.filter(
-          (dest: any) => dest !== activity
-        );
-      } else {
-        this.pickedActivities.push(activity);
-      }
-    } else {
-      this.pickedActivities = ['Unknown'];
-    }
+  onPickActivity(activitiesFromEvent) {
+    console.log('activitiesFromEvent', activitiesFromEvent);
 
     this.stepValidationObject.destination.isValid =
-      this.pickedActivities.length > 0 ? true : false;
+      activitiesFromEvent > 0 ? true : false;
 
     this.pickedActivityType.emit({
       stepValues: {
-        activities: this.pickedActivities
+        activities: activitiesFromEvent
       },
       validationErrors: this.stepValidationObject
     });
