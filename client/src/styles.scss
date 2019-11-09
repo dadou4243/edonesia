@@ -1,5 +1,26 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather:900&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700,900&display=swap');
+@font-face {
+  font-family: ArbutusSlab;
+  src: url('./assets/fonts/ArbutusSlab-Regular.ttf');
+  font-weight: normal;
+}
+@font-face {
+  font-family: AcariSans;
+  src: url('./assets/fonts/AcariSans-Regular.ttf');
+}
+@font-face {
+  font-family: AcariSans;
+  src: url('./assets/fonts/AcariSans-Bold.ttf');
+  font-weight: bold;
+}
+@font-face {
+  font-family: AcariSans;
+  src: url('./assets/fonts/AcariSans-SemiBold.ttf');
+  font-weight: 600;
+}
+
+$background-color: #f1ebe7;
+$primary-dark: #494936;
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +28,8 @@
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'AcariSans', sans-serif;
+  background: $background-color;
 }
 
 a {
@@ -64,5 +86,18 @@ button {
     left: 8px;
     top: 8px;
     background: url(assets/svg/error-icon.svg);
+  }
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1260px;
   }
 }

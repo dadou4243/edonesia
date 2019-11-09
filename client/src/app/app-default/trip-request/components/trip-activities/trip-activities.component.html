@@ -1,11 +1,11 @@
 <div>
   <h2>
-    Which types of hotels would make your stay unique?
+    What activities are you into?
   </h2>
-  <div>
+  <div class="step-hint">
     Select as many as you like
   </div>
-  <div class="destination-options">
+  <div class="activity-options">
     <app-choice-card
       *ngFor="let activityOption of activityOptions"
       (click)="onPickActivity(activityOption.value)"

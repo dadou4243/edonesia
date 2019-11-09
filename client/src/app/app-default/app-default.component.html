@@ -1,4 +1,4 @@
-<div class="app-container">
+<div class="app-container" [class.request-page]="!showHeader">
   <app-header *ngIf="showHeader" (clickLogout)="onClickLogout()"></app-header>
   <div class="router-outlet-container">
     <router-outlet></router-outlet>

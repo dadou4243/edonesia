@@ -6,9 +6,11 @@ import {
   RequestState,
   SetCurrentIndex,
   getCurrentStepIndex,
+  getCurrentActivitiesStepIndex,
   getFormValue,
   SetFormValue,
-  getCurrentValidationErrors
+  getCurrentValidationErrors,
+  SetActivitiesCurrentIndex
 } from 'src/app/store/request';
 import {
   destinations,
@@ -26,6 +28,7 @@ export class RequestQuestionsComponent implements OnInit {
   datePlanned = true;
   requestForm: FormGroup;
   currentStepIndex: number;
+  currentActivitiesStepIndex: number;
   formValue: any;
   destinationOptions = destinations;
   purposeOptions = purposeOptions;
@@ -41,6 +44,9 @@ export class RequestQuestionsComponent implements OnInit {
   ) {
     this.store.pipe(select(getCurrentStepIndex)).subscribe(index => {
       this.currentStepIndex = index;
+    });
+    this.store.pipe(select(getCurrentActivitiesStepIndex)).subscribe(index => {
+      this.currentActivitiesStepIndex = index;
     });
     this.store.pipe(select(getCurrentValidationErrors)).subscribe(err => {
       this.errors = err;
@@ -66,6 +72,18 @@ export class RequestQuestionsComponent implements OnInit {
     // Check if step valid
     if (this.errors.length === 0) {
       this.showErrors = false;
+
+      if (
+        this.currentStepIndex === 6 &&
+        this.currentActivitiesStepIndex < this.formValue.activities.length - 1
+      ) {
+        this.store.dispatch(
+          SetActivitiesCurrentIndex({
+            currentActivitiesStepIndex: this.currentActivitiesStepIndex + 1
+          })
+        );
+        return;
+      }
       this.store.dispatch(
         SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
       );

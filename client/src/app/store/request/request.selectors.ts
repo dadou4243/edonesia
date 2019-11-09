@@ -8,6 +8,12 @@ export const getCurrentStepIndex = createSelector(
   (requestState: RequestState): number => requestState.currentStepIndex
 );
 
+export const getCurrentActivitiesStepIndex = createSelector(
+  getRequestState,
+  (requestState: RequestState): number =>
+    requestState.currentActivitiesStepIndex
+);
+
 export const getCurrentValidationErrors = createSelector(
   getRequestState,
   (requestState: RequestState): any[] => {

@@ -21,6 +21,7 @@ export interface RequestState {
   formValue: any;
   isValid: boolean;
   currentStepIndex: number;
+  currentActivitiesStepIndex: number;
   currentValidationErrors: any;
 }
 
@@ -44,6 +45,7 @@ export const initialState: RequestState = {
   },
   isValid: false,
   currentStepIndex: 6,
+  currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };
 
@@ -52,8 +54,18 @@ const featureReducer = createReducer(
   on(requestActions.SetCurrentIndex, (state, { currentStepIndex }) => ({
     ...state,
     currentStepIndex,
+    currentActivitiesStepIndex:
+      currentStepIndex === 6 ? 0 : state.currentActivitiesStepIndex,
     currentValidationErrors: {}
   })),
+  on(
+    requestActions.SetActivitiesCurrentIndex,
+    (state, { currentActivitiesStepIndex }) => ({
+      ...state,
+      currentActivitiesStepIndex,
+      currentValidationErrors: {}
+    })
+  ),
   on(
     requestActions.SetFormValue,
     (state, { stepValues, validationErrors }) => ({

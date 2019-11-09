@@ -6,6 +6,11 @@ export const SetCurrentIndex = createAction(
   props<{ currentStepIndex: number }>()
 );
 
+export const SetActivitiesCurrentIndex = createAction(
+  '[User] Set Activities Current Index',
+  props<{ currentActivitiesStepIndex: number }>()
+);
+
 export const SetFormValue = createAction(
   '[User] Set Form Value',
   props<{ stepValues: any; validationErrors: string[] }>()
