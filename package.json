@@ -10,7 +10,6 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
   "engines": {
     "node": "10.8.0",
     "npm": "6.3.0"
