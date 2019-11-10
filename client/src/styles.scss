@@ -27,6 +27,12 @@ $primary-dark: #494936;
   box-sizing: border-box;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
 body {
   font-family: 'AcariSans', sans-serif;
   background: $background-color;
@@ -35,6 +41,10 @@ body {
 a {
   text-decoration: none;
   color: black;
+}
+
+textarea {
+  font-family: 'AcariSans', sans-serif;
 }
 
 ul {
@@ -94,6 +104,10 @@ button {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.flex {
+  flex: 1;
 }
 
 @media (min-width: 1200px) {

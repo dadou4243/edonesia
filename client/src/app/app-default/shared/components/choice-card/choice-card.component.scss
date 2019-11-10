@@ -6,8 +6,8 @@ $primary-dark: #494936;
 }
 
 .choice-card-container {
-  border: 1px solid #9ea758;
-  border-radius: 5px;
+  // border: 1px solid #9ea758;
+  border-radius: 0;
   padding: 10px;
   height: 80px;
   background-color: #ffffff;
@@ -17,6 +17,7 @@ $primary-dark: #494936;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
 
   &.active {
     background: #b4b98a;
@@ -24,6 +25,7 @@ $primary-dark: #494936;
   }
 
   &:hover {
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    // box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
   }
 }

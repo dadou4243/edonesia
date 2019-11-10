@@ -44,7 +44,7 @@ export const initialState: RequestState = {
     activities: []
   },
   isValid: false,
-  currentStepIndex: 2,
+  currentStepIndex: 3,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };

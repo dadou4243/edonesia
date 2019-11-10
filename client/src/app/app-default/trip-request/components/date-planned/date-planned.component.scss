@@ -11,17 +11,16 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    //   padding: 19px 5px;
     margin-bottom: 20px;
     cursor: pointer;
 
     &.selected {
-      background-color: #ff6361 !important;
+      background-color: #b4b98a !important;
       color: #ffffff;
     }
 
     &:hover {
-      background-color: #ff6361;
+      background-color: #b4b98a;
       color: #fff;
       opacity: 0.8;
     }

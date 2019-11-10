@@ -1,8 +1,9 @@
+<h2>
+  Where are you going?
+</h2>
+
 <div class="step-four">
-  <h2>
-    Where are you going?
-  </h2>
-  <div>Select your dream regions</div>
+  <div class="step-hint">Select your dream regions</div>
   <div class="destination-options">
     <app-multiple-choice
       (optionPicked)="onPickDestination($event)"
@@ -23,8 +24,9 @@
       I don't know yet
     </button> -->
   </div>
-  <div>
-    Do you have precise areas or places of interest in mind? Share them with us.
+  <div class="step-hint">
+    Do you have precise areas or places of interest in mind? <br />
+    Share them with us.
   </div>
-  <textarea name="" id="" cols="30" rows="10"></textarea>
+  <textarea name="" id="" rows="4"></textarea>
 </div>

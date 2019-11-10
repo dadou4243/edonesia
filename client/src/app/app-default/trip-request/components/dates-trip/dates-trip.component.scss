@@ -6,12 +6,17 @@
 .form-group-row {
   display: flex;
   justify-content: center;
-  margin: 0 -15px;
+  // margin: 0 -15px;
+  margin-bottom: 30px;
 
   .datepicker-wrap {
     min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
+    // padding-left: 15px;
+    // padding-right: 15px;
     flex: 1;
   }
+}
+
+input#airport {
+  max-width: 300px;
 }
