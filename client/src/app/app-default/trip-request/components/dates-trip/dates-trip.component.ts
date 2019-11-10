@@ -4,14 +4,16 @@ import {
   Output,
   EventEmitter,
   Input,
-  OnChanges
+  OnChanges,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import Lightpick from 'lightpick';
 
 @Component({
   selector: 'app-dates-trip',
   templateUrl: './dates-trip.component.html',
-  styleUrls: ['./dates-trip.component.scss']
+  styleUrls: ['./dates-trip.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatesTripComponent implements OnInit, OnChanges {
   @Input() departureDate;

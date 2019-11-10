@@ -1,9 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 @Component({
   selector: 'app-who-travel',
   templateUrl: './who-travel.component.html',
-  styleUrls: ['./who-travel.component.scss']
+  styleUrls: ['./who-travel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WhoTravelComponent implements OnInit {
   @Input() showConfirm;

@@ -42,7 +42,7 @@
 
 <app-purpose-trip
   *ngIf="currentStepIndex === 4"
-  [purpose]="formValue.purpose"
+  [selectedPurposes]="formValue.purposes"
   [purposeOptions]="purposeOptions"
   (purposePicked)="onUpdateStepValues($event)"
 ></app-purpose-trip>

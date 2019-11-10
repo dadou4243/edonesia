@@ -1,15 +1,22 @@
+<h2>
+  What is the purpose of your trip?
+</h2>
+
 <div class="step-four">
-  <h2>
-    What is the purpose of your trip?
-  </h2>
-  <div class="destination-options">
-    <app-choice-card
-      *ngFor="let purposeOption of purposeOptions"
-      (click)="onPickPurpose(purposeOption)"
-      [isActive]="purpose.includes(purposeOption)"
-      >{{ purposeOption }}</app-choice-card
+  <div class="purpose-options">
+    <app-multiple-choice
+      (optionPicked)="onPickPurpose($event)"
+      [selectedOptions]="selectedPurposes"
     >
+      <app-choice-card
+        *ngFor="let purposeOption of purposeOptions"
+        [isActive]="selectedPurposes.includes(purposeOption.value)"
+        [choiceData]="purposeOption"
+        >{{ purposeOption.label }}</app-choice-card
+      >
+    </app-multiple-choice>
   </div>
+
   <div>Is it your first time in Indonesia</div>
   <div>
     <select name="" id="">

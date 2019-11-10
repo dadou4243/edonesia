@@ -1,9 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 @Component({
   selector: 'app-hotel-type',
   templateUrl: './hotel-type.component.html',
-  styleUrls: ['./hotel-type.component.scss']
+  styleUrls: ['./hotel-type.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HotelTypeComponent implements OnInit {
   @Input() selectedTypes: string[];

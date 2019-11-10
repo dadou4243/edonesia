@@ -2,41 +2,45 @@ import {
   Component,
   OnInit,
   Input,
-  OnChanges,
   EventEmitter,
-  Output
+  Output,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
   selector: 'app-purpose-trip',
   templateUrl: './purpose-trip.component.html',
-  styleUrls: ['./purpose-trip.component.scss']
+  styleUrls: ['./purpose-trip.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PurposeTripComponent implements OnInit, OnChanges {
-  @Input() purpose: string[];
-  @Input() purposeOptions: string[];
-
+export class PurposeTripComponent implements OnInit {
+  @Input() selectedPurposes: string[];
+  @Input() purposeOptions: any;
   @Output() purposePicked = new EventEmitter();
 
   pickedPurposes: string[];
+  stepValidationObject: any;
 
   constructor() {}
 
-  ngOnInit() {}
-
-  ngOnChanges() {
-    this.pickedPurposes = this.purpose;
+  ngOnInit() {
+    this.stepValidationObject = {
+      purposes: {
+        message: 'You must select at least one choice',
+        isValid: this.selectedPurposes.length > 0
+      }
+    };
   }
 
-  onPickPurpose(purpose) {
-    const isPurposeAlreadyPicked = this.purpose.includes(purpose);
+  onPickPurpose(purposesFromEvent) {
+    this.stepValidationObject.purposes.isValid =
+      purposesFromEvent > 0 ? true : false;
 
-    if (isPurposeAlreadyPicked) {
-      this.pickedPurposes = this.purpose.filter(purp => purp !== purpose);
-    } else {
-      this.pickedPurposes.push(purpose);
-    }
-
-    this.purposePicked.emit({ purpose: this.pickedPurposes });
+    this.purposePicked.emit({
+      stepValues: {
+        purposes: purposesFromEvent
+      },
+      validationErrors: this.stepValidationObject
+    });
   }
 }

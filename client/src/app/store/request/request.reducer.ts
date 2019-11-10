@@ -12,7 +12,7 @@ export interface IFormValue {
   estimateDays: number;
   destinations: string[];
   numberPeople: number;
-  purpose: string[];
+  purposes: string[];
   hotelType: string[];
   activities: string[];
 }
@@ -39,12 +39,12 @@ export const initialState: RequestState = {
     estimateDays: null,
     destinations: [],
     numberPeople: 1,
-    purpose: [],
+    purposes: [],
     hotelType: [],
     activities: []
   },
   isValid: false,
-  currentStepIndex: 3,
+  currentStepIndex: 4,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };

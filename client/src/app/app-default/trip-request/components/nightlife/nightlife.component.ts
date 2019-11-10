@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-nightlife',
   templateUrl: './nightlife.component.html',
-  styleUrls: ['./nightlife.component.scss']
+  styleUrls: ['./nightlife.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NightlifeComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

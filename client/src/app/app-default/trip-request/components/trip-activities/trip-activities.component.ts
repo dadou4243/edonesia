@@ -4,15 +4,16 @@ import {
   Input,
   EventEmitter,
   Output,
-  OnChanges
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
   selector: 'app-trip-activities',
   templateUrl: './trip-activities.component.html',
-  styleUrls: ['./trip-activities.component.scss']
+  styleUrls: ['./trip-activities.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TripActivitiesComponent implements OnInit, OnChanges {
+export class TripActivitiesComponent implements OnInit {
   @Input() selectedActivities: string[];
   @Input() activityOptions: any[];
   @Output() pickedActivityType = new EventEmitter();
@@ -24,21 +25,17 @@ export class TripActivitiesComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.stepValidationObject = {
-      destination: {
+      activities: {
         message: 'You must select at least one choice',
         isValid: this.selectedActivities.length > 0
       }
     };
   }
 
-  ngOnChanges() {
-    // this.pickedActivities = this.selectedActivities;
-  }
-
   onPickActivity(activitiesFromEvent) {
     console.log('activitiesFromEvent', activitiesFromEvent);
 
-    this.stepValidationObject.destination.isValid =
+    this.stepValidationObject.activities.isValid =
       activitiesFromEvent > 0 ? true : false;
 
     this.pickedActivityType.emit({

@@ -1,9 +1,17 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 @Component({
   selector: 'app-estimate-date',
   templateUrl: './estimate-date.component.html',
-  styleUrls: ['./estimate-date.component.scss']
+  styleUrls: ['./estimate-date.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EstimateDateComponent implements OnInit {
   @Input() estimateMonth;

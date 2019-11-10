@@ -4,13 +4,15 @@ import {
   Output,
   EventEmitter,
   Input,
-  OnChanges
+  OnChanges,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
   selector: 'app-trip-destination',
   templateUrl: './trip-destination.component.html',
-  styleUrls: ['./trip-destination.component.scss']
+  styleUrls: ['./trip-destination.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TripDestinationComponent implements OnInit, OnChanges {
   @Input() destinationOptions: any;
