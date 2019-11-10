@@ -70,55 +70,27 @@ export class RequestQuestionsComponent implements OnInit {
     console.log('CLICK NEXT');
     console.log('this.errors', this.errors);
 
-    // TODO: Refactor the conditions
     // Check if step valid
     if (this.errors.length === 0) {
       this.showErrors = false;
 
-      // If current step is activities
+      // If current step is sub activity step, increment currentActivitiesStep
       if (
         this.currentStepIndex === this.stepsNumber.tripActivities &&
         this.currentActivitiesStepIndex < this.activitiesWithoutEmpty.length - 1
       ) {
-        // If next step is activity without page
-        // if (
-        //   this.activitiesWithoutPage.includes(
-        //     this.formValue.activities[this.currentActivitiesStepIndex + 1]
-        //   )
-        // ) {
-        //   // If cruises is last in activities array, go to next activityStep
-        //   if (
-        //     this.currentActivitiesStepIndex + 2 ===
-        //     this.formValue.activities.length
-        //   ) {
-        //     this.store.dispatch(
-        //       SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
-        //     );
-        //     // If cruises is not last in activities array, skip one activity
-        //   } else {
-        //     this.store.dispatch(
-        //       SetActivitiesCurrentIndex({
-        //         currentActivitiesStepIndex: this.currentActivitiesStepIndex + 2
-        //       })
-        //     );
-        //   }
-
-        //   return;
-        //   // If not in cruises step, increment activityStep
-        // } else {
         this.store.dispatch(
           SetActivitiesCurrentIndex({
             currentActivitiesStepIndex: this.currentActivitiesStepIndex + 1
           })
         );
-        return;
-        // }
+        // If current step is not sub activity step, increment currentStep
+      } else {
+        this.store.dispatch(
+          SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
+        );
       }
-
-      // If not in activity step, increment step
-      this.store.dispatch(
-        SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
-      );
+      // If validation errors
     } else {
       this.showErrors = true;
     }
@@ -128,53 +100,16 @@ export class RequestQuestionsComponent implements OnInit {
     console.log('on Click Previous');
     this.showErrors = false;
 
-    // If current step is activities and current activity step index is not -1
+    // If current step is sub activity step
     if (
       this.currentStepIndex === this.stepsNumber.tripActivities &&
       this.currentActivitiesStepIndex > -1
     ) {
-      // If previous activity step is activity without page, skip one activityStep
-      // if (
-      //   this.activitiesWithoutPage.includes(
-      //     this.formValue.activities[this.currentActivitiesStepIndex - 1]
-      //   )
-      // ) {
-      //   this.store.dispatch(
-      //     SetActivitiesCurrentIndex({
-      //       currentActivitiesStepIndex: this.currentActivitiesStepIndex - 2
-      //     })
-      //   );
-      //   // If previous activity step is not an activity without page, decrement activityStep
-      // } else {
-      //   this.store.dispatch(
-      //     SetActivitiesCurrentIndex({
-      //       currentActivitiesStepIndex: this.currentActivitiesStepIndex - 1
-      //     })
-      //   );
-      // }
-      // return;
-      // If current step is the one after all activities, go back to last activity
-      // } else if (this.currentStepIndex === this.stepsNumber.tripActivities + 1) {
-      // If last activity is an activity without page, decrement step and decrement activityStep
-      // if (
-      //   this.formValue.activities.length === 0 ||
-      //   this.activitiesWithoutPage.includes(
-      //     this.formValue.activities[this.currentActivitiesStepIndex + 1]
-      //   )
-      // ) {
       this.store.dispatch(
         SetActivitiesCurrentIndex({
           currentActivitiesStepIndex: this.currentActivitiesStepIndex - 1
         })
       );
-      //   return;
-      // } else {
-      // this.store.dispatch(
-      //   SetActivitiesCurrentIndex({
-      //     currentActivitiesStepIndex: this.formValue.activities.length - 1
-      //   })
-      // );
-      // }
       // If current step is not a subActivities page
     } else {
       this.store.dispatch(
