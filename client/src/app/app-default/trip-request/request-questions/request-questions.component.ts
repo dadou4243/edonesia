@@ -74,16 +74,26 @@ export class RequestQuestionsComponent implements OnInit {
     if (this.errors.length === 0) {
       this.showErrors = false;
 
-      // If current step is sub activity step, increment currentActivitiesStep
+      // If current step is sub activity step
       if (
         this.currentStepIndex === this.stepsNumber.tripActivities &&
         this.currentActivitiesStepIndex < this.activitiesWithoutEmpty.length - 1
       ) {
-        this.store.dispatch(
-          SetActivitiesCurrentIndex({
-            currentActivitiesStepIndex: this.currentActivitiesStepIndex + 1
-          })
-        );
+        // If current Activity is last, increment currentStep
+        if (
+          this.currentActivitiesStepIndex === this.activitiesWithoutEmpty.length
+        ) {
+          this.store.dispatch(
+            SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
+          );
+          // If currentActivity is not last, increment currentActivitiesStep
+        } else {
+          this.store.dispatch(
+            SetActivitiesCurrentIndex({
+              currentActivitiesStepIndex: this.currentActivitiesStepIndex + 1
+            })
+          );
+        }
         // If current step is not sub activity step, increment currentStep
       } else {
         this.store.dispatch(

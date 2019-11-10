@@ -24,12 +24,7 @@
 </div>
 <div class="step-number" *ngIf="currentStepIndex > stepsNumber.tripActivities">
   STEP
-  {{
-    currentStepIndex +
-      1 +
-      formValue.activities.length -
-      activitiesWithoutEmpty.length
-  }}
+  {{ currentStepIndex + 1 + activitiesWithoutEmpty.length }}
 </div>
 
 <app-date-planned
@@ -100,13 +95,7 @@
 >
 </app-museums>
 
-<app-beverages
-  *ngIf="
-    currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'food'
-  "
->
-</app-beverages>
+<app-beverages *ngIf="currentStepIndex === stepsNumber.food"> </app-beverages>
 
 <app-diving
   *ngIf="
@@ -168,9 +157,9 @@
   (historyPicked)="onUpdateStepValues($event)"
 ></app-history>
 
-<div *ngIf="currentStepIndex === 6">
+<!-- <div *ngIf="currentStepIndex === 6">
   After Activities
-</div>
+</div> -->
 
 <div class="errors" *ngIf="showErrors" class="alert">
   <div *ngFor="let error of errors" class="error">

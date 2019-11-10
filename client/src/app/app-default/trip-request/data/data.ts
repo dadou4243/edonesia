@@ -6,6 +6,7 @@ export const steps = {
   whoTravel: 3,
   purposeTrip: 4,
   tripActivities: 5,
-  diningTrip: 6,
-  hotelType: 7
+  food: 6,
+  diningTrip: 7,
+  hotelType: 8
 };
