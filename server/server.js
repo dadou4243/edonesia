@@ -82,11 +82,11 @@ exports.app = app;
 require('./web/index');
 
 // Static Angular Build
-app.use(express.static(path.join(__dirname, './client/dist/')));
+app.use(express.static(path.join(__dirname, '../client/dist/')));
 
 // Serve the index.html Angular file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/dist/index.html'));
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 // Handling Errors
