@@ -81,6 +81,14 @@ exports.app = app;
 // On charge les routes
 require('./web/index');
 
+// Static Angular Build
+app.use(express.static(path.join(__dirname, './client/dist/')));
+
+// Serve the index.html Angular file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/dist/index.html'));
+});
+
 // Handling Errors
 app.use((req, res, next) => {
   const error = new Error('Not found');
