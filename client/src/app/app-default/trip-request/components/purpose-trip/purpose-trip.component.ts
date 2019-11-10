@@ -18,7 +18,6 @@ export class PurposeTripComponent implements OnInit {
   @Input() purposeOptions: any;
   @Output() purposePicked = new EventEmitter();
 
-  pickedPurposes: string[];
   stepValidationObject: any;
 
   constructor() {}
@@ -30,11 +29,16 @@ export class PurposeTripComponent implements OnInit {
         isValid: this.selectedPurposes.length > 0
       }
     };
+
+    this.purposePicked.emit({
+      validationErrors: this.stepValidationObject
+    });
   }
 
   onPickPurpose(purposesFromEvent) {
+    console.log('purposesFromEvent:', purposesFromEvent);
     this.stepValidationObject.purposes.isValid =
-      purposesFromEvent > 0 ? true : false;
+      purposesFromEvent.length > 0 ? true : false;
 
     this.purposePicked.emit({
       stepValues: {

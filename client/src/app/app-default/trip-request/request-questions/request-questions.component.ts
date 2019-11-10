@@ -16,7 +16,8 @@ import {
   destinations,
   purposeOptions,
   hotelOptions,
-  activityOptions
+  activityOptions,
+  steps
 } from '../data';
 
 @Component({
@@ -34,6 +35,7 @@ export class RequestQuestionsComponent implements OnInit {
   purposeOptions = purposeOptions;
   hotelOptions = hotelOptions;
   activityOptions = activityOptions;
+  stepsNumber = steps;
   errors: any[];
   showErrors = false;
 
@@ -74,7 +76,7 @@ export class RequestQuestionsComponent implements OnInit {
       this.showErrors = false;
 
       if (
-        this.currentStepIndex === 6 &&
+        this.currentStepIndex === this.stepsNumber.tripActivities &&
         this.currentActivitiesStepIndex < this.formValue.activities.length - 1
       ) {
         this.store.dispatch(
@@ -96,14 +98,17 @@ export class RequestQuestionsComponent implements OnInit {
     console.log('on Click Previous');
     this.showErrors = false;
 
-    if (this.currentStepIndex === 6 && this.currentActivitiesStepIndex > -1) {
+    if (
+      this.currentStepIndex === this.stepsNumber.tripActivities &&
+      this.currentActivitiesStepIndex > -1
+    ) {
       this.store.dispatch(
         SetActivitiesCurrentIndex({
           currentActivitiesStepIndex: this.currentActivitiesStepIndex - 1
         })
       );
       return;
-    } else if (this.currentStepIndex === 7) {
+    } else if (this.currentStepIndex === this.stepsNumber.tripActivities + 1) {
       this.store.dispatch(
         SetActivitiesCurrentIndex({
           currentActivitiesStepIndex: this.formValue.activities.length - 1

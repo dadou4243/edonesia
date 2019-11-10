@@ -18,7 +18,6 @@ export class TripActivitiesComponent implements OnInit {
   @Input() activityOptions: any[];
   @Output() pickedActivityType = new EventEmitter();
 
-  pickedActivities: string[];
   stepValidationObject: any;
 
   constructor() {}
@@ -30,13 +29,17 @@ export class TripActivitiesComponent implements OnInit {
         isValid: this.selectedActivities.length > 0
       }
     };
+
+    this.pickedActivityType.emit({
+      validationErrors: this.stepValidationObject
+    });
   }
 
   onPickActivity(activitiesFromEvent) {
     console.log('activitiesFromEvent', activitiesFromEvent);
 
     this.stepValidationObject.activities.isValid =
-      activitiesFromEvent > 0 ? true : false;
+      activitiesFromEvent.length > 0 ? true : false;
 
     this.pickedActivityType.emit({
       stepValues: {

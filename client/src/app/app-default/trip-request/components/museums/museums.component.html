@@ -1,1 +1,21 @@
-<p>museums works!</p>
+<h2>
+  Museums and monuments : what speaks to you?
+</h2>
+
+<div class="step-hint">
+  Select as many as you like
+</div>
+
+<div class="museums-options">
+  <app-multiple-choice
+    (optionPicked)="onPickMuseum($event)"
+    [selectedOptions]="selectedMuseums"
+  >
+    <app-choice-card
+      *ngFor="let museumOption of museumOptions"
+      [isActive]="selectedMuseums.includes(museumOption.value)"
+      [choiceData]="museumOption"
+      >{{ museumOption.label }}</app-choice-card
+    >
+  </app-multiple-choice>
+</div>

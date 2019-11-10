@@ -1,4 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
+import { museumsOptions } from '../../data';
 
 @Component({
   selector: 'app-museums',
@@ -7,7 +15,41 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MuseumsComponent implements OnInit {
-  constructor() {}
+  @Input() selectedMuseums: string[];
+  @Output() pickedMuseum = new EventEmitter();
 
-  ngOnInit() {}
+  museumOptions: any;
+
+  stepValidationObject: any;
+
+  constructor() {
+    this.museumOptions = museumsOptions;
+  }
+
+  ngOnInit() {
+    this.stepValidationObject = {
+      museums: {
+        message: 'You must select at least one choice',
+        isValid: this.selectedMuseums.length > 0
+      }
+    };
+
+    this.pickedMuseum.emit({
+      validationErrors: this.stepValidationObject
+    });
+  }
+
+  onPickMuseum(museumsFromEvent) {
+    console.log('museumsFromEvent', museumsFromEvent);
+
+    this.stepValidationObject.museums.isValid =
+      museumsFromEvent.length > 0 ? true : false;
+
+    this.pickedMuseum.emit({
+      stepValues: {
+        museums: museumsFromEvent
+      },
+      validationErrors: this.stepValidationObject
+    });
+  }
 }

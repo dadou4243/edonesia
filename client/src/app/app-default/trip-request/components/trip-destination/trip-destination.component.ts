@@ -14,12 +14,11 @@ import {
   styleUrls: ['./trip-destination.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TripDestinationComponent implements OnInit, OnChanges {
+export class TripDestinationComponent implements OnInit {
   @Input() destinationOptions: any;
   @Input() selectedDestinations: string[];
   @Output() destinationPicked = new EventEmitter();
 
-  pickedDestinations: string[];
   stepValidationObject: any;
 
   constructor() {}
@@ -31,11 +30,10 @@ export class TripDestinationComponent implements OnInit, OnChanges {
         isValid: this.selectedDestinations.length > 0
       }
     };
-  }
 
-  ngOnChanges() {
-    console.log('this.selectedDestinations', this.selectedDestinations);
-    // this.pickedDestinations = this.selectedDestinations;
+    this.destinationPicked.emit({
+      validationErrors: this.stepValidationObject
+    });
   }
 
   onPickDestination(destinationsFromEvent) {
