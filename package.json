@@ -5,17 +5,10 @@
   "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js",
-    "postinstall": "cd client && ng build --aot --prod"
+    "start": "node server/server.js"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@angular/cli": "~8.1.0",
-    "@angular/compiler-cli": "~8.1.0",
-    "@angular-devkit/build-angular": "~0.801.0",
-    "@angular/compiler": "~8.1.0"
-  },
   "engines": {
     "node": "11.3.0",
     "npm": "6.3.0"
