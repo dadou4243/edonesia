@@ -1,4 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Output,
+  Input,
+  EventEmitter
+} from '@angular/core';
 
 @Component({
   selector: 'app-sports',
@@ -7,6 +14,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SportsComponent implements OnInit {
+  @Input() selectedSports: string[];
+  @Output() pickedSport = new EventEmitter();
+
   constructor() {}
 
   ngOnInit() {}

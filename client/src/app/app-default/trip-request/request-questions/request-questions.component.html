@@ -130,12 +130,19 @@
   "
 ></app-sports>
 
-<app-diving
+<app-spa
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'diving'
+    formValue.activities[currentActivitiesStepIndex] === 'spa'
   "
-></app-diving>
+></app-spa>
+
+<app-surfing
+  *ngIf="
+    currentStepIndex === stepsNumber.tripActivities &&
+    formValue.activities[currentActivitiesStepIndex] === 'surfing'
+  "
+></app-surfing>
 
 <div *ngIf="currentStepIndex === 6">
   Step 7

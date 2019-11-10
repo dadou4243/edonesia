@@ -71,6 +71,8 @@ export class RequestQuestionsComponent implements OnInit {
   onClickNext() {
     console.log('CLICK NEXT');
     console.log('this.errors', this.errors);
+
+    // TODO: Refactor the conditions
     // Check if step valid
     if (this.errors.length === 0) {
       this.showErrors = false;
@@ -79,13 +81,36 @@ export class RequestQuestionsComponent implements OnInit {
         this.currentStepIndex === this.stepsNumber.tripActivities &&
         this.currentActivitiesStepIndex < this.formValue.activities.length - 1
       ) {
-        this.store.dispatch(
-          SetActivitiesCurrentIndex({
-            currentActivitiesStepIndex: this.currentActivitiesStepIndex + 1
-          })
-        );
-        return;
+        if (
+          this.formValue.activities[this.currentActivitiesStepIndex + 1] ===
+          'cruises'
+        ) {
+          if (
+            this.currentActivitiesStepIndex + 2 ===
+            this.formValue.activities.length
+          ) {
+            this.store.dispatch(
+              SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
+            );
+            return;
+          }
+
+          this.store.dispatch(
+            SetActivitiesCurrentIndex({
+              currentActivitiesStepIndex: this.currentActivitiesStepIndex + 2
+            })
+          );
+          return;
+        } else {
+          this.store.dispatch(
+            SetActivitiesCurrentIndex({
+              currentActivitiesStepIndex: this.currentActivitiesStepIndex + 1
+            })
+          );
+          return;
+        }
       }
+
       this.store.dispatch(
         SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
       );

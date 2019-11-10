@@ -25,6 +25,8 @@ import { NightlifeComponent } from './components/nightlife/nightlife.component';
 import { LocalTraditionsComponent } from './components/local-traditions/local-traditions.component';
 import { VolcanoComponent } from './components/volcano/volcano.component';
 import { AnythingElseComponent } from './components/anything-else/anything-else.component';
+import { SpaComponent } from './components/spa/spa.component';
+import { SurfingComponent } from './components/surfing/surfing.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { AnythingElseComponent } from './components/anything-else/anything-else.
     NightlifeComponent,
     LocalTraditionsComponent,
     VolcanoComponent,
-    AnythingElseComponent
+    AnythingElseComponent,
+    SpaComponent,
+    SurfingComponent
   ],
   imports: [CommonModule, TripRequestRoutingModule, SharedModule]
 })
