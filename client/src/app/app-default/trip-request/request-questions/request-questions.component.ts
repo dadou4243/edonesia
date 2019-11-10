@@ -10,15 +10,10 @@ import {
   getFormValue,
   SetFormValue,
   getCurrentValidationErrors,
-  SetActivitiesCurrentIndex
+  SetActivitiesCurrentIndex,
+  getActivitiesWithoutEmptyOnes
 } from 'src/app/store/request';
-import {
-  destinations,
-  purposeOptions,
-  hotelOptions,
-  activityOptions,
-  steps
-} from '../data';
+import { steps } from '../data/data';
 
 @Component({
   selector: 'app-request-questions',
@@ -31,13 +26,10 @@ export class RequestQuestionsComponent implements OnInit {
   currentStepIndex: number;
   currentActivitiesStepIndex: number;
   formValue: any;
-  destinationOptions = destinations;
-  purposeOptions = purposeOptions;
-  hotelOptions = hotelOptions;
-  activityOptions = activityOptions;
   stepsNumber = steps;
   errors: any[];
   showErrors = false;
+  activitiesWithoutEmpty;
 
   constructor(
     private fb: FormBuilder,
@@ -60,6 +52,12 @@ export class RequestQuestionsComponent implements OnInit {
       // console.log('formValue:', formValue);
       this.formValue = formValue;
     });
+    this.store
+      .pipe(select(getActivitiesWithoutEmptyOnes))
+      .subscribe(activitiesWithoutEmpty => {
+        console.log('activitiesWithoutEmpty:', activitiesWithoutEmpty);
+        this.activitiesWithoutEmpty = activitiesWithoutEmpty;
+      });
   }
 
   ngOnInit() {
@@ -77,40 +75,47 @@ export class RequestQuestionsComponent implements OnInit {
     if (this.errors.length === 0) {
       this.showErrors = false;
 
+      // If current step is activities
       if (
         this.currentStepIndex === this.stepsNumber.tripActivities &&
-        this.currentActivitiesStepIndex < this.formValue.activities.length - 1
+        this.currentActivitiesStepIndex < this.activitiesWithoutEmpty.length - 1
       ) {
-        if (
-          this.formValue.activities[this.currentActivitiesStepIndex + 1] ===
-          'cruises'
-        ) {
-          if (
-            this.currentActivitiesStepIndex + 2 ===
-            this.formValue.activities.length
-          ) {
-            this.store.dispatch(
-              SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
-            );
-            return;
-          }
+        // If next step is activity without page
+        // if (
+        //   this.activitiesWithoutPage.includes(
+        //     this.formValue.activities[this.currentActivitiesStepIndex + 1]
+        //   )
+        // ) {
+        //   // If cruises is last in activities array, go to next activityStep
+        //   if (
+        //     this.currentActivitiesStepIndex + 2 ===
+        //     this.formValue.activities.length
+        //   ) {
+        //     this.store.dispatch(
+        //       SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
+        //     );
+        //     // If cruises is not last in activities array, skip one activity
+        //   } else {
+        //     this.store.dispatch(
+        //       SetActivitiesCurrentIndex({
+        //         currentActivitiesStepIndex: this.currentActivitiesStepIndex + 2
+        //       })
+        //     );
+        //   }
 
-          this.store.dispatch(
-            SetActivitiesCurrentIndex({
-              currentActivitiesStepIndex: this.currentActivitiesStepIndex + 2
-            })
-          );
-          return;
-        } else {
-          this.store.dispatch(
-            SetActivitiesCurrentIndex({
-              currentActivitiesStepIndex: this.currentActivitiesStepIndex + 1
-            })
-          );
-          return;
-        }
+        //   return;
+        //   // If not in cruises step, increment activityStep
+        // } else {
+        this.store.dispatch(
+          SetActivitiesCurrentIndex({
+            currentActivitiesStepIndex: this.currentActivitiesStepIndex + 1
+          })
+        );
+        return;
+        // }
       }
 
+      // If not in activity step, increment step
       this.store.dispatch(
         SetCurrentIndex({ currentStepIndex: this.currentStepIndex + 1 })
       );
@@ -123,27 +128,59 @@ export class RequestQuestionsComponent implements OnInit {
     console.log('on Click Previous');
     this.showErrors = false;
 
+    // If current step is activities and current activity step index is not -1
     if (
       this.currentStepIndex === this.stepsNumber.tripActivities &&
       this.currentActivitiesStepIndex > -1
     ) {
+      // If previous activity step is activity without page, skip one activityStep
+      // if (
+      //   this.activitiesWithoutPage.includes(
+      //     this.formValue.activities[this.currentActivitiesStepIndex - 1]
+      //   )
+      // ) {
+      //   this.store.dispatch(
+      //     SetActivitiesCurrentIndex({
+      //       currentActivitiesStepIndex: this.currentActivitiesStepIndex - 2
+      //     })
+      //   );
+      //   // If previous activity step is not an activity without page, decrement activityStep
+      // } else {
+      //   this.store.dispatch(
+      //     SetActivitiesCurrentIndex({
+      //       currentActivitiesStepIndex: this.currentActivitiesStepIndex - 1
+      //     })
+      //   );
+      // }
+      // return;
+      // If current step is the one after all activities, go back to last activity
+      // } else if (this.currentStepIndex === this.stepsNumber.tripActivities + 1) {
+      // If last activity is an activity without page, decrement step and decrement activityStep
+      // if (
+      //   this.formValue.activities.length === 0 ||
+      //   this.activitiesWithoutPage.includes(
+      //     this.formValue.activities[this.currentActivitiesStepIndex + 1]
+      //   )
+      // ) {
       this.store.dispatch(
         SetActivitiesCurrentIndex({
           currentActivitiesStepIndex: this.currentActivitiesStepIndex - 1
         })
       );
-      return;
-    } else if (this.currentStepIndex === this.stepsNumber.tripActivities + 1) {
+      //   return;
+      // } else {
+      // this.store.dispatch(
+      //   SetActivitiesCurrentIndex({
+      //     currentActivitiesStepIndex: this.formValue.activities.length - 1
+      //   })
+      // );
+      // }
+      // If current step is not a subActivities page
+    } else {
       this.store.dispatch(
-        SetActivitiesCurrentIndex({
-          currentActivitiesStepIndex: this.formValue.activities.length - 1
-        })
+        SetCurrentIndex({ currentStepIndex: this.currentStepIndex - 1 })
       );
     }
-
-    this.store.dispatch(
-      SetCurrentIndex({ currentStepIndex: this.currentStepIndex - 1 })
-    );
   }
 
   onUpdateStepValues(value) {

@@ -4,9 +4,9 @@ import {
   Output,
   EventEmitter,
   Input,
-  OnChanges,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { destinationOptions } from '../../data/destinations';
 
 @Component({
   selector: 'app-trip-destination',
@@ -15,13 +15,15 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TripDestinationComponent implements OnInit {
-  @Input() destinationOptions: any;
   @Input() selectedDestinations: string[];
   @Output() destinationPicked = new EventEmitter();
 
+  destinationOptions: any;
   stepValidationObject: any;
 
-  constructor() {}
+  constructor() {
+    this.destinationOptions = destinationOptions;
+  }
 
   ngOnInit() {
     this.stepValidationObject = {

@@ -1,0 +1,21 @@
+<!-- {{ stepValidationObject | json }} -->
+
+<h2>
+  Which type of historical buildings are you interested in ?
+</h2>
+
+<div class="step-four">
+  <div class="history-options">
+    <app-multiple-choice
+      (optionPicked)="onPickHistory($event)"
+      [selectedOptions]="selectedHistory"
+    >
+      <app-choice-card
+        *ngFor="let historyOption of historyOptions"
+        [isActive]="selectedHistory.includes(historyOption.value)"
+        [choiceData]="historyOption"
+        >{{ historyOption.label }}</app-choice-card
+      >
+    </app-multiple-choice>
+  </div>
+</div>

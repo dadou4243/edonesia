@@ -6,6 +6,7 @@ import {
   Output,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { activityOptions } from '../../data/activities';
 
 @Component({
   selector: 'app-trip-activities',
@@ -15,12 +16,14 @@ import {
 })
 export class TripActivitiesComponent implements OnInit {
   @Input() selectedActivities: string[];
-  @Input() activityOptions: any[];
+  activityOptions: any[];
   @Output() pickedActivityType = new EventEmitter();
 
   stepValidationObject: any;
 
-  constructor() {}
+  constructor() {
+    this.activityOptions = activityOptions;
+  }
 
   ngOnInit() {
     this.stepValidationObject = {

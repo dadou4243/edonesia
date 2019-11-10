@@ -6,7 +6,8 @@ import {
   Input,
   Output
 } from '@angular/core';
-import { museumsOptions } from '../../data';
+
+import { museumsOptions } from '../../data/museums';
 
 @Component({
   selector: 'app-museums',

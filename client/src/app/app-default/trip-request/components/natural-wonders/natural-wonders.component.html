@@ -1,1 +1,21 @@
-<p>natural-wonders works!</p>
+<!-- {{ stepValidationObject | json }} -->
+
+<h2>
+  Which natural wonders would blow your mind?
+</h2>
+
+<div class="step-four">
+  <div class="natural-options">
+    <app-multiple-choice
+      (optionPicked)="onPickNatural($event)"
+      [selectedOptions]="selectedNatural"
+    >
+      <app-choice-card
+        *ngFor="let naturalOption of naturalOptions"
+        [isActive]="selectedNatural.includes(naturalOption.value)"
+        [choiceData]="naturalOption"
+        >{{ naturalOption.label }}</app-choice-card
+      >
+    </app-multiple-choice>
+  </div>
+</div>

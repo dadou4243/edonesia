@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { RequestState } from './request.reducer';
+import { activitiesWithoutPage } from 'src/app/app-default/trip-request/data/activities';
 
 export const getRequestState = createFeatureSelector<RequestState>('request');
 
@@ -27,4 +28,12 @@ export const getCurrentValidationErrors = createSelector(
 export const getFormValue = createSelector(
   getRequestState,
   (requestState: RequestState): any => requestState.formValue
+);
+
+export const getActivitiesWithoutEmptyOnes = createSelector(
+  getRequestState,
+  (requestState: RequestState): any =>
+    requestState.formValue.activities.filter(
+      act => !activitiesWithoutPage.includes(act)
+    )
 );

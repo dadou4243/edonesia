@@ -27,6 +27,7 @@ import { VolcanoComponent } from './components/volcano/volcano.component';
 import { AnythingElseComponent } from './components/anything-else/anything-else.component';
 import { SpaComponent } from './components/spa/spa.component';
 import { SurfingComponent } from './components/surfing/surfing.component';
+import { HistoryComponent } from './components/history/history.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { SurfingComponent } from './components/surfing/surfing.component';
     VolcanoComponent,
     AnythingElseComponent,
     SpaComponent,
-    SurfingComponent
+    SurfingComponent,
+    HistoryComponent
   ],
   imports: [CommonModule, TripRequestRoutingModule, SharedModule]
 })

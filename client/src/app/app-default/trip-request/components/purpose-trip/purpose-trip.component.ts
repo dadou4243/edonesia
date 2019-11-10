@@ -6,6 +6,7 @@ import {
   Output,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { purposeOptions } from '../../data/purposes';
 
 @Component({
   selector: 'app-purpose-trip',
@@ -15,12 +16,14 @@ import {
 })
 export class PurposeTripComponent implements OnInit {
   @Input() selectedPurposes: string[];
-  @Input() purposeOptions: any;
   @Output() purposePicked = new EventEmitter();
 
+  purposeOptions: any[];
   stepValidationObject: any;
 
-  constructor() {}
+  constructor() {
+    this.purposeOptions = purposeOptions;
+  }
 
   ngOnInit() {
     this.stepValidationObject = {

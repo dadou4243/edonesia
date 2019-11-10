@@ -1,9 +1,36 @@
 <!-- <app-stripe-payment></app-stripe-payment> -->
-<!-- <div>Show errors: {{ showErrors }}</div>
-<div style="font-size: 10px;">CurrentStep: {{ formValue | json }}</div>
-<div style="font-size: 10px;">Validation: {{ errors | json }}</div> -->
+<!-- <div>Show errors: {{ showErrors }}</div> -->
+<div style="font-size: 10px;">CurrentStep: {{ currentStepIndex }}</div>
+<div style="font-size: 10px;">
+  CurrentActivitiesStep: {{ currentActivitiesStepIndex }}
+</div>
+<div style="font-size: 10px;">
+  stepsNumber.tripActivities: {{ stepsNumber.tripActivities }}
+</div>
+<div style="font-size: 10px;">
+  activitiesWithoutEmpty: {{ activitiesWithoutEmpty }}
+</div>
+<div style="font-size: 10px;">activities: {{ formValue.activities }}</div>
+<!-- <div style="font-size: 10px;">Validation: {{ errors | json }}</div> -->
 
-<div class="step-number">STEP {{ currentStepIndex + 1 }}</div>
+<div class="step-number" *ngIf="currentStepIndex < stepsNumber.tripActivities">
+  STEP {{ currentStepIndex + 1 }}
+</div>
+<div
+  class="step-number"
+  *ngIf="currentStepIndex === stepsNumber.tripActivities"
+>
+  STEP {{ currentStepIndex + 1 + currentActivitiesStepIndex + 1 }}
+</div>
+<div class="step-number" *ngIf="currentStepIndex > stepsNumber.tripActivities">
+  STEP
+  {{
+    currentStepIndex +
+      1 +
+      formValue.activities.length -
+      activitiesWithoutEmpty.length
+  }}
+</div>
 
 <app-date-planned
   *ngIf="currentStepIndex === stepsNumber.datePlanned"
@@ -31,7 +58,6 @@
 <app-trip-destination
   *ngIf="currentStepIndex === stepsNumber.tripDestination"
   (destinationPicked)="onUpdateStepValues($event)"
-  [destinationOptions]="destinationOptions"
   [selectedDestinations]="formValue.destinations"
 ></app-trip-destination>
 
@@ -45,7 +71,6 @@
 <app-purpose-trip
   *ngIf="currentStepIndex === stepsNumber.purposeTrip"
   [selectedPurposes]="formValue.purposes"
-  [purposeOptions]="purposeOptions"
   (purposePicked)="onUpdateStepValues($event)"
 ></app-purpose-trip>
 
@@ -54,7 +79,6 @@
     currentStepIndex === stepsNumber.tripActivities &&
     currentActivitiesStepIndex === -1
   "
-  [activityOptions]="activityOptions"
   [selectedActivities]="formValue.activities"
   (pickedActivityType)="onUpdateStepValues($event)"
 ></app-trip-activities>
@@ -76,18 +100,7 @@
 >
 </app-museums>
 
-<div
-  class="beach"
-  *ngIf="
-    currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'beach'
-  "
->
-  Beach
-</div>
-
 <app-beverages
-  class="beach"
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
     formValue.activities[currentActivitiesStepIndex] === 'food'
@@ -107,6 +120,8 @@
     currentStepIndex === stepsNumber.tripActivities &&
     formValue.activities[currentActivitiesStepIndex] === 'natural'
   "
+  [selectedNatural]="formValue.natural"
+  (naturalPicked)="onUpdateStepValues($event)"
 ></app-natural-wonders>
 
 <app-volcano
@@ -144,8 +159,17 @@
   "
 ></app-surfing>
 
+<app-history
+  *ngIf="
+    currentStepIndex === stepsNumber.tripActivities &&
+    formValue.activities[currentActivitiesStepIndex] === 'history'
+  "
+  [selectedHistory]="formValue.history"
+  (historyPicked)="onUpdateStepValues($event)"
+></app-history>
+
 <div *ngIf="currentStepIndex === 6">
-  Step 7
+  After Activities
 </div>
 
 <div class="errors" *ngIf="showErrors" class="alert">
@@ -169,7 +193,6 @@
 
 <app-hotel-type
   *ngIf="currentStepIndex === stepsNumber.hotelType"
-  [hotelOptions]="hotelOptions"
   [selectedTypes]="formValue.hotelType"
   (pickedHotelType)="onUpdateStepValues($event)"
 ></app-hotel-type>

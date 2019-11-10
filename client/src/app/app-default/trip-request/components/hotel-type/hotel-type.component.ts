@@ -6,6 +6,7 @@ import {
   EventEmitter,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { hotelOptions } from '../../data/hotels';
 
 @Component({
   selector: 'app-hotel-type',
@@ -15,10 +16,13 @@ import {
 })
 export class HotelTypeComponent implements OnInit {
   @Input() selectedTypes: string[];
-  @Input() hotelOptions: string[];
   @Output() pickedHotelType = new EventEmitter();
 
-  constructor() {}
+  hotelOptions: any[];
+
+  constructor() {
+    this.hotelOptions = hotelOptions;
+  }
 
   ngOnInit() {}
 

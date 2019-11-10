@@ -17,6 +17,8 @@ export interface IFormValue {
   activities: string[];
   museums: string[];
   sports: string[];
+  history: string[];
+  natural: string[];
 }
 
 export interface RequestState {
@@ -45,7 +47,9 @@ export const initialState: RequestState = {
     hotelType: [],
     activities: [],
     museums: [],
-    sports: []
+    sports: [],
+    history: [],
+    natural: []
   },
   isValid: false,
   currentStepIndex: 5,
@@ -58,10 +62,10 @@ const featureReducer = createReducer(
   on(requestActions.SetCurrentIndex, (state, { currentStepIndex }) => ({
     ...state,
     currentStepIndex,
-    currentActivitiesStepIndex:
-      currentStepIndex === 6 && state.currentStepIndex === 5
-        ? -1
-        : state.currentActivitiesStepIndex,
+    // currentActivitiesStepIndex:
+    //   currentStepIndex === 6 && state.currentStepIndex === 5
+    //     ? -1
+    //     : state.currentActivitiesStepIndex,
     currentValidationErrors: {}
   })),
   on(
