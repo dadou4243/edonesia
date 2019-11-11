@@ -6,13 +6,15 @@ import { BookTripComponent } from './components/book-trip/book-trip.component';
 import { StripePaymentComponent } from './components/stripe-payment/stripe-payment.component';
 import { ChoiceCardComponent } from './components/choice-card/choice-card.component';
 import { MultipleChoiceComponent } from './components/multiple-choice/multiple-choice.component';
+import { SelectOptionComponent } from './components/select-option/select-option.component';
 
 @NgModule({
   declarations: [
     BookTripComponent,
     StripePaymentComponent,
     ChoiceCardComponent,
-    MultipleChoiceComponent
+    MultipleChoiceComponent,
+    SelectOptionComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
@@ -21,7 +23,8 @@ import { MultipleChoiceComponent } from './components/multiple-choice/multiple-c
     ReactiveFormsModule,
     StripePaymentComponent,
     ChoiceCardComponent,
-    MultipleChoiceComponent
+    MultipleChoiceComponent,
+    SelectOptionComponent
   ]
 })
 export class SharedModule {}

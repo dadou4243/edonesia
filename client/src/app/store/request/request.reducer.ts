@@ -52,7 +52,7 @@ export const initialState: RequestState = {
     natural: []
   },
   isValid: false,
-  currentStepIndex: 5,
+  currentStepIndex: 3,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };

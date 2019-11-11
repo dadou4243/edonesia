@@ -1,0 +1,17 @@
+<div #selector class="select-container">
+  <!-- <div>this.isOpen: {{ isOpen }}</div> -->
+
+  <div (click)="onInputClick()" class="option selected">
+    {{ selectedOption }}
+  </div>
+
+  <div #dropdown class="options" *ngIf="isOpen">
+    <div
+      class="option no-selected"
+      *ngFor="let option of [1, 2, 3, 4, 5]"
+      (click)="onSelectOption(option)"
+    >
+      Option {{ option }}
+    </div>
+  </div>
+</div>

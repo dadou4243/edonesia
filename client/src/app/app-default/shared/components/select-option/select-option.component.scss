@@ -1,0 +1,35 @@
+:host {
+  width: 200px;
+}
+
+.select-container {
+  position: relative;
+  width: 200px;
+
+  .selected {
+    position: relative;
+  }
+
+  .options {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    max-height: 300px;
+  }
+
+  .option {
+    padding: 0 5px;
+    border: 1px solid black;
+    background-color: white;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+  }
+
+  .no-selected {
+    &:hover {
+      background-color: lightgrey;
+    }
+  }
+}
