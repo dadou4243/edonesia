@@ -1,11 +1,29 @@
-<div #selector class="select-container">
+<div #selector class="select-container shadow-box">
   <!-- <div>this.isOpen: {{ isOpen }}</div> -->
 
   <div (click)="onInputClick()" class="option selected">
     {{ selectedOption }}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <path d="M7 14l5-5 5 5z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <path d="M7 10l5 5 5-5z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
   </div>
 
-  <div #dropdown class="options" *ngIf="isOpen">
+  <div #dropdown class="options shadow-box" *ngIf="isOpen">
     <div
       class="option no-selected"
       *ngFor="let option of [1, 2, 3, 4, 5]"

@@ -12,22 +12,24 @@
 
   .options {
     position: absolute;
-    top: 40px;
+    top: 100%;
     left: 0;
-    max-height: 300px;
+    width: 200px;
+    max-height: 150px;
+    overflow-y: auto;
   }
 
   .option {
-    padding: 0 5px;
-    border: 1px solid black;
+    padding: 0 10px;
     background-color: white;
-    width: 200px;
     height: 40px;
     line-height: 40px;
     cursor: pointer;
   }
 
   .no-selected {
+    border-top: 1px solid #e2e2e2;
+
     &:hover {
       background-color: lightgrey;
     }

@@ -1,25 +1,25 @@
+@import 'variables';
+@import 'components/_shadow-box';
+
 @font-face {
   font-family: ArbutusSlab;
-  src: url('./assets/fonts/ArbutusSlab-Regular.ttf');
+  src: url('../assets/fonts/ArbutusSlab-Regular.ttf');
   font-weight: normal;
 }
 @font-face {
   font-family: AcariSans;
-  src: url('./assets/fonts/AcariSans-Regular.ttf');
+  src: url('../assets/fonts/AcariSans-Regular.ttf');
 }
 @font-face {
   font-family: AcariSans;
-  src: url('./assets/fonts/AcariSans-Bold.ttf');
+  src: url('../assets/fonts/AcariSans-Bold.ttf');
   font-weight: bold;
 }
 @font-face {
   font-family: AcariSans;
-  src: url('./assets/fonts/AcariSans-SemiBold.ttf');
+  src: url('../assets/fonts/AcariSans-SemiBold.ttf');
   font-weight: 600;
 }
-
-$background-color: #f1ebe7;
-$primary-dark: #494936;
 
 * {
   margin: 0;
@@ -95,7 +95,7 @@ button {
     position: absolute;
     left: 8px;
     top: 8px;
-    background: url(assets/svg/error-icon.svg);
+    background: url(../assets/svg/error-icon.svg);
   }
 }
 
