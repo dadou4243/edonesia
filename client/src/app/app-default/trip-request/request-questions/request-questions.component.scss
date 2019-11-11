@@ -29,6 +29,10 @@ $primary-dark: #494936;
     border-radius: 3px;
     font-size: 15px;
     font-weight: 600;
+
+    &:hover {
+      background-color: #69694d;
+    }
   }
 
   .hidden {
@@ -66,13 +70,17 @@ $primary-dark: #494936;
   }
 
   .step-buttons {
-    margin: 40px 0 10px;
+    margin: 40px auto 10px auto;
     display: flex;
     justify-content: space-between;
+    width: 600px;
     // padding: 0 20px;
   }
 
   .errors {
+    display: flex;
+    justify-content: center;
+
     .error {
       font-size: 0.85em;
     }
