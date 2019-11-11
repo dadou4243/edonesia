@@ -1,20 +1,30 @@
+@import 'variables';
+
 :host {
-  width: 200px;
+  width: 400px;
 }
 
 .select-container {
   position: relative;
-  width: 200px;
+  width: 400px;
 
   .selected {
     position: relative;
+
+    .arrow {
+      position: absolute;
+      right: 7px;
+      top: 7px;
+      color: $primary-dark;
+      fill: currentColor;
+    }
   }
 
   .options {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 200px;
+    width: 400px;
     max-height: 150px;
     overflow-y: auto;
   }

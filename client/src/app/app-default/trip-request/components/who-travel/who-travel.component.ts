@@ -18,17 +18,34 @@ export class WhoTravelComponent implements OnInit {
   @Input() numberPeople: number;
   @Output() pickedNumberPeople = new EventEmitter();
 
+  options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  stepValidationObject: any;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.stepValidationObject = {
+      numberPeople: {
+        message: 'You must select at least one choice',
+        isValid: this.numberPeople === -1
+      }
+    };
 
-  onNumberPeopleChange(value) {
-    console.log('value:', value.target.value);
-    this.pickedNumberPeople.emit({ numberPeople: value.target.value });
+    this.pickedNumberPeople.emit({
+      validationErrors: this.stepValidationObject
+    });
   }
 
-  onClickConfirm() {
-    console.log('confirm');
-    this.pickedNumberPeople.emit();
+  onNumberPeopleChange(numberPeopleFromEvent) {
+    console.log('numberPeopleFromEvent:', numberPeopleFromEvent);
+    this.stepValidationObject.numberPeople.isValid =
+      numberPeopleFromEvent > 0 ? true : false;
+
+    this.pickedNumberPeople.emit({
+      stepValues: {
+        numberPeople: numberPeopleFromEvent
+      },
+      validationErrors: this.stepValidationObject
+    });
   }
 }

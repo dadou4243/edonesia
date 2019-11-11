@@ -2,34 +2,44 @@
   <!-- <div>this.isOpen: {{ isOpen }}</div> -->
 
   <div (click)="onInputClick()" class="option selected">
-    {{ selectedOption }}
+    <span *ngIf="selectedValue === 0; else selectedOption">
+      {{ placeholder }}
+    </span>
+    <ng-template #selectedOption>
+      {{ selectedValue }}
+    </ng-template>
     <svg
+      *ngIf="isOpen; else content"
+      class="arrow"
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
     >
       <path d="M7 14l5-5 5 5z" />
       <path d="M0 0h24v24H0z" fill="none" />
     </svg>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-    >
-      <path d="M7 10l5 5 5-5z" />
-      <path d="M0 0h24v24H0z" fill="none" />
-    </svg>
+    <ng-template #content
+      ><svg
+        class="arrow"
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+      >
+        <path d="M7 10l5 5 5-5z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </svg>
+    </ng-template>
   </div>
 
   <div #dropdown class="options shadow-box" *ngIf="isOpen">
     <div
       class="option no-selected"
-      *ngFor="let option of [1, 2, 3, 4, 5]"
+      *ngFor="let option of options"
       (click)="onSelectOption(option)"
     >
-      Option {{ option }}
+      {{ option }}
     </div>
   </div>
 </div>

@@ -42,7 +42,7 @@ export const initialState: RequestState = {
     estimateMonth: '',
     estimateDays: null,
     destinations: [],
-    numberPeople: 1,
+    numberPeople: 0,
     purposes: [],
     hotelType: [],
     activities: [],

@@ -24,14 +24,16 @@ import { takeUntil } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectOptionComponent implements OnInit, OnDestroy {
+  @Input() placeholder: string;
   @Input() options = [];
-  @Output() selectChange = new EventEmitter();
+  @Input() selectedValue: number;
+  @Output() selectPicked = new EventEmitter();
 
   @ViewChild('dropdown', { static: false }) dropdown;
   @ViewChild('selector', { static: false }) selector;
 
   isOpen = false;
-  selectedOption = 'Select an option';
+  selectedOption: string;
   private readonly destroy$ = new Subject<void>();
 
   constructor(
@@ -42,6 +44,7 @@ export class SelectOptionComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._handleOutsideClick();
+    this.selectedOption = this.placeholder || 'Select an option';
   }
 
   ngOnDestroy() {
@@ -52,12 +55,12 @@ export class SelectOptionComponent implements OnInit, OnDestroy {
 
   onInputClick() {
     this.isOpen = !this.isOpen;
-    console.log(this.isOpen);
   }
 
   onSelectOption(option) {
+    console.log('option:', option);
     this.selectedOption = option;
-    this.selectChange.emit(option);
+    this.selectPicked.emit(option);
     this.isOpen = false;
   }
 
