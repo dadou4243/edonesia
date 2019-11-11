@@ -5,7 +5,8 @@
   "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js",
+    "start": "nodemon server/server.js",
+    "client": "cd client && ng s",
     "client-install": "cd client && npm install",
     "server-install": "cd server && npm install",
     "postinstall": "concurrently \"npm run server-install\" \"npm run client-install\""
