@@ -6,6 +6,7 @@ import {
   EventEmitter,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { numberPeopleOptions } from '../../data/numberOfPeople';
 
 @Component({
   selector: 'app-who-travel',
@@ -18,10 +19,12 @@ export class WhoTravelComponent implements OnInit {
   @Input() numberPeople: number;
   @Output() pickedNumberPeople = new EventEmitter();
 
-  options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   stepValidationObject: any;
+  numberPeopleOptions: any;
 
-  constructor() {}
+  constructor() {
+    this.numberPeopleOptions = numberPeopleOptions;
+  }
 
   ngOnInit() {
     this.stepValidationObject = {

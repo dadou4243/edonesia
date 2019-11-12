@@ -7,6 +7,7 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 import { purposeOptions } from '../../data/purposes';
+import { beenInPast } from '../../data/beenInPast';
 
 @Component({
   selector: 'app-purpose-trip',
@@ -16,13 +17,17 @@ import { purposeOptions } from '../../data/purposes';
 })
 export class PurposeTripComponent implements OnInit {
   @Input() selectedPurposes: string[];
+  @Input() selectedBeenInPast: string[];
   @Output() purposePicked = new EventEmitter();
+  @Output() beenInPastPicked = new EventEmitter();
 
   purposeOptions: any[];
+  beenInPast: any[];
   stepValidationObject: any;
 
   constructor() {
     this.purposeOptions = purposeOptions;
+    this.beenInPast = beenInPast;
   }
 
   ngOnInit() {
@@ -30,10 +35,17 @@ export class PurposeTripComponent implements OnInit {
       purposes: {
         message: 'You must select at least one choice',
         isValid: this.selectedPurposes.length > 0
+      },
+      beenInPast: {
+        message: 'You must select at least one choice',
+        isValid: this.selectedBeenInPast !== null
       }
     };
 
     this.purposePicked.emit({
+      validationErrors: this.stepValidationObject
+    });
+    this.beenInPastPicked.emit({
       validationErrors: this.stepValidationObject
     });
   }
@@ -46,6 +58,19 @@ export class PurposeTripComponent implements OnInit {
     this.purposePicked.emit({
       stepValues: {
         purposes: purposesFromEvent
+      },
+      validationErrors: this.stepValidationObject
+    });
+  }
+
+  onPickBeenInPast(beenInPastFromEvent) {
+    console.log('beenInPastFromEvent:', beenInPastFromEvent);
+    this.stepValidationObject.beenInPast.isValid =
+      beenInPastFromEvent !== null ? true : false;
+
+    this.beenInPastPicked.emit({
+      stepValues: {
+        beenInPast: beenInPastFromEvent
       },
       validationErrors: this.stepValidationObject
     });

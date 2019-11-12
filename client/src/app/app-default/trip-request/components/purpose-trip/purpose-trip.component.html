@@ -19,20 +19,15 @@
     </app-multiple-choice>
   </div>
 
-  <div>Is it your first time in Indonesia</div>
+  <div class="step-hint">Is it your first time in Indonesia</div>
   <div>
-    <!-- <div class="selector-container">
+    <div class="selector-container">
       <app-select-option
-        (selectPicked)="onNumberPeopleChange($event)"
-        [selectedValue]="numberPeople"
-        [options]="options"
-        [placeholder]="'Total number of travelers'"
+        (selectPicked)="onPickBeenInPast($event)"
+        [selectedValue]="selectedBeenInPast"
+        [options]="beenInPast"
+        [placeholder]="'Pick an answer'"
       ></app-select-option>
-    </div> -->
-    <select name="" id="">
-      <option value="">Yes</option>
-      <option value="">No, I've been there once</option>
-      <option value="">No, I'm a regular</option>
-    </select>
+    </div>
   </div>
 </div>

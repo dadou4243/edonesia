@@ -26,7 +26,7 @@ import { takeUntil } from 'rxjs/operators';
 export class SelectOptionComponent implements OnInit, OnDestroy {
   @Input() placeholder: string;
   @Input() options = [];
-  @Input() selectedValue: number;
+  @Input() selectedValue: any;
   @Output() selectPicked = new EventEmitter();
 
   @ViewChild('dropdown', { static: false }) dropdown;

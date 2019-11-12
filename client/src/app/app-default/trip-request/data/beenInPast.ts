@@ -1,4 +1,4 @@
-export const destinationOptions = [
+export const beenInPast = [
   {
     value: 'yes',
     label: 'Yes'

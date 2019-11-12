@@ -13,6 +13,7 @@ export interface IFormValue {
   destinations: string[];
   numberPeople: number;
   purposes: string[];
+  beenInPast: string;
   hotelType: string[];
   activities: string[];
   museums: string[];
@@ -46,6 +47,7 @@ export const initialState: RequestState = {
     destinations: [],
     numberPeople: null,
     purposes: [],
+    beenInPast: null,
     hotelType: [],
     activities: [],
     museums: [],
@@ -54,7 +56,7 @@ export const initialState: RequestState = {
     natural: []
   },
   isValid: false,
-  currentStepIndex: 1,
+  currentStepIndex: 4,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };

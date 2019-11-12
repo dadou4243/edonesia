@@ -1,12 +1,13 @@
 <div #selector class="select-container shadow-box">
   <!-- <div>this.isOpen: {{ isOpen }}</div> -->
+  <!-- <div>selectedValue: {{ selectedValue | json }}</div> -->
 
   <div (click)="onInputClick()" class="option selected">
     <span *ngIf="selectedValue === null; else selectedOption">
       {{ placeholder }}
     </span>
     <ng-template #selectedOption>
-      {{ selectedValue }}
+      {{ selectedValue?.label }}
     </ng-template>
     <svg
       *ngIf="isOpen; else content"
@@ -39,7 +40,7 @@
       *ngFor="let option of options"
       (click)="onSelectOption(option)"
     >
-      {{ option }}
+      {{ option.label }}
     </div>
   </div>
 </div>

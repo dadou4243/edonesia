@@ -66,7 +66,9 @@
 <app-purpose-trip
   *ngIf="currentStepIndex === stepsNumber.purposeTrip"
   [selectedPurposes]="formValue.purposes"
+  [selectedBeenInPast]="formValue.beenInPast"
   (purposePicked)="onUpdateStepValues($event)"
+  (beenInPastPicked)="onUpdateStepValues($event)"
 ></app-purpose-trip>
 
 <app-trip-activities

@@ -32,7 +32,7 @@ export const destinationOptions = [
     label: 'Papua'
   },
   {
-    value: 'java',
+    value: 'molucca',
     label: 'Molucca'
   },
   {
