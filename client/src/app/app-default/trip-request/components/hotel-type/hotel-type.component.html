@@ -5,14 +5,21 @@
   <div>
     Select as many as you like
   </div>
-  <div class="destination-options">
-    <app-choice-card
-      *ngFor="let hotelOption of hotelOptions"
-      (click)="onPickHotelType(hotelOption)"
-      [isActive]="selectedTypes.includes(hotelOption)"
-      >{{ hotelOption }}</app-choice-card
+
+  <div class="hotel-options">
+    <app-multiple-choice
+      (optionPicked)="onPickHotel($event)"
+      [selectedOptions]="selectedHotel"
     >
+      <app-choice-card
+        *ngFor="let hotelOption of hotelOptions"
+        [isActive]="selectedHotel.includes(hotelOption.value)"
+        [choiceData]="hotelOption"
+        >{{ hotelOption.label }}</app-choice-card
+      >
+    </app-multiple-choice>
   </div>
+
   <div>What is your budget per night and per room?</div>
   <div>cursor!!!</div>
 </div>

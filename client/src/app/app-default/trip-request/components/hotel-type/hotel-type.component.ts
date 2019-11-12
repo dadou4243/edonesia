@@ -15,28 +15,39 @@ import { hotelOptions } from '../../data/hotels';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HotelTypeComponent implements OnInit {
-  @Input() selectedTypes: string[];
-  @Output() pickedHotelType = new EventEmitter();
+  @Input() selectedHotel: string[];
+  @Output() hotelPicked = new EventEmitter();
 
   hotelOptions: any[];
+  stepValidationObject: any;
 
   constructor() {
     this.hotelOptions = hotelOptions;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.stepValidationObject = {
+      hotel: {
+        message: 'You must select at least one choice',
+        isValid: this.selectedHotel.length > 0
+      }
+    };
 
-  onPickHotelType(hotelType) {
-    let selectedHotelTypes = this.selectedTypes;
-    const isDestinationAlreadyPicked = this.selectedTypes.includes(hotelType);
-    if (isDestinationAlreadyPicked) {
-      selectedHotelTypes = this.selectedTypes.filter(
-        type => type !== hotelType
-      );
-    } else {
-      selectedHotelTypes.push(hotelType);
-    }
+    this.hotelPicked.emit({
+      validationErrors: this.stepValidationObject
+    });
+  }
 
-    this.pickedHotelType.emit({ hotelType: selectedHotelTypes });
+  onPickHotel(hotelFromEvent) {
+    console.log('historyFromEvent:', hotelFromEvent);
+    this.stepValidationObject.hotel.isValid =
+      hotelFromEvent.length > 0 ? true : false;
+
+    this.hotelPicked.emit({
+      stepValues: {
+        hotelType: hotelFromEvent
+      },
+      validationErrors: this.stepValidationObject
+    });
   }
 }

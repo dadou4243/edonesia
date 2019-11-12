@@ -37,8 +37,6 @@ app.use(
 // Initialize passport
 app.use(passport.initialize());
 
-app.use(AuthCore.getUserID());
-
 function createServer() {
   // const port = Number(process.env.PORT || 4000);
   const port = process.env.PORT || 4000;

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const Auth = require('../../core/auth.core');
+// const Auth = require('../../core/auth.core');
 
 const ChargeController = require('../controller/charge.controller');
 
