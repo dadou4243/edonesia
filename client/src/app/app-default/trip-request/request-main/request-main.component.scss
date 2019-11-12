@@ -1,5 +1,4 @@
 .request-container {
-  //   background-color: red;
   margin: 40px 0;
 }
 
@@ -13,9 +12,19 @@
 }
 
 img.logo {
-  width: 200px;
+  height: 80px;
 }
 
 header {
   padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: #f1ebe7;
+}
+
+.top-padding {
+  padding-top: 60px;
 }

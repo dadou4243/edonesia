@@ -1,16 +1,11 @@
 <div>
   <h2>Who is travelling with you?</h2>
-  <select
-    name=""
-    id=""
-    selected="numberPeople"
-    [ngModel]="numberPeople"
-    (change)="onNumberPeopleChange($event)"
-  >
-    <option
-      *ngFor="let number of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-      [value]="number"
-      >{{ number }}</option
-    >
-  </select>
+  <div class="selector-container">
+    <app-select-option
+      (selectPicked)="onNumberPeopleChange($event)"
+      [selectedValue]="numberPeople"
+      [options]="options"
+      [placeholder]="'Total number of travelers'"
+    ></app-select-option>
+  </div>
 </div>

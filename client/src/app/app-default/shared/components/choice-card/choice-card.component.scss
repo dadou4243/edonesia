@@ -1,5 +1,4 @@
-$primary-dark: #494936;
-$primary-dark: #494936;
+@import 'variables';
 
 :host {
   width: 100%;
@@ -10,14 +9,12 @@ $primary-dark: #494936;
   border-radius: 0;
   padding: 10px;
   height: 80px;
-  background-color: #ffffff;
   cursor: pointer;
   color: #3a3b3d;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
 
   &.active {
     background: #b4b98a;

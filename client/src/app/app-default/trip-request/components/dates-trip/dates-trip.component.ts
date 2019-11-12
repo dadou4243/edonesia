@@ -5,7 +5,8 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  AfterViewInit
 } from '@angular/core';
 import Lightpick from 'lightpick';
 
@@ -15,7 +16,7 @@ import Lightpick from 'lightpick';
   styleUrls: ['./dates-trip.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DatesTripComponent implements OnInit, OnChanges {
+export class DatesTripComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() departureDate;
   @Input() arrivalDate;
   @Input() airport;
@@ -28,14 +29,14 @@ export class DatesTripComponent implements OnInit, OnChanges {
 
   constructor() {}
 
-  ngOnInit() {
-    const picker = new Lightpick({
-      field: document.getElementById('start-date'),
-      secondField: document.getElementById('end-date'),
-      singleDate: false,
-      onSelect: this.onSelect
-    });
+  get tripDates() {
+    if (!this.departureDate || !this.arrivalDate) {
+      return 'Departure date - Arrival date';
+    }
+    return `${this.departureDate} - ${this.arrivalDate}`;
+  }
 
+  ngOnInit() {
     this.stepValidationObject = {
       arrivalDate: {
         message: 'You must enter a valid arrival date',
@@ -48,52 +49,43 @@ export class DatesTripComponent implements OnInit, OnChanges {
     };
   }
 
+  ngAfterViewInit() {
+    const picker = new Lightpick({
+      field: document.getElementById('date-input'),
+      // secondField: document.getElementById('end-date'),
+      singleDate: false,
+      onSelect: this.onSelect
+    });
+  }
+
   onSelect = (start, end) => {
+    console.log('end:', end);
+    console.log('start:', start);
     this.tempDepartureDate = start ? start.format('DD/MM/YYYY') : '';
     this.tempArrivalDate = end ? end.format('DD/MM/YYYY') : '';
+
+    this.stepValidationObject.departureDate.isValid =
+      start === null || '' ? false : true;
+
+    this.stepValidationObject.arrivalDate.isValid =
+      end === null || '' ? false : true;
 
     this.dateConfirmed.emit({
       stepValues: {
         arrivalDate: this.tempArrivalDate,
         departureDate: this.tempDepartureDate
       },
-      validationErrors: {}
+      validationErrors: this.stepValidationObject
     });
   };
+
+  showValue(value) {
+    console.log('value', value);
+  }
 
   ngOnChanges() {
     this.tempDepartureDate = this.departureDate;
     this.tempArrivalDate = this.arrivalDate;
-  }
-
-  onDepartureDateChange(date) {
-    console.log('date:', date);
-    this.tempDepartureDate = date;
-
-    this.stepValidationObject.departureDate.isValid =
-      this.tempDepartureDate === '' ? false : true;
-
-    this.dateConfirmed.emit({
-      stepValues: {
-        departureDate: this.tempDepartureDate
-      },
-      validationErrors: this.stepValidationObject
-    });
-  }
-
-  onArrivaleDateChange(date) {
-    console.log('date:', date);
-    this.tempArrivalDate = date;
-
-    this.stepValidationObject.arrivalDate.isValid =
-      this.tempArrivalDate === '' ? false : true;
-
-    this.dateConfirmed.emit({
-      stepValues: {
-        arrivalDate: this.tempArrivalDate
-      },
-      validationErrors: this.stepValidationObject
-    });
   }
 
   onAirportChange(airport) {

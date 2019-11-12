@@ -1,16 +1,16 @@
 <!-- <app-stripe-payment></app-stripe-payment> -->
 <!-- <div>Show errors: {{ showErrors }}</div> -->
-<div style="font-size: 10px;">CurrentStep: {{ currentStepIndex }}</div>
-<div style="font-size: 10px;">
+<!-- <div style="font-size: 10px;">CurrentStep: {{ currentStepIndex }}</div> -->
+<!-- <div style="font-size: 10px;">
   CurrentActivitiesStep: {{ currentActivitiesStepIndex }}
-</div>
-<div style="font-size: 10px;">
+</div> -->
+<!-- <div style="font-size: 10px;">
   stepsNumber.tripActivities: {{ stepsNumber.tripActivities }}
-</div>
-<div style="font-size: 10px;">
+</div> -->
+<!-- <div style="font-size: 10px;">
   activitiesWithoutEmpty: {{ activitiesWithoutEmpty }}
-</div>
-<div style="font-size: 10px;">activities: {{ formValue.activities }}</div>
+</div> -->
+<!-- <div style="font-size: 10px;">activities: {{ formValue.activities }}</div> -->
 <!-- <div style="font-size: 10px;">Validation: {{ errors | json }}</div> -->
 
 <div class="step-number" *ngIf="currentStepIndex < stepsNumber.tripActivities">
@@ -157,13 +157,21 @@
   (historyPicked)="onUpdateStepValues($event)"
 ></app-history>
 
+<app-hotel-type
+  *ngIf="currentStepIndex === stepsNumber.hotelType"
+  [selectedTypes]="formValue.hotelType"
+  (pickedHotelType)="onUpdateStepValues($event)"
+></app-hotel-type>
+
 <!-- <div *ngIf="currentStepIndex === 6">
   After Activities
 </div> -->
 
-<div class="errors" *ngIf="showErrors" class="alert">
-  <div *ngFor="let error of errors" class="error">
-    {{ error.message }}
+<div class="errors">
+  <div *ngIf="showErrors" class="alert">
+    <div *ngFor="let error of errors" class="error">
+      {{ error.message }}
+    </div>
   </div>
 </div>
 
@@ -179,12 +187,6 @@
     </button>
   </div>
 </div>
-
-<app-hotel-type
-  *ngIf="currentStepIndex === stepsNumber.hotelType"
-  [selectedTypes]="formValue.hotelType"
-  (pickedHotelType)="onUpdateStepValues($event)"
-></app-hotel-type>
 
 <!-- <div class="step-two" >
     <h2>Please enter your information</h2>

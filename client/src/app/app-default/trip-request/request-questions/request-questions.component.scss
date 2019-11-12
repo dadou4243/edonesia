@@ -1,8 +1,6 @@
-@import url('../../../../styles.scss');
+@import 'variables';
 
-$primary-dark: #494936;
-
-:host {
+:host  {
   display: block;
   height: 100%;
   width: 100%;
@@ -29,6 +27,10 @@ $primary-dark: #494936;
     border-radius: 3px;
     font-size: 15px;
     font-weight: 600;
+
+    &:hover {
+      background-color: #69694d;
+    }
   }
 
   .hidden {
@@ -66,22 +68,26 @@ $primary-dark: #494936;
   }
 
   .step-buttons {
-    margin: 40px 0 10px;
+    margin: 40px auto 10px auto;
     display: flex;
     justify-content: space-between;
+    width: 600px;
     // padding: 0 20px;
   }
 
   .errors {
+    display: flex;
+    justify-content: center;
+
     .error {
       font-size: 0.85em;
     }
   }
 
-  ::ng-deep input {
-    padding: 6px 12px;
+  ::ng-deep .shadow-input {
+    padding: 6px 12px 6px 18px;
     height: 60px;
-    color: #0f2643;
+    color: $primary-dark;
     font-family: Avenir-Book, sans-serif;
     font-size: 16px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);

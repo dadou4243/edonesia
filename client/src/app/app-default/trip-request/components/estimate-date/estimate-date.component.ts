@@ -14,7 +14,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EstimateDateComponent implements OnInit {
-  @Input() estimateMonth;
+  @Input() estimateMonth: string;
   @Input() estimateDays;
   @Output() estimateDateChanged = new EventEmitter();
 
