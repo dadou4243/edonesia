@@ -1,42 +1,14 @@
 export const destinationOptions = [
   {
-    value: 'unknown',
-    label: "I don't know"
+    value: 'yes',
+    label: 'Yes'
   },
   {
-    value: 'bali',
-    label: 'Bali'
+    value: 'once',
+    label: "No, I've been there once"
   },
   {
-    value: 'sumatra',
-    label: 'Sumatra'
-  },
-  {
-    value: 'java',
-    label: 'Java'
-  },
-  {
-    value: 'lombok',
-    label: 'Lombok'
-  },
-  {
-    value: 'borneo',
-    label: 'Borneo'
-  },
-  {
-    value: 'sulawesi',
-    label: 'Sulawesi'
-  },
-  {
-    value: 'papua',
-    label: 'Papua'
-  },
-  {
-    value: 'java',
-    label: 'Molucca'
-  },
-  {
-    value: 'nusa',
-    label: 'Nusa Tengarra'
+    value: 'regular',
+    label: "No, I'm a regular"
   }
 ];
