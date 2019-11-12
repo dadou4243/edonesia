@@ -159,7 +159,7 @@
 
 <app-hotel-type
   *ngIf="currentStepIndex === stepsNumber.hotelType"
-  [selectedTypes]="formValue.hotelType"
+  [selectedHotel]="formValue.hotelType"
   (pickedHotelType)="onUpdateStepValues($event)"
 ></app-hotel-type>
 
