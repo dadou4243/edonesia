@@ -31,18 +31,20 @@ export interface RequestState {
 
 export const initialState: RequestState = {
   formValue: {
-    isDatePlanned: false,
-    departureDate: moment(new Date())
-      .add(1, 'days')
-      .format('DD/MM/YYYY'),
-    arrivalDate: moment(new Date())
-      .add(5, 'days')
-      .format('DD/MM/YYYY'),
+    isDatePlanned: true,
+    departureDate: null,
+    arrivalDate: null,
+    // departureDate: moment(new Date())
+    //   .add(1, 'days')
+    //   .format('DD/MM/YYYY'),
+    // arrivalDate: moment(new Date())
+    //   .add(5, 'days')
+    //   .format('DD/MM/YYYY'),
     airport: '',
-    estimateMonth: '',
+    estimateMonth: null,
     estimateDays: null,
     destinations: [],
-    numberPeople: 0,
+    numberPeople: null,
     purposes: [],
     hotelType: [],
     activities: [],
@@ -52,7 +54,7 @@ export const initialState: RequestState = {
     natural: []
   },
   isValid: false,
-  currentStepIndex: 3,
+  currentStepIndex: 1,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };

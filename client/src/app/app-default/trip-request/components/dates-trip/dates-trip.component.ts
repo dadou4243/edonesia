@@ -28,10 +28,17 @@ export class DatesTripComponent implements OnInit, OnChanges {
 
   constructor() {}
 
+  get tripDates() {
+    if (!this.departureDate || !this.arrivalDate) {
+      return 'Departure date - Arrival date';
+    }
+    return `${this.departureDate} - ${this.arrivalDate}`;
+  }
+
   ngOnInit() {
     const picker = new Lightpick({
-      field: document.getElementById('start-date'),
-      secondField: document.getElementById('end-date'),
+      field: document.getElementById('date-input'),
+      // secondField: document.getElementById('end-date'),
       singleDate: false,
       onSelect: this.onSelect
     });
@@ -49,6 +56,8 @@ export class DatesTripComponent implements OnInit, OnChanges {
   }
 
   onSelect = (start, end) => {
+    console.log('end:', end);
+    console.log('start:', start);
     this.tempDepartureDate = start ? start.format('DD/MM/YYYY') : '';
     this.tempArrivalDate = end ? end.format('DD/MM/YYYY') : '';
 
@@ -61,39 +70,13 @@ export class DatesTripComponent implements OnInit, OnChanges {
     });
   };
 
+  showValue(value) {
+    console.log('value', value);
+  }
+
   ngOnChanges() {
     this.tempDepartureDate = this.departureDate;
     this.tempArrivalDate = this.arrivalDate;
-  }
-
-  onDepartureDateChange(date) {
-    console.log('date:', date);
-    this.tempDepartureDate = date;
-
-    this.stepValidationObject.departureDate.isValid =
-      this.tempDepartureDate === '' ? false : true;
-
-    this.dateConfirmed.emit({
-      stepValues: {
-        departureDate: this.tempDepartureDate
-      },
-      validationErrors: this.stepValidationObject
-    });
-  }
-
-  onArrivaleDateChange(date) {
-    console.log('date:', date);
-    this.tempArrivalDate = date;
-
-    this.stepValidationObject.arrivalDate.isValid =
-      this.tempArrivalDate === '' ? false : true;
-
-    this.dateConfirmed.emit({
-      stepValues: {
-        arrivalDate: this.tempArrivalDate
-      },
-      validationErrors: this.stepValidationObject
-    });
   }
 
   onAirportChange(airport) {

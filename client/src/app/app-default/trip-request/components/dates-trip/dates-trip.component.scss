@@ -1,3 +1,5 @@
+@import 'variables';
+
 .step-two {
   max-width: 643px;
   margin: 0 auto;
@@ -14,9 +16,51 @@
     // padding-left: 15px;
     // padding-right: 15px;
     flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  input.dates-input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    z-index: 50;
+    width: 60%;
   }
 }
 
 input#airport {
   max-width: 300px;
+}
+
+.trip-dates {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: $primary-dark;
+  width: 60%;
+}
+
+.date-dash {
+  margin: 0 14px;
+  font-size: 2rem;
+  background-color: #bbbbbb;
+  position: relative;
+  bottom: 1px;
+  height: 2px;
+  width: 10px;
+}
+
+.calendar-icon {
+  margin-right: 10px;
+  fill: #afafaf;
+  height: 30px;
+  width: 30px;
+}
+
+.airport-field {
+  margin-top: 90px;
 }

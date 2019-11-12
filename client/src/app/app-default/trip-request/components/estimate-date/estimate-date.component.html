@@ -6,19 +6,14 @@
 <div class="step-three">
   <div class="form-field">
     <label for="">When would you go?</label>
-    <select
-      name=""
-      id=""
-      [value]="estimateMonth"
-      (change)="onEstimateMonthChange($event.target.value)"
-    >
-      <option value="">Select a month</option>
-      <option
-        [value]="month"
-        *ngFor="let month of ['january', 'february', 'march', 'april']"
-        >{{ month }}</option
-      >
-    </select>
+    <div class="selector-container">
+      <app-select-option
+        (selectPicked)="onEstimateMonthChange($event)"
+        [selectedValue]="estimateMonth"
+        [options]="['January', 'February', 'March', 'April']"
+        [placeholder]="'Select a month'"
+      ></app-select-option>
+    </div>
   </div>
 
   <div class="form-field">

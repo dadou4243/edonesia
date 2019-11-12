@@ -2,7 +2,7 @@
   <!-- <div>this.isOpen: {{ isOpen }}</div> -->
 
   <div (click)="onInputClick()" class="option selected">
-    <span *ngIf="selectedValue === 0; else selectedOption">
+    <span *ngIf="selectedValue === null; else selectedOption">
       {{ placeholder }}
     </span>
     <ng-template #selectedOption>
