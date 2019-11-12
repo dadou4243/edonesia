@@ -27,7 +27,7 @@ export class WhoTravelComponent implements OnInit {
     this.stepValidationObject = {
       numberPeople: {
         message: 'You must select at least one choice',
-        isValid: this.numberPeople === -1
+        isValid: this.numberPeople !== null
       }
     };
 
