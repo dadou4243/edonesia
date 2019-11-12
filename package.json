@@ -9,8 +9,7 @@
     "client": "cd client && ng s",
     "client-build": "cd client && npm install && npm run build",
     "client-install": "cd client && npm install",
-    "server-install": "cd server && npm install",
-    "postinstall": "npm run client-build"
+    "server-install": "cd server && npm install"
   },
   "author": "",
   "license": "ISC",
