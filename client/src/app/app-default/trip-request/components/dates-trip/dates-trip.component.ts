@@ -9,6 +9,7 @@ import {
   AfterViewInit
 } from '@angular/core';
 import Lightpick from 'lightpick';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-dates-trip',
@@ -45,6 +46,10 @@ export class DatesTripComponent implements OnInit, OnChanges, AfterViewInit {
       departureDate: {
         message: 'You must enter a valid departure date',
         isValid: !(this.departureDate === '')
+      },
+      date: {
+        message: 'The departure date must be before the arrival date',
+        isValid: !(this.departureDate > this.arrivalDate)
       }
     };
   }
@@ -53,6 +58,7 @@ export class DatesTripComponent implements OnInit, OnChanges, AfterViewInit {
     const picker = new Lightpick({
       field: document.getElementById('date-input'),
       singleDate: false,
+      minDate: moment(new Date()),
       onSelect: this.onSelect
     });
   }
@@ -66,6 +72,8 @@ export class DatesTripComponent implements OnInit, OnChanges, AfterViewInit {
 
     this.stepValidationObject.arrivalDate.isValid =
       end === null || '' ? false : true;
+
+    this.stepValidationObject.date.isValid = !(start > end);
 
     this.dateConfirmed.emit({
       stepValues: {
