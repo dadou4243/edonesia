@@ -15,7 +15,6 @@ import { numberPeopleOptions } from '../../data/numberOfPeople';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WhoTravelComponent implements OnInit {
-  @Input() showConfirm;
   @Input() numberPeople: number;
   @Output() pickedNumberPeople = new EventEmitter();
 

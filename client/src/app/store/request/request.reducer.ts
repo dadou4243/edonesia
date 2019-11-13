@@ -22,6 +22,8 @@ export interface IFormValue {
   natural: string[];
   spa: string[];
   food: string[];
+  dining: string[];
+  volcano: string;
 }
 
 export interface RequestState {
@@ -37,12 +39,6 @@ export const initialState: RequestState = {
     isDatePlanned: true,
     departureDate: null,
     arrivalDate: null,
-    // departureDate: moment(new Date())
-    //   .add(1, 'days')
-    //   .format('DD/MM/YYYY'),
-    // arrivalDate: moment(new Date())
-    //   .add(5, 'days')
-    //   .format('DD/MM/YYYY'),
     airport: '',
     estimateMonth: null,
     estimateDays: null,
@@ -57,7 +53,9 @@ export const initialState: RequestState = {
     history: [],
     natural: [],
     spa: [],
-    food: []
+    food: [],
+    dining: [],
+    volcano: null
   },
   isValid: false,
   currentStepIndex: 5,
@@ -70,10 +68,6 @@ const featureReducer = createReducer(
   on(requestActions.SetCurrentIndex, (state, { currentStepIndex }) => ({
     ...state,
     currentStepIndex,
-    // currentActivitiesStepIndex:
-    //   currentStepIndex === 6 && state.currentStepIndex === 5
-    //     ? -1
-    //     : state.currentActivitiesStepIndex,
     currentValidationErrors: {}
   })),
   on(

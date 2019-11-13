@@ -21,7 +21,7 @@ export class HistoryComponent implements OnInit {
     this.stepValidationObject = {
       history: {
         message: 'You must select at least one choice',
-        isValid: this.selectedHistory.length > 0
+        isValid: this.selectedHistory.length >= 2
       }
     };
 
@@ -33,7 +33,7 @@ export class HistoryComponent implements OnInit {
   onPickHistory(historyFromEvent) {
     console.log('historyFromEvent:', historyFromEvent);
     this.stepValidationObject.history.isValid =
-      historyFromEvent.length > 0 ? true : false;
+      historyFromEvent.length >= 2 ? true : false;
 
     this.historyPicked.emit({
       stepValues: {

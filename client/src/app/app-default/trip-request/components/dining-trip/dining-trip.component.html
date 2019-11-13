@@ -6,16 +6,16 @@
   Select at least 2 categories
 </div>
 
-<div class="museums-options">
+<div class="dining-options">
   <app-multiple-choice
-    (optionPicked)="onPickMuseum($event)"
-    [selectedOptions]="selectedMuseums"
+    (optionPicked)="onPickDining($event)"
+    [selectedOptions]="selectedDining"
   >
     <app-choice-card
-      *ngFor="let museumOption of museumOptions"
-      [isActive]="selectedMuseums.includes(museumOption.value)"
-      [choiceData]="museumOption"
-      >{{ museumOption.label }}</app-choice-card
+      *ngFor="let diningOption of diningOptions"
+      [isActive]="selectedDining.includes(diningOption.value)"
+      [choiceData]="diningOption"
+      >{{ diningOption.label }}</app-choice-card
     >
   </app-multiple-choice>
 </div>

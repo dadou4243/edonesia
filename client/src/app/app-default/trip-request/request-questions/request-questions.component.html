@@ -1,4 +1,3 @@
-<!-- <app-stripe-payment></app-stripe-payment> -->
 <!-- <div>Show errors: {{ showErrors }}</div> -->
 <!-- <div style="font-size: 10px;">CurrentStep: {{ currentStepIndex }}</div> -->
 <!-- <div style="font-size: 10px;">
@@ -103,7 +102,12 @@
 >
 </app-food-trip>
 
-<!-- <app-beverages *ngIf="currentStepIndex === stepsNumber.food"> </app-beverages> -->
+<app-dining-trip
+  *ngIf="currentStepIndex === stepsNumber.dining"
+  [selectedDining]="formValue.dining"
+  (pickedDining)="onUpdateStepValues($event)"
+>
+</app-dining-trip>
 
 <app-diving
   *ngIf="
@@ -124,8 +128,10 @@
 <app-volcano
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'volcano'
+    formValue.activities[currentActivitiesStepIndex] === 'volcanoes'
   "
+  [selectedVolcano]="formValue.volcano"
+  (pickedVolcano)="onUpdateStepValues($event)"
 ></app-volcano>
 
 <app-hiking-trip
@@ -172,12 +178,16 @@
 <app-hotel-type
   *ngIf="currentStepIndex === stepsNumber.hotelType"
   [selectedHotel]="formValue.hotelType"
-  (pickedHotelType)="onUpdateStepValues($event)"
+  (hotelPicked)="onUpdateStepValues($event)"
 ></app-hotel-type>
 
-<!-- <div *ngIf="currentStepIndex === 6">
-  After Activities
-</div> -->
+<app-last-question
+  *ngIf="currentStepIndex === stepsNumber.lastQuestion"
+></app-last-question>
+
+<app-stripe-payment
+  *ngIf="currentStepIndex === stepsNumber.payment"
+></app-stripe-payment>
 
 <div class="errors">
   <div *ngIf="showErrors" class="alert">
@@ -193,7 +203,7 @@
       Previous
     </button>
   </div>
-  <div *ngIf="!(currentStepIndex > 7) && currentStepIndex !== 0">
+  <div *ngIf="!(currentStepIndex > 9) && currentStepIndex !== 0">
     <button class="next-btn" (click)="onClickNext()">
       Next
     </button>

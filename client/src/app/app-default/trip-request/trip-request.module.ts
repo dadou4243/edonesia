@@ -17,7 +17,6 @@ import { DivingComponent } from './components/diving/diving.component';
 import { SportsComponent } from './components/sports/sports.component';
 import { FoodTripComponent } from './components/food-trip/food-trip.component';
 import { DiningTripComponent } from './components/dining-trip/dining-trip.component';
-import { HistoricalTripComponent } from './components/historical-trip/historical-trip.component';
 import { NaturalWondersComponent } from './components/natural-wonders/natural-wonders.component';
 import { HikingTripComponent } from './components/hiking-trip/hiking-trip.component';
 import { NightlifeComponent } from './components/nightlife/nightlife.component';
@@ -27,6 +26,7 @@ import { AnythingElseComponent } from './components/anything-else/anything-else.
 import { SpaComponent } from './components/spa/spa.component';
 import { SurfingComponent } from './components/surfing/surfing.component';
 import { HistoryComponent } from './components/history/history.component';
+import { LastQuestionComponent } from './components/last-question/last-question.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,6 @@ import { HistoryComponent } from './components/history/history.component';
     SportsComponent,
     FoodTripComponent,
     DiningTripComponent,
-    HistoricalTripComponent,
     NaturalWondersComponent,
     HikingTripComponent,
     NightlifeComponent,
@@ -54,7 +53,8 @@ import { HistoryComponent } from './components/history/history.component';
     AnythingElseComponent,
     SpaComponent,
     SurfingComponent,
-    HistoryComponent
+    HistoryComponent,
+    LastQuestionComponent
   ],
   imports: [CommonModule, TripRequestRoutingModule, SharedModule]
 })

@@ -1,1 +1,11 @@
-<p>volcano works!</p>
+<div>
+  <h2>Would you rather hike the volcano or be driven there?</h2>
+  <div class="selector-container">
+    <app-select-option
+      (selectPicked)="onVolcanoChange($event)"
+      [selectedValue]="selectedVolcano"
+      [options]="volcanoOptions"
+      [placeholder]="'Pick an answer'"
+    ></app-select-option>
+  </div>
+</div>

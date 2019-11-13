@@ -1,6 +1,6 @@
 @import 'variables';
 
-:host  {
+:host {
   display: block;
   height: 100%;
   width: 100%;
@@ -111,5 +111,10 @@
     line-height: 27px;
     margin-top: 10px;
     margin-bottom: 20px;
+  }
+
+  ::ng-deep .selector-container {
+    display: flex;
+    justify-content: center;
   }
 }
