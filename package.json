@@ -5,8 +5,9 @@
   "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd server && npm install && node server",
+    "start": "cd server && node server",
     "client": "cd client && ng s",
+    "server": "cd server && nodemon server",
     "client-build": "cd client && npm install && npm run build",
     "client-install": "cd client && npm install",
     "server-install": "cd server && npm install",
@@ -17,9 +18,5 @@
   "engines": {
     "node": "11.3.0",
     "npm": "6.3.0"
-  },
-  "dependencies": {
-    "concurrently": "^5.0.0",
-    "nodemon": "^1.19.4"
   }
 }

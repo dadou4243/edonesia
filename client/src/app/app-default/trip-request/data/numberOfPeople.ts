@@ -37,6 +37,6 @@ export const numberPeopleOptions = [
   },
   {
     value: 10,
-    label: '10'
+    label: '10+'
   }
 ];

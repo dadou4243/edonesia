@@ -29,7 +29,7 @@ export class WhoTravelComponent implements OnInit {
   ngOnInit() {
     this.stepValidationObject = {
       numberPeople: {
-        message: 'You must select at least one choice',
+        message: 'You must pick an answer',
         isValid: this.numberPeople !== null
       }
     };
@@ -42,7 +42,7 @@ export class WhoTravelComponent implements OnInit {
   onNumberPeopleChange(numberPeopleFromEvent) {
     console.log('numberPeopleFromEvent:', numberPeopleFromEvent);
     this.stepValidationObject.numberPeople.isValid =
-      numberPeopleFromEvent > 0 ? true : false;
+      numberPeopleFromEvent !== null ? true : false;
 
     this.pickedNumberPeople.emit({
       stepValues: {
