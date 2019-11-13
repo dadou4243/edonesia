@@ -24,6 +24,8 @@ export interface IFormValue {
   food: string[];
   dining: string[];
   volcano: string;
+  culture: string[];
+  night: string[];
 }
 
 export interface RequestState {
@@ -55,7 +57,9 @@ export const initialState: RequestState = {
     spa: [],
     food: [],
     dining: [],
-    volcano: null
+    volcano: null,
+    culture: [],
+    night: []
   },
   isValid: false,
   currentStepIndex: 5,

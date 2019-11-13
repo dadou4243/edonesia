@@ -29,7 +29,7 @@ export class NaturalWondersComponent implements OnInit {
     this.stepValidationObject = {
       natural: {
         message: 'You must select at least one choice',
-        isValid: this.selectedNatural.length > 0
+        isValid: this.selectedNatural.length >= 3
       }
     };
 
@@ -41,7 +41,7 @@ export class NaturalWondersComponent implements OnInit {
   onPickNatural(naturalFromEvent) {
     console.log('naturalFromEvent:', naturalFromEvent);
     this.stepValidationObject.natural.isValid =
-      naturalFromEvent.length > 0 ? true : false;
+      naturalFromEvent.length >= 3 ? true : false;
 
     this.naturalPicked.emit({
       stepValues: {

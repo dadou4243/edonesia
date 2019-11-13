@@ -78,13 +78,6 @@
   (pickedActivityType)="onUpdateStepValues($event)"
 ></app-trip-activities>
 
-<!-- <div>
-  currentActivitiesStepIndex:
-  {{ currentActivitiesStepIndex }}
-  formValue.activities[currentActivitiesStepIndex]:
-  {{ formValue.activities[currentActivitiesStepIndex] }}
-</div> -->
-
 <app-museums
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
@@ -94,6 +87,16 @@
   (pickedMuseum)="onUpdateStepValues($event)"
 >
 </app-museums>
+
+<app-nightlife
+  *ngIf="
+    currentStepIndex === stepsNumber.tripActivities &&
+    formValue.activities[currentActivitiesStepIndex] === 'nightlife'
+  "
+  [selectedNight]="formValue.night"
+  (nightPicked)="onUpdateStepValues($event)"
+>
+</app-nightlife>
 
 <app-food-trip
   *ngIf="currentStepIndex === stepsNumber.food"
@@ -115,6 +118,15 @@
     formValue.activities[currentActivitiesStepIndex] === 'diving'
   "
 ></app-diving>
+
+<app-local-traditions
+  *ngIf="
+    currentStepIndex === stepsNumber.tripActivities &&
+    formValue.activities[currentActivitiesStepIndex] === 'culture'
+  "
+  [selectedCulture]="formValue.culture"
+  (clturePicked)="onUpdateStepValues($event)"
+></app-local-traditions>
 
 <app-natural-wonders
   *ngIf="

@@ -1,1 +1,23 @@
-<p>local-traditions works!</p>
+<div class="step-four">
+  <h2>
+    Local traditions and culture : what are you interested in?
+  </h2>
+
+  <div class="step-hint">
+    Select as many as you like
+  </div>
+
+  <div class="hotel-options">
+    <app-multiple-choice
+      (optionPicked)="onPickCulture($event)"
+      [selectedOptions]="selectedCulture"
+    >
+      <app-choice-card
+        *ngFor="let cultureOption of cultureOptions"
+        [isActive]="selectedCulture.includes(cultureOption.value)"
+        [choiceData]="cultureOption"
+        >{{ cultureOption.label }}</app-choice-card
+      >
+    </app-multiple-choice>
+  </div>
+</div>

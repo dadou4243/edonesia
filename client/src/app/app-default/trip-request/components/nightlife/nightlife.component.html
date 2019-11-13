@@ -1,1 +1,23 @@
-<p>nightlife works!</p>
+<div class="step-four">
+  <h2>
+    How can we make your nightlife outings unforgettable?
+  </h2>
+
+  <div class="step-hint">
+    Select as many as you like
+  </div>
+
+  <div class="night-options">
+    <app-multiple-choice
+      (optionPicked)="onPickNight($event)"
+      [selectedOptions]="selectedNight"
+    >
+      <app-choice-card
+        *ngFor="let nightOption of nightOptions"
+        [isActive]="selectedNight.includes(nightOption.value)"
+        [choiceData]="nightOption"
+        >{{ nightOption.label }}</app-choice-card
+      >
+    </app-multiple-choice>
+  </div>
+</div>
