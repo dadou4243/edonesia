@@ -64,7 +64,7 @@ export const initialState: RequestState = {
     eatHands: null
   },
   isValid: false,
-  currentStepIndex: 7,
+  currentStepIndex: 1,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };

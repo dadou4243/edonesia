@@ -64,7 +64,6 @@ export class PurposeTripComponent implements OnInit {
   }
 
   onPickBeenInPast(beenInPastFromEvent) {
-    console.log('beenInPastFromEvent:', beenInPastFromEvent);
     this.stepValidationObject.beenInPast.isValid =
       beenInPastFromEvent !== null ? true : false;
 
