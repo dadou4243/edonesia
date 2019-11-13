@@ -7,6 +7,7 @@ import {
   EventEmitter
 } from '@angular/core';
 import { diningOptions } from '../../data/dining';
+import { eatHandsOptions } from '../../data/eatHands';
 
 @Component({
   selector: 'app-dining-trip',
@@ -16,19 +17,23 @@ import { diningOptions } from '../../data/dining';
 })
 export class DiningTripComponent implements OnInit {
   @Input() selectedDining: string[];
+  @Input() selectedEatHands: string[];
   @Output() pickedDining = new EventEmitter();
+  @Output() pickedEatHands = new EventEmitter();
 
   diningOptions: any;
+  eatHandsOptions: any;
   stepValidationObject: any;
 
   constructor() {
     this.diningOptions = diningOptions;
+    this.eatHandsOptions = eatHandsOptions;
   }
 
   ngOnInit() {
     this.stepValidationObject = {
       dining: {
-        message: 'You must select at least 2 choices',
+        message: 'You must select at least 2 dining environment categories',
         isValid: this.selectedDining.length >= 2
       }
     };
@@ -47,6 +52,17 @@ export class DiningTripComponent implements OnInit {
     this.pickedDining.emit({
       stepValues: {
         dining: diningFromEvent
+      },
+      validationErrors: this.stepValidationObject
+    });
+  }
+
+  onPickEatHands(eatHandsFromEvent) {
+    console.log('eatHandsFromEvent:', eatHandsFromEvent);
+
+    this.pickedEatHands.emit({
+      stepValues: {
+        eatHands: eatHandsFromEvent
       },
       validationErrors: this.stepValidationObject
     });

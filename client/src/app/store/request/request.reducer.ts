@@ -26,6 +26,7 @@ export interface IFormValue {
   volcano: string;
   culture: string[];
   night: string[];
+  eatHands: string;
 }
 
 export interface RequestState {
@@ -59,10 +60,11 @@ export const initialState: RequestState = {
     dining: [],
     volcano: null,
     culture: [],
-    night: []
+    night: [],
+    eatHands: null
   },
   isValid: false,
-  currentStepIndex: 5,
+  currentStepIndex: 7,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };

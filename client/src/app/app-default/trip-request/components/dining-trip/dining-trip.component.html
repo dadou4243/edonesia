@@ -19,3 +19,16 @@
     >
   </app-multiple-choice>
 </div>
+
+<div class="step-hint">
+  How do you feel about eating with your hands?
+</div>
+
+<div class="selector-container">
+  <app-select-option
+    (selectPicked)="onPickEatHands($event)"
+    [selectedValue]="selectedEatHands"
+    [options]="eatHandsOptions"
+    [placeholder]="'Pick one answer'"
+  ></app-select-option>
+</div>

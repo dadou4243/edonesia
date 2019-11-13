@@ -108,7 +108,9 @@
 <app-dining-trip
   *ngIf="currentStepIndex === stepsNumber.dining"
   [selectedDining]="formValue.dining"
+  [selectedEatHands]="formValue.eatHands"
   (pickedDining)="onUpdateStepValues($event)"
+  (pickedEatHands)="onUpdateStepValues($event)"
 >
 </app-dining-trip>
 
