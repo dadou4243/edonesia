@@ -58,7 +58,6 @@
 
 <app-who-travel
   *ngIf="currentStepIndex === stepsNumber.whoTravel"
-  [showConfirm]="true"
   [numberPeople]="formValue.numberPeople"
   (pickedNumberPeople)="onUpdateStepValues($event)"
 ></app-who-travel>
@@ -97,7 +96,14 @@
 >
 </app-museums>
 
-<app-beverages *ngIf="currentStepIndex === stepsNumber.food"> </app-beverages>
+<app-food-trip
+  *ngIf="currentStepIndex === stepsNumber.food"
+  [selectedFood]="formValue.food"
+  (pickedFood)="onUpdateStepValues($event)"
+>
+</app-food-trip>
+
+<!-- <app-beverages *ngIf="currentStepIndex === stepsNumber.food"> </app-beverages> -->
 
 <app-diving
   *ngIf="
@@ -134,6 +140,8 @@
     currentStepIndex === stepsNumber.tripActivities &&
     formValue.activities[currentActivitiesStepIndex] === 'sports'
   "
+  [selectedSports]="formValue.sports"
+  (pickedSport)="onUpdateStepValues($event)"
 ></app-sports>
 
 <app-spa
@@ -141,6 +149,8 @@
     currentStepIndex === stepsNumber.tripActivities &&
     formValue.activities[currentActivitiesStepIndex] === 'spa'
   "
+  [selectedSpa]="formValue.spa"
+  (pickedSpa)="onUpdateStepValues($event)"
 ></app-spa>
 
 <app-surfing

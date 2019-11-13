@@ -65,4 +65,4 @@ export const activityOptions = [
   }
 ];
 
-export const activitiesWithoutPage = ['cruises'];
+export const activitiesWithoutPage = ['cruises', 'food'];

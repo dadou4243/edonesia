@@ -1,1 +1,21 @@
-<p>dining-trip works!</p>
+<h2>
+  What dining environments do you enjoy?
+</h2>
+
+<div class="step-hint">
+  Select at least 2 categories
+</div>
+
+<div class="museums-options">
+  <app-multiple-choice
+    (optionPicked)="onPickMuseum($event)"
+    [selectedOptions]="selectedMuseums"
+  >
+    <app-choice-card
+      *ngFor="let museumOption of museumOptions"
+      [isActive]="selectedMuseums.includes(museumOption.value)"
+      [choiceData]="museumOption"
+      >{{ museumOption.label }}</app-choice-card
+    >
+  </app-multiple-choice>
+</div>

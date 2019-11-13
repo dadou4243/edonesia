@@ -1,1 +1,21 @@
-<p>spa works!</p>
+<h2>
+  Wellness : how do you like to relax?
+</h2>
+
+<div class="step-hint">
+  Select as many as you like
+</div>
+
+<div class="spa-options">
+  <app-multiple-choice
+    (optionPicked)="onPickSpa($event)"
+    [selectedOptions]="selectedSpa"
+  >
+    <app-choice-card
+      *ngFor="let spaOption of spaOptions"
+      [isActive]="selectedSpa.includes(spaOption.value)"
+      [choiceData]="spaOption"
+      >{{ spaOption.label }}</app-choice-card
+    >
+  </app-multiple-choice>
+</div>

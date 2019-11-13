@@ -20,6 +20,8 @@ export interface IFormValue {
   sports: string[];
   history: string[];
   natural: string[];
+  spa: string[];
+  food: string[];
 }
 
 export interface RequestState {
@@ -53,10 +55,12 @@ export const initialState: RequestState = {
     museums: [],
     sports: [],
     history: [],
-    natural: []
+    natural: [],
+    spa: [],
+    food: []
   },
   isValid: false,
-  currentStepIndex: 4,
+  currentStepIndex: 5,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };

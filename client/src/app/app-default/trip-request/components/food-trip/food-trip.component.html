@@ -1,1 +1,21 @@
-<p>food-trip works!</p>
+<h2>
+  Tell us about your food and beverages tastes. What do you like?
+</h2>
+
+<div class="step-hint">
+  Select a least 3 categories
+</div>
+
+<div class="food-options">
+  <app-multiple-choice
+    (optionPicked)="onPickFood($event)"
+    [selectedOptions]="selectedFood"
+  >
+    <app-choice-card
+      *ngFor="let foodOption of foodOptions"
+      [isActive]="selectedFood.includes(foodOption.value)"
+      [choiceData]="foodOption"
+      >{{ foodOption.label }}</app-choice-card
+    >
+  </app-multiple-choice>
+</div>

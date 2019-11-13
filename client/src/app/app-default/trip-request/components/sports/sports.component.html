@@ -1,1 +1,21 @@
-<p>sports works!</p>
+<h2>
+  What sports do you enjoy?
+</h2>
+
+<div class="step-hint">
+  Select as many as you like
+</div>
+
+<div class="sports-options">
+  <app-multiple-choice
+    (optionPicked)="onPickSport($event)"
+    [selectedOptions]="selectedSports"
+  >
+    <app-choice-card
+      *ngFor="let sportOption of sportsOptions"
+      [isActive]="selectedSports.includes(sportOption.value)"
+      [choiceData]="sportOption"
+      >{{ sportOption.label }}</app-choice-card
+    >
+  </app-multiple-choice>
+</div>

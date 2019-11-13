@@ -13,7 +13,7 @@ import {
   SetActivitiesCurrentIndex,
   getActivitiesWithoutEmptyOnes
 } from 'src/app/store/request';
-import { steps } from '../data/data';
+import { steps } from '../data/steps';
 
 @Component({
   selector: 'app-request-questions',

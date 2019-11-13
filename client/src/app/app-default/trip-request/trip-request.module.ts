@@ -13,7 +13,6 @@ import { TripDestinationComponent } from './components/trip-destination/trip-des
 import { EstimateDateComponent } from './components/estimate-date/estimate-date.component';
 import { TripActivitiesComponent } from './components/trip-activities/trip-activities.component';
 import { MuseumsComponent } from './components/museums/museums.component';
-import { BeveragesComponent } from './components/beverages/beverages.component';
 import { DivingComponent } from './components/diving/diving.component';
 import { SportsComponent } from './components/sports/sports.component';
 import { FoodTripComponent } from './components/food-trip/food-trip.component';
@@ -42,7 +41,6 @@ import { HistoryComponent } from './components/history/history.component';
     EstimateDateComponent,
     TripActivitiesComponent,
     MuseumsComponent,
-    BeveragesComponent,
     DivingComponent,
     SportsComponent,
     FoodTripComponent,
