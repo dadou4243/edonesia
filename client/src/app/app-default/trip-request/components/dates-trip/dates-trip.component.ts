@@ -52,15 +52,12 @@ export class DatesTripComponent implements OnInit, OnChanges, AfterViewInit {
   ngAfterViewInit() {
     const picker = new Lightpick({
       field: document.getElementById('date-input'),
-      // secondField: document.getElementById('end-date'),
       singleDate: false,
       onSelect: this.onSelect
     });
   }
 
   onSelect = (start, end) => {
-    console.log('end:', end);
-    console.log('start:', start);
     this.tempDepartureDate = start ? start.format('DD/MM/YYYY') : '';
     this.tempArrivalDate = end ? end.format('DD/MM/YYYY') : '';
 
@@ -78,10 +75,6 @@ export class DatesTripComponent implements OnInit, OnChanges, AfterViewInit {
       validationErrors: this.stepValidationObject
     });
   };
-
-  showValue(value) {
-    console.log('value', value);
-  }
 
   ngOnChanges() {
     this.tempDepartureDate = this.departureDate;

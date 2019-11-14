@@ -49,13 +49,11 @@ export class RequestQuestionsComponent implements OnInit {
       }
     });
     this.store.pipe(select(getFormValue)).subscribe(formValue => {
-      // console.log('formValue:', formValue);
       this.formValue = formValue;
     });
     this.store
       .pipe(select(getActivitiesWithoutEmptyOnes))
       .subscribe(activitiesWithoutEmpty => {
-        // console.log('activitiesWithoutEmpty:', activitiesWithoutEmpty);
         this.activitiesWithoutEmpty = activitiesWithoutEmpty;
       });
   }
@@ -67,9 +65,6 @@ export class RequestQuestionsComponent implements OnInit {
   }
 
   onClickNext() {
-    console.log('CLICK NEXT');
-    console.log('this.errors', this.errors);
-
     // Check if step valid
     if (this.errors.length === 0) {
       this.showErrors = false;
@@ -107,7 +102,6 @@ export class RequestQuestionsComponent implements OnInit {
   }
 
   onClickPrevious() {
-    console.log('on Click Previous');
     this.showErrors = false;
 
     // If current step is sub activity step
@@ -129,20 +123,17 @@ export class RequestQuestionsComponent implements OnInit {
   }
 
   onUpdateStepValues(value) {
-    // console.log('value:', value);
-
     this.store.dispatch(
       SetFormValue({
         stepValues: value.stepValues,
         validationErrors: value.validationErrors
       })
     );
-    // this.onClickNext();
   }
 
-  submitRequest() {
-    this.bookingsService.addBooking(this.requestForm.value).subscribe(res => {
-      console.log('res', res);
-    });
-  }
+  // submitRequest() {
+  //   this.bookingsService.addBooking(this.requestForm.value).subscribe(res => {
+  //     console.log('res', res);
+  //   });
+  // }
 }

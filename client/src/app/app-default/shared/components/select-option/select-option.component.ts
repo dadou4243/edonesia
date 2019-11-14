@@ -58,7 +58,6 @@ export class SelectOptionComponent implements OnInit, OnDestroy {
   }
 
   onSelectOption(option) {
-    console.log('option:', option);
     this.selectedOption = option;
     this.selectPicked.emit(option);
     this.isOpen = false;
