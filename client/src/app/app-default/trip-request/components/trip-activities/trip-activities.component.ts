@@ -28,8 +28,8 @@ export class TripActivitiesComponent implements OnInit {
   ngOnInit() {
     this.stepValidationObject = {
       activities: {
-        message: 'You must select at least one choice',
-        isValid: this.selectedActivities.length > 0
+        message: 'You must select at least three activity categories',
+        isValid: this.selectedActivities.length >= 3
       }
     };
 
@@ -42,7 +42,7 @@ export class TripActivitiesComponent implements OnInit {
     console.log('activitiesFromEvent', activitiesFromEvent);
 
     this.stepValidationObject.activities.isValid =
-      activitiesFromEvent.length > 0 ? true : false;
+      activitiesFromEvent.length >= 3 ? true : false;
 
     this.pickedActivityType.emit({
       stepValues: {

@@ -1,1 +1,47 @@
-<p>hiking-trip works!</p>
+<h2>
+  Treks and Hikes : what is your ideal hiking environment?
+</h2>
+
+<div class="step-hint">
+  Select as many as you like
+</div>
+
+<div class="treks-options">
+  <app-multiple-choice
+    (optionPicked)="onPickTreks($event)"
+    [selectedOptions]="selectedTreks"
+  >
+    <app-choice-card
+      *ngFor="let treksOption of treksOptions"
+      [isActive]="selectedTreks.includes(treksOption.value)"
+      [choiceData]="treksOption"
+      >{{ treksOption.label }}</app-choice-card
+    >
+  </app-multiple-choice>
+</div>
+
+<div class="step-hint">
+  How long would you like one typical trek to be?
+</div>
+
+<div class="selector-container">
+  <app-select-option
+    (selectPicked)="onPickTreksDuration($event)"
+    [selectedValue]="selectedTreksDuration"
+    [options]="treksDurationOptions"
+    [placeholder]="'Pick one answer'"
+  ></app-select-option>
+</div>
+
+<div class="step-hint">
+  What's your overall fitness and hiking level?
+</div>
+
+<div class="selector-container">
+  <app-select-option
+    (selectPicked)="onPickTreksDifficulty($event)"
+    [selectedValue]="selectedTreksDifficulty"
+    [options]="treksDifficultyOptions"
+    [placeholder]="'Pick one answer'"
+  ></app-select-option>
+</div>

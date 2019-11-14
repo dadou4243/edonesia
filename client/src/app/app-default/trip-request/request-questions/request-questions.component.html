@@ -153,6 +153,10 @@
     currentStepIndex === stepsNumber.tripActivities &&
     formValue.activities[currentActivitiesStepIndex] === 'trekking'
   "
+  [selectedTreks]="formValue.treks"
+  [selectedTreksDuration]="formValue.treksDuration"
+  [selectedTreksDifficulty]="formValue.treksDifficulty"
+  (pickedTreks)="onUpdateStepValues($event)"
 ></app-hiking-trip>
 
 <app-sports
