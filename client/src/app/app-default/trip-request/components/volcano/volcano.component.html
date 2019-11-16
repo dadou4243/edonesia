@@ -10,13 +10,10 @@
   </div>
 </div>
 
-<div class="step-description">
-  Since categorizing volcanoes can be tricky, we will keep this topic for your
-  phone meetings with our travel consultant. He will come up with different
-  suggestions depending on your destination, your other interests and the latest
-  activity updates. However, we will be happy to satisfy your demands or to
-  include a specific sight in your itinerary.
+<div class="step-hint">
+  Do you have any particular requests or destinations in mind?
 </div>
+
 <textarea
   (keydown)="updateVolcanoPlaces($event)"
   [ngModel]="typedVolcanoPlaces"
@@ -24,3 +21,11 @@
   id=""
   rows="4"
 ></textarea>
+
+<div class="step-description">
+  Since categorizing volcanoes can be tricky, we will keep this topic for your
+  phone meetings with our travel consultant. He will come up with different
+  suggestions depending on your destination, your other interests and the latest
+  activity updates. However, we will be happy to satisfy your demands or to
+  include a specific sight in your itinerary.
+</div>

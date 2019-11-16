@@ -27,7 +27,7 @@
   }
 
   button.next-btn {
-    background-color: $primary-dark;
+    background: #9ea563;
     color: white;
     padding: 1.1rem 1.8rem;
     border-radius: 3px;
@@ -35,7 +35,7 @@
     font-weight: 600;
 
     &:hover {
-      background-color: #69694d;
+      background-color: #b8bf7c;
     }
   }
 
@@ -74,10 +74,9 @@
   }
 
   .step-buttons {
-    margin: 40px auto 10px auto;
+    margin: 40px auto;
     display: flex;
     justify-content: space-between;
-    max-width: 600px;
     // padding: 0 20px;
   }
 
