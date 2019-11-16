@@ -211,10 +211,10 @@
   *ngIf="currentStepIndex === stepsNumber.payment"
 ></app-stripe-payment>
 
-<div class="errors">
-  <div *ngIf="showErrors" class="alert">
-    <div *ngFor="let error of errors" class="error">
-      {{ error.message }}
+<div class="errors" *ngIf="showErrors">
+  <div class="alert">
+    <div class="error">
+      {{ errors[0].message }}
     </div>
   </div>
 </div>
