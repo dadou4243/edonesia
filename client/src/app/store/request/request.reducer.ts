@@ -16,6 +16,7 @@ export interface IFormValue {
   purposes: string[];
   beenInPast: string;
   hotelType: string[];
+  priceRange: number[];
   activities: string[];
   museums: string[];
   sports: string[];
@@ -56,6 +57,7 @@ export const initialState: RequestState = {
     purposes: [],
     beenInPast: null,
     hotelType: [],
+    priceRange: [50, 200],
     activities: [],
     museums: [],
     sports: [],

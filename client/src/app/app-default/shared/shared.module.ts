@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng5SliderModule } from 'ng5-slider';
 
 import { BookTripComponent } from './components/book-trip/book-trip.component';
 import { StripePaymentComponent } from './components/stripe-payment/stripe-payment.component';
@@ -16,11 +17,12 @@ import { SelectOptionComponent } from './components/select-option/select-option.
     MultipleChoiceComponent,
     SelectOptionComponent
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, Ng5SliderModule],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    Ng5SliderModule,
     StripePaymentComponent,
     ChoiceCardComponent,
     MultipleChoiceComponent,

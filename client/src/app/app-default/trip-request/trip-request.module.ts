@@ -27,6 +27,7 @@ import { SpaComponent } from './components/spa/spa.component';
 import { SurfingComponent } from './components/surfing/surfing.component';
 import { HistoryComponent } from './components/history/history.component';
 import { LastQuestionComponent } from './components/last-question/last-question.component';
+import { ExampleDirective } from './request-questions/scrollTop.directive';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { LastQuestionComponent } from './components/last-question/last-question.
     SpaComponent,
     SurfingComponent,
     HistoryComponent,
-    LastQuestionComponent
+    LastQuestionComponent,
+    ExampleDirective
   ],
   imports: [CommonModule, TripRequestRoutingModule, SharedModule]
 })

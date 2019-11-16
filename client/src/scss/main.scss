@@ -114,6 +114,31 @@ button {
   flex: 1;
 }
 
+.ng5-slider {
+  .ng5-slider-selection {
+    background-color: #b7bf76 !important;
+  }
+
+  .ng5-slider-bar {
+    background-color: #dbdcd4 !important;
+
+    &.ng5-slider-selection {
+      background-color: #9ea563 !important;
+    }
+  }
+
+  .ng5-slider-pointer {
+    outline: 0 !important;
+    background-color: $primary-dark !important;
+
+    &.ng5-slider-active {
+      &:after {
+        background-color: #cce210 !important;
+      }
+    }
+  }
+}
+
 // @media (min-width: 1200px) {
 //   .container {
 //     width: 1260px;

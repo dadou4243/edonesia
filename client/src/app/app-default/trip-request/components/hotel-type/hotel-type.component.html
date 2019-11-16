@@ -23,5 +23,10 @@
 
   <div class="step-hint">What is your budget per night and per room?</div>
 
-  <div>cursor!!!</div>
+  <ng5-slider
+    [value]="selectedPriceRange[0]"
+    [highValue]="selectedPriceRange[1]"
+    [options]="options"
+    (userChange)="onPriceRangeChange($event)"
+  ></ng5-slider>
 </div>

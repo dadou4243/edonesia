@@ -27,12 +27,14 @@
 </div>
 
 <app-date-planned
+  appScrollTop
   *ngIf="currentStepIndex === stepsNumber.datePlanned"
   [value]="formValue.isDatePlanned"
   (clickedDatePlanned)="onUpdateStepValues($event); onClickNext()"
 ></app-date-planned>
 
 <app-dates-trip
+  appScrollTop
   *ngIf="currentStepIndex === stepsNumber.datesTrip && formValue.isDatePlanned"
   [departureDate]="formValue.departureDate"
   [arrivalDate]="formValue.arrivalDate"
@@ -41,6 +43,7 @@
 ></app-dates-trip>
 
 <app-estimate-date
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.estimateDate && !formValue.isDatePlanned
   "
@@ -50,6 +53,7 @@
 ></app-estimate-date>
 
 <app-trip-destination
+  appScrollTop
   *ngIf="currentStepIndex === stepsNumber.tripDestination"
   (destinationPicked)="onUpdateStepValues($event)"
   (preciseAreaChanged)="onUpdateStepValues($event)"
@@ -58,12 +62,14 @@
 ></app-trip-destination>
 
 <app-who-travel
+  appScrollTop
   *ngIf="currentStepIndex === stepsNumber.whoTravel"
   [numberPeople]="formValue.numberPeople"
   (pickedNumberPeople)="onUpdateStepValues($event)"
 ></app-who-travel>
 
 <app-purpose-trip
+  appScrollTop
   *ngIf="currentStepIndex === stepsNumber.purposeTrip"
   [selectedPurposes]="formValue.purposes"
   [selectedBeenInPast]="formValue.beenInPast"
@@ -72,6 +78,7 @@
 ></app-purpose-trip>
 
 <app-trip-activities
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
     currentActivitiesStepIndex === -1
@@ -81,9 +88,10 @@
 ></app-trip-activities>
 
 <app-museums
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'museums'
+    activitiesWithoutEmpty[currentActivitiesStepIndex] === 'museums'
   "
   [selectedMuseums]="formValue.museums"
   (pickedMuseum)="onUpdateStepValues($event)"
@@ -91,9 +99,10 @@
 </app-museums>
 
 <app-nightlife
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'nightlife'
+    activitiesWithoutEmpty[currentActivitiesStepIndex] === 'nightlife'
   "
   [selectedNight]="formValue.night"
   (nightPicked)="onUpdateStepValues($event)"
@@ -101,6 +110,7 @@
 </app-nightlife>
 
 <app-food-trip
+  appScrollTop
   *ngIf="currentStepIndex === stepsNumber.food"
   [selectedFood]="formValue.food"
   (pickedFood)="onUpdateStepValues($event)"
@@ -108,6 +118,7 @@
 </app-food-trip>
 
 <app-dining-trip
+  appScrollTop
   *ngIf="currentStepIndex === stepsNumber.dining"
   [selectedDining]="formValue.dining"
   [selectedEatHands]="formValue.eatHands"
@@ -117,34 +128,38 @@
 </app-dining-trip>
 
 <app-diving
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'diving'
+    activitiesWithoutEmpty[currentActivitiesStepIndex] === 'diving'
   "
 ></app-diving>
 
 <app-local-traditions
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'culture'
+    activitiesWithoutEmpty[currentActivitiesStepIndex] === 'culture'
   "
   [selectedCulture]="formValue.culture"
   (clturePicked)="onUpdateStepValues($event)"
 ></app-local-traditions>
 
 <app-natural-wonders
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'natural'
+    activitiesWithoutEmpty[currentActivitiesStepIndex] === 'natural'
   "
   [selectedNatural]="formValue.natural"
   (naturalPicked)="onUpdateStepValues($event)"
 ></app-natural-wonders>
 
 <app-volcano
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'volcanoes'
+    activitiesWithoutEmpty[currentActivitiesStepIndex] === 'volcanoes'
   "
   [selectedVolcano]="formValue.volcano"
   [typedVolcanoPlaces]="formValue.volcanoPlaces"
@@ -153,9 +168,10 @@
 ></app-volcano>
 
 <app-hiking-trip
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'trekking'
+    activitiesWithoutEmpty[currentActivitiesStepIndex] === 'trekking'
   "
   [selectedTreks]="formValue.treks"
   [selectedTreksDuration]="formValue.treksDuration"
@@ -164,50 +180,69 @@
 ></app-hiking-trip>
 
 <app-sports
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'sports'
+    activitiesWithoutEmpty[currentActivitiesStepIndex] === 'sports'
   "
   [selectedSports]="formValue.sports"
   (pickedSport)="onUpdateStepValues($event)"
 ></app-sports>
 
-<app-spa
+<!-- <div
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'spa'
+    formValue.activities[currentActivitiesStepIndex] === 'cruises'
+  "
+>
+  cruises
+</div> -->
+
+<app-spa
+  appScrollTop
+  *ngIf="
+    currentStepIndex === stepsNumber.tripActivities &&
+    activitiesWithoutEmpty[currentActivitiesStepIndex] === 'spa'
   "
   [selectedSpa]="formValue.spa"
   (pickedSpa)="onUpdateStepValues($event)"
 ></app-spa>
 
 <app-surfing
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'surfing'
+    activitiesWithoutEmpty[currentActivitiesStepIndex] === 'surfing'
   "
 ></app-surfing>
 
 <app-history
+  appScrollTop
   *ngIf="
     currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'history'
+    activitiesWithoutEmpty[currentActivitiesStepIndex] === 'history'
   "
   [selectedHistory]="formValue.history"
   (historyPicked)="onUpdateStepValues($event)"
 ></app-history>
 
 <app-hotel-type
+  appScrollTop
   *ngIf="currentStepIndex === stepsNumber.hotelType"
   [selectedHotel]="formValue.hotelType"
+  [selectedPriceRange]="formValue.priceRange"
   (hotelPicked)="onUpdateStepValues($event)"
+  (priceRangeChanged)="onUpdateStepValues($event)"
 ></app-hotel-type>
 
 <app-last-question
+  appScrollTop
   *ngIf="currentStepIndex === stepsNumber.lastQuestion"
 ></app-last-question>
 
 <app-stripe-payment
+  appScrollTop
   *ngIf="currentStepIndex === stepsNumber.payment"
 ></app-stripe-payment>
 

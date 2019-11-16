@@ -4,9 +4,12 @@ import {
   Input,
   Output,
   EventEmitter,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  OnDestroy
 } from '@angular/core';
 import { hotelOptions } from '../../data/hotels';
+
+import { Options } from 'ng5-slider';
 
 @Component({
   selector: 'app-hotel-type',
@@ -14,18 +17,33 @@ import { hotelOptions } from '../../data/hotels';
   styleUrls: ['./hotel-type.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HotelTypeComponent implements OnInit {
+export class HotelTypeComponent implements OnInit, OnDestroy {
   @Input() selectedHotel: string[];
+  @Input() selectedPriceRange: number[];
   @Output() hotelPicked = new EventEmitter();
+  @Output() priceRangeChanged = new EventEmitter();
 
   hotelOptions: any[];
   stepValidationObject: any;
+
+  minValue: number;
+  maxValue: number;
+  options: Options = {
+    floor: 0,
+    ceil: 250,
+    translate: (value: number): string => {
+      return `$ ${value}`;
+    }
+  };
 
   constructor() {
     this.hotelOptions = hotelOptions;
   }
 
   ngOnInit() {
+    this.minValue = this.selectedPriceRange[0];
+    this.maxValue = this.selectedPriceRange[1];
+
     this.stepValidationObject = {
       hotel: {
         message: 'You must select at least one choice',
@@ -34,6 +52,15 @@ export class HotelTypeComponent implements OnInit {
     };
 
     this.hotelPicked.emit({
+      validationErrors: this.stepValidationObject
+    });
+  }
+
+  ngOnDestroy() {
+    this.priceRangeChanged.emit({
+      stepValues: {
+        priceRange: [this.minValue, this.maxValue]
+      },
       validationErrors: this.stepValidationObject
     });
   }
@@ -49,5 +76,10 @@ export class HotelTypeComponent implements OnInit {
       },
       validationErrors: this.stepValidationObject
     });
+  }
+
+  onPriceRangeChange(event) {
+    this.minValue = event.value;
+    this.maxValue = event.highValue;
   }
 }

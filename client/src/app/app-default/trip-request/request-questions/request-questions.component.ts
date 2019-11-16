@@ -54,6 +54,7 @@ export class RequestQuestionsComponent implements OnInit {
     this.store
       .pipe(select(getActivitiesWithoutEmptyOnes))
       .subscribe(activitiesWithoutEmpty => {
+        console.log('activitiesWithoutEmpty:', activitiesWithoutEmpty);
         this.activitiesWithoutEmpty = activitiesWithoutEmpty;
       });
   }
