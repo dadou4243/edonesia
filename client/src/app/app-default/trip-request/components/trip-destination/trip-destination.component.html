@@ -2,31 +2,44 @@
   Where are you going?
 </h2>
 
-<div class="step-four">
-  <div class="step-hint">Select your dream regions</div>
-  <div class="destination-options">
-    <app-multiple-choice
-      (optionPicked)="onPickDestination($event)"
-      [selectedOptions]="selectedDestinations"
+<div class="step-description">
+  <p>
+    Don't worry if you are still unsure aboutyour destination(s). Our designers
+    and consultants will do everything to recommend you the perfect place given
+    your preferences.
+  </p>
+</div>
+
+<div class="step-hint">Select your dream regions</div>
+<div class="destination-options">
+  <app-multiple-choice
+    (optionPicked)="onPickDestination($event)"
+    [selectedOptions]="selectedDestinations"
+  >
+    <app-choice-card
+      *ngFor="let destinationOption of destinationOptions"
+      [isActive]="selectedDestinations.includes(destinationOption.value)"
+      [choiceData]="destinationOption"
+      >{{ destinationOption.label }}</app-choice-card
     >
-      <app-choice-card
-        *ngFor="let destinationOption of destinationOptions"
-        [isActive]="selectedDestinations.includes(destinationOption.value)"
-        [choiceData]="destinationOption"
-        >{{ destinationOption.label }}</app-choice-card
-      >
-    </app-multiple-choice>
-    <!-- <button
+  </app-multiple-choice>
+  <!-- <button
       class="ut-btn"
       (click)="onPickDestination('Unknown')"
       [class.isActive]="destinations.includes('Unknown')"
     >
       I don't know yet
     </button> -->
-  </div>
-  <div class="step-hint">
-    Do you have precise areas or places of interest in mind? <br />
-    Share them with us.
-  </div>
-  <textarea name="" id="" rows="4"></textarea>
 </div>
+
+<div class="step-hint">
+  Do you have precise areas or places of interest in mind? <br />
+  Share them with us.
+</div>
+<textarea
+  (keydown)="updatePreciseAreaValue($event)"
+  [ngModel]="typedPreciseAreaValue"
+  name=""
+  id=""
+  rows="4"
+></textarea>

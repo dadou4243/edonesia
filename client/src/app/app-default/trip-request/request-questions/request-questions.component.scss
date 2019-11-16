@@ -1,4 +1,5 @@
 @import 'utilities/_variables';
+@import 'utilities/_mixins';
 
 :host {
   display: block;
@@ -7,13 +8,18 @@
   flex: 1;
   margin: 0 auto;
   align-self: center;
-  padding: 90px 0;
+  // padding: 90px 0;
 
   ::ng-deep h2 {
     text-align: center;
     font-size: 34px;
     font-family: ArbutusSlab, sans-serif;
     margin-bottom: 40px;
+    margin-top: 20px;
+
+    @include phone {
+      font-size: 28px;
+    }
   }
 
   p {
@@ -67,12 +73,6 @@
     }
   }
 
-  ::ng-deep app-multiple-choice {
-    max-width: 650px;
-    margin: 0 auto;
-    display: block;
-  }
-
   .step-buttons {
     margin: 40px auto 10px auto;
     display: flex;
@@ -115,12 +115,30 @@
     font-weight: 600;
     text-align: center;
     line-height: 27px;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin: 35px auto 20px;
+    padding: 0 25px;
   }
 
   ::ng-deep .selector-container {
     display: flex;
     justify-content: center;
+    margin-bottom: 30px;
   }
+
+  ::ng-deep .step-description {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 1.4;
+  }
+}
+
+::ng-deep textarea {
+  width: 100%;
+  min-height: 114px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  border: none;
+  padding: 10px 12px;
+  font-size: 16px;
 }

@@ -30,10 +30,10 @@ export class MultipleChoiceComponent
   ngOnInit() {}
 
   ngAfterContentInit() {
-    console.log('this.choices:', this.choices);
+    // console.log('this.choices:', this.choices);
     this.choices.forEach((choice: ChoiceCardComponent) => {
       choice.choiceClicked.subscribe(c => {
-        console.log('choice:', c);
+        // console.log('choice:', c);
         this.onPickActivity(c.value);
       });
       // t.addEventListener('onMinimized', this.hide);

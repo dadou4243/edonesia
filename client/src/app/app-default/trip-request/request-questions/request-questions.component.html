@@ -52,6 +52,8 @@
 <app-trip-destination
   *ngIf="currentStepIndex === stepsNumber.tripDestination"
   (destinationPicked)="onUpdateStepValues($event)"
+  (preciseAreaChanged)="onUpdateStepValues($event)"
+  [typedPreciseAreaValue]="formValue.preciseArea"
   [selectedDestinations]="formValue.destinations"
 ></app-trip-destination>
 
@@ -145,7 +147,9 @@
     formValue.activities[currentActivitiesStepIndex] === 'volcanoes'
   "
   [selectedVolcano]="formValue.volcano"
+  [typedVolcanoPlaces]="formValue.volcanoPlaces"
   (pickedVolcano)="onUpdateStepValues($event)"
+  (volcanoPlacesChanged)="onUpdateStepValues($event)"
 ></app-volcano>
 
 <app-hiking-trip

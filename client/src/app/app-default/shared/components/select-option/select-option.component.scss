@@ -1,12 +1,14 @@
 @import 'utilities/_variables';
 
 :host {
-  width: 400px;
+  width: 70%;
+  max-width: 400px;
 }
 
 .select-container {
   position: relative;
-  width: 400px;
+  // width: 70%;
+  max-width: 400px;
 
   .selected {
     position: relative;
@@ -24,7 +26,8 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     max-height: 150px;
     overflow-y: auto;
     z-index: 1;

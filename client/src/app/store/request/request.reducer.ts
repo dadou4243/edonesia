@@ -11,6 +11,7 @@ export interface IFormValue {
   estimateMonth: string;
   estimateDays: number;
   destinations: string[];
+  preciseArea: string;
   numberPeople: number;
   purposes: string[];
   beenInPast: string;
@@ -24,6 +25,7 @@ export interface IFormValue {
   food: string[];
   dining: string[];
   volcano: string;
+  volcanoPlaces: string;
   culture: string[];
   night: string[];
   eatHands: string;
@@ -49,6 +51,7 @@ export const initialState: RequestState = {
     estimateMonth: null,
     estimateDays: null,
     destinations: [],
+    preciseArea: null,
     numberPeople: null,
     purposes: [],
     beenInPast: null,
@@ -62,6 +65,7 @@ export const initialState: RequestState = {
     food: [],
     dining: [],
     volcano: null,
+    volcanoPlaces: null,
     culture: [],
     night: [],
     eatHands: null,

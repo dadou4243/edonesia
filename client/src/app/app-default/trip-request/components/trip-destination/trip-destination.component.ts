@@ -4,7 +4,11 @@ import {
   Output,
   EventEmitter,
   Input,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+  OnDestroy
 } from '@angular/core';
 import { destinationOptions } from '../../data/destinations';
 
@@ -14,10 +18,16 @@ import { destinationOptions } from '../../data/destinations';
   styleUrls: ['./trip-destination.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TripDestinationComponent implements OnInit {
+export class TripDestinationComponent
+  implements OnInit, AfterViewInit, OnDestroy {
   @Input() selectedDestinations: string[];
+  @Input() typedPreciseAreaValue: string[];
   @Output() destinationPicked = new EventEmitter();
+  @Output() preciseAreaChanged = new EventEmitter();
 
+  // @ViewChild('topElement', { static: false }) topElement: ElementRef;
+
+  preciseAreaValue: string[];
   destinationOptions: any;
   stepValidationObject: any;
 
@@ -38,8 +48,29 @@ export class TripDestinationComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    // console.log(this.topElement);
+    // this.topElement.nativeElement.scrollIntoView({
+    //   behavior: 'smooth',
+    //   block: 'start'
+    // });
+  }
+
+  ngOnDestroy() {
+    this.preciseAreaChanged.emit({
+      stepValues: {
+        preciseArea: this.preciseAreaValue
+      },
+      validationErrors: this.stepValidationObject
+    });
+  }
+
+  updatePreciseAreaValue(event) {
+    this.preciseAreaValue = event.target.value;
+  }
+
   onPickDestination(destinationsFromEvent) {
-    console.log('destinationsFromEvent:', destinationsFromEvent);
+    // console.log('destinationsFromEvent:', destinationsFromEvent);
 
     this.stepValidationObject.destination.isValid =
       destinationsFromEvent.length > 0 ? true : false;
@@ -51,4 +82,15 @@ export class TripDestinationComponent implements OnInit {
       validationErrors: this.stepValidationObject
     });
   }
+
+  // onChangePreciseArea(event) {
+  //   console.log('event:', event);
+
+  //   this.preciseAreaChanged.emit({
+  //     stepValues: {
+  //       preciseArea: event.target.value
+  //     },
+  //     validationErrors: this.stepValidationObject
+  //   });
+  // }
 }

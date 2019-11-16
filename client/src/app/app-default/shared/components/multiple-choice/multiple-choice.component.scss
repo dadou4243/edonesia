@@ -1,12 +1,15 @@
 @import 'utilities/_mixins';
 
+:host {
+  margin: 0 auto;
+}
+
 .multiple-choice-container {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 15px;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   align-items: center;
-  // width: 500px;
   margin: 0 auto;
 
   @include phone {

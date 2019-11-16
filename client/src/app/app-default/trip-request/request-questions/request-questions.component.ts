@@ -123,6 +123,7 @@ export class RequestQuestionsComponent implements OnInit {
   }
 
   onUpdateStepValues(value) {
+    // console.log('value:', value);
     this.store.dispatch(
       SetFormValue({
         stepValues: value.stepValues,

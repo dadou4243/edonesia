@@ -4,7 +4,8 @@ import {
   ChangeDetectionStrategy,
   Output,
   Input,
-  EventEmitter
+  EventEmitter,
+  OnDestroy
 } from '@angular/core';
 import { volcanoOptions } from '../../data/volcano';
 
@@ -14,12 +15,15 @@ import { volcanoOptions } from '../../data/volcano';
   styleUrls: ['./volcano.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class VolcanoComponent implements OnInit {
+export class VolcanoComponent implements OnInit, OnDestroy {
   @Input() selectedVolcano: number;
+  @Input() typedVolcanoPlaces: number;
   @Output() pickedVolcano = new EventEmitter();
+  @Output() volcanoPlacesChanged = new EventEmitter();
 
   stepValidationObject: any;
   volcanoOptions: any;
+  volcanoPlaces: any;
 
   constructor() {
     this.volcanoOptions = volcanoOptions;
@@ -36,6 +40,19 @@ export class VolcanoComponent implements OnInit {
     this.pickedVolcano.emit({
       validationErrors: this.stepValidationObject
     });
+  }
+
+  ngOnDestroy() {
+    this.volcanoPlacesChanged.emit({
+      stepValues: {
+        volcanoPlaces: this.volcanoPlaces
+      },
+      validationErrors: this.stepValidationObject
+    });
+  }
+
+  updateVolcanoPlaces(event) {
+    this.volcanoPlaces = event.target.value;
   }
 
   onVolcanoChange(volcanoFromEvent) {
