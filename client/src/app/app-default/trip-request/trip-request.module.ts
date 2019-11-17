@@ -28,6 +28,8 @@ import { SurfingComponent } from './components/surfing/surfing.component';
 import { HistoryComponent } from './components/history/history.component';
 import { LastQuestionComponent } from './components/last-question/last-question.component';
 import { ExampleDirective } from './request-questions/scrollTop.directive';
+import { PackagesComponent } from './components/trip-packages/packages.component';
+import { PackageComponent } from './components/trip-package/package.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { ExampleDirective } from './request-questions/scrollTop.directive';
     SurfingComponent,
     HistoryComponent,
     LastQuestionComponent,
-    ExampleDirective
+    ExampleDirective,
+    PackagesComponent,
+    PackageComponent
   ],
   imports: [CommonModule, TripRequestRoutingModule, SharedModule]
 })

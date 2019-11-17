@@ -85,7 +85,7 @@ button {
   position: relative;
   padding: 8px 15px;
   margin-top: 20px;
-  background-color: #ff5e5b;
+  background-color: $alert-color;
   padding-left: 40px;
 
   &::before {
@@ -107,6 +107,12 @@ button {
 
   @include tablet {
     width: 720px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1260px;
   }
 }
 
@@ -136,6 +142,25 @@ button {
         background-color: #cce210 !important;
       }
     }
+  }
+}
+
+button.action-btn {
+  background: #ffffff;
+  color: $primary-dark;
+  padding: 1rem 1.4rem;
+  font-size: 15px;
+  font-weight: 600;
+
+  &.active {
+    background: $primary-light;
+    color: #ffffff;
+  }
+
+  &:hover {
+    background: $primary-light;
+    color: #ffffff;
+    opacity: 0.8;
   }
 }
 

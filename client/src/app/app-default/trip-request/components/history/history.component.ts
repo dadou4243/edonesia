@@ -20,7 +20,7 @@ export class HistoryComponent implements OnInit {
   ngOnInit() {
     this.stepValidationObject = {
       history: {
-        message: 'You must select at least one choice',
+        message: 'You must select at least two types of historical buildings',
         isValid: this.selectedHistory.length >= 2
       }
     };
