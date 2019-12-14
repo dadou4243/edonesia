@@ -241,6 +241,13 @@
   *ngIf="currentStepIndex === stepsNumber.lastQuestion"
 ></app-last-question>
 
+<app-form-package
+  appScrollTop
+  *ngIf="currentStepIndex === stepsNumber.packages"
+  [value]="formValue.package"
+  (formPackageSelected)="onUpdateStepValues($event)"
+></app-form-package>
+
 <app-stripe-payment
   appScrollTop
   *ngIf="currentStepIndex === stepsNumber.payment"
@@ -260,7 +267,7 @@
       Previous
     </button>
   </div>
-  <div *ngIf="!(currentStepIndex > 9) && currentStepIndex !== 0">
+  <div *ngIf="!(currentStepIndex > stepsTotal - 3) && currentStepIndex !== 0">
     <button class="next-btn" (click)="onClickNext()">
       Next
     </button>

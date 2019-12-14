@@ -9,6 +9,7 @@ export const steps = {
   food: 6,
   dining: 7,
   hotelType: 8,
-  lastQuestion: 9,
-  payment: 10
+  packages: 9,
+  lastQuestion: 10,
+  payment: 11
 };

@@ -1,0 +1,12 @@
+<div class="package-container" [class.is-selected]="isSelected">
+  <div>
+    {{ package.name }}
+  </div>
+  <div>{{ package.price }}$</div>
+  <div *ngFor="let feature of package.features">
+    {{ feature }}
+  </div>
+  <button class="ut-btn" (click)="onPackageSelected(package)">
+    Select
+  </button>
+</div>

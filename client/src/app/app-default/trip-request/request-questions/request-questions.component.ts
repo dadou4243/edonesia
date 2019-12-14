@@ -30,6 +30,7 @@ export class RequestQuestionsComponent implements OnInit {
   errors: any[];
   showErrors = false;
   activitiesWithoutEmpty;
+  stepsTotal = Object.keys(steps).length;
 
   constructor(
     private fb: FormBuilder,

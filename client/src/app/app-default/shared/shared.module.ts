@@ -8,6 +8,8 @@ import { StripePaymentComponent } from './components/stripe-payment/stripe-payme
 import { ChoiceCardComponent } from './components/choice-card/choice-card.component';
 import { MultipleChoiceComponent } from './components/multiple-choice/multiple-choice.component';
 import { SelectOptionComponent } from './components/select-option/select-option.component';
+import { PackagesComponent } from './components/packages/packages.component';
+import { PackageComponent } from './components/packages/package/package.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { SelectOptionComponent } from './components/select-option/select-option.
     StripePaymentComponent,
     ChoiceCardComponent,
     MultipleChoiceComponent,
-    SelectOptionComponent
+    SelectOptionComponent,
+    PackagesComponent,
+    PackageComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, Ng5SliderModule],
   exports: [
@@ -26,7 +30,9 @@ import { SelectOptionComponent } from './components/select-option/select-option.
     StripePaymentComponent,
     ChoiceCardComponent,
     MultipleChoiceComponent,
-    SelectOptionComponent
+    SelectOptionComponent,
+    PackagesComponent,
+    PackageComponent
   ]
 })
 export class SharedModule {}

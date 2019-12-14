@@ -33,6 +33,7 @@ export interface IFormValue {
   treks: string[];
   treksDuration: string;
   treksDifficulty: string;
+  package: string;
 }
 
 export interface RequestState {
@@ -73,10 +74,11 @@ export const initialState: RequestState = {
     eatHands: null,
     treks: [],
     treksDuration: null,
-    treksDifficulty: null
+    treksDifficulty: null,
+    package: 'VIP package'
   },
   isValid: false,
-  currentStepIndex: 5,
+  currentStepIndex: 9,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };

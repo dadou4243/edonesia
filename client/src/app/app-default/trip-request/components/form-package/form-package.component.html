@@ -1,0 +1,14 @@
+<div class="packages-step">
+  <h2>Pick your package</h2>
+
+  <div class="packages-container">
+    <app-package
+      *ngFor="let package of packages"
+      [package]="package"
+      [isSelected]="package?.name === value"
+      (packageSelected)="onPackageSelected($event)"
+    >
+      {{ package.name }} - {{ value }}</app-package
+    >
+  </div>
+</div>
