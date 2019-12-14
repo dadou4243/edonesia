@@ -189,16 +189,6 @@
   (pickedSport)="onUpdateStepValues($event)"
 ></app-sports>
 
-<!-- <div
-  appScrollTop
-  *ngIf="
-    currentStepIndex === stepsNumber.tripActivities &&
-    formValue.activities[currentActivitiesStepIndex] === 'cruises'
-  "
->
-  cruises
-</div> -->
-
 <app-spa
   appScrollTop
   *ngIf="
@@ -263,7 +253,7 @@
 
 <div class="step-buttons">
   <div *ngIf="currentStepIndex > 0">
-    <button class="next-btn" (click)="onClickPrevious()">
+    <button class="step-btn" (click)="onClickPrevious()">
       Previous
     </button>
   </div>

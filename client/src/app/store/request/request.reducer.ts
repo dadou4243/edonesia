@@ -1,8 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as requestActions from './request.actions';
 
-import * as moment from 'moment';
-
 export interface IFormValue {
   isDatePlanned: boolean;
   departureDate: string;
@@ -78,7 +76,7 @@ export const initialState: RequestState = {
     package: 'VIP package'
   },
   isValid: false,
-  currentStepIndex: 9,
+  currentStepIndex: 10,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };

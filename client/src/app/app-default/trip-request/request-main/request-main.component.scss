@@ -1,7 +1,9 @@
 @import 'utilities/_mixins';
 
 .request-container {
-  margin: 40px 0;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
 }
 
 :host {
@@ -10,7 +12,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
 }
 
 img.logo {

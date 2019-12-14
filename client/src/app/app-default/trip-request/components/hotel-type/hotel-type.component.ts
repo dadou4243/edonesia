@@ -46,7 +46,7 @@ export class HotelTypeComponent implements OnInit, OnDestroy {
 
     this.stepValidationObject = {
       hotel: {
-        message: 'You must select at least one choice',
+        message: 'You must select at least one hotel type',
         isValid: this.selectedHotel.length > 0
       }
     };

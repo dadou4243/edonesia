@@ -17,12 +17,11 @@
   align-items: center;
 
   &.active {
-    background: #b4b98a;
+    background: $primary-light;
     color: $primary-dark;
   }
 
   &:hover {
-    // box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
     opacity: 0.8;
   }
 }
