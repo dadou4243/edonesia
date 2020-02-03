@@ -45,6 +45,7 @@ export class SelectOptionComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this._handleOutsideClick();
     this.selectedOption = this.placeholder || 'Select an option';
+    console.log('this.options', this.options);
   }
 
   ngOnDestroy() {

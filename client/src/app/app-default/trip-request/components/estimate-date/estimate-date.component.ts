@@ -18,13 +18,30 @@ export class EstimateDateComponent implements OnInit {
   @Input() estimateDays;
   @Output() estimateDateChanged = new EventEmitter();
 
+  options = [
+    {
+      value: 'january',
+      label: 'January'
+    },
+    {
+      value: 'february',
+      label: 'February'
+    },
+    {
+      value: 'march',
+      label: 'March'
+    },
+    {
+      value: 'april',
+      label: 'April'
+    }
+  ];
+
   stepValidationObject: any;
 
   constructor() {}
 
   ngOnInit() {
-    console.log('this.estimateMonth:', this.estimateMonth);
-
     this.stepValidationObject = {
       estimateMonth: {
         message: 'You must chose a month',

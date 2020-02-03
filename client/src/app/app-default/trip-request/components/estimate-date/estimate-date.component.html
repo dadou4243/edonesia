@@ -10,7 +10,7 @@
       <app-select-option
         (selectPicked)="onEstimateMonthChange($event)"
         [selectedValue]="estimateMonth"
-        [options]="['January', 'February', 'March', 'April']"
+        [options]="options"
         [placeholder]="'Select a month'"
       ></app-select-option>
     </div>
@@ -19,6 +19,7 @@
   <div class="form-field">
     <label for="">For how long?</label>
     <input
+      matInput
       type="number"
       class="number-input"
       placeholder="Number of days"

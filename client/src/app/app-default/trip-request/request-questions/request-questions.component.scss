@@ -125,6 +125,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
+    width: 100%;
   }
 
   ::ng-deep .step-description {
@@ -139,6 +140,14 @@
 ::ng-deep textarea {
   width: 100%;
   min-height: 114px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  border: none;
+  padding: 10px 12px;
+  font-size: 16px;
+}
+
+::ng-deep input {
+  width: 100%;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
   border: none;
   padding: 10px 12px;
