@@ -31,8 +31,7 @@ import { PackageComponent } from './components/packages/package/package.componen
     ChoiceCardComponent,
     MultipleChoiceComponent,
     SelectOptionComponent,
-    PackagesComponent,
-    PackageComponent
+    PackagesComponent
   ]
 })
 export class SharedModule {}
