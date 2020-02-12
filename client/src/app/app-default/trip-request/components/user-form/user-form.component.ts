@@ -10,15 +10,15 @@ import { PhoneNumberComponent } from 'ngx-international-phone-number';
 export class UserFormComponent implements OnInit, AfterViewInit {
     userForm: FormGroup;
     contactData = [
-        { id: 'whatsapp', name: 'Whatsapp' },
-        { id: 'skype', name: 'Skype' },
-        { id: 'viber', name: 'Viber' },
-        { id: 'line', name: 'Line' }
+        {id: 'whatsapp', name: 'Whatsapp'},
+        {id: 'skype', name: 'Skype'},
+        {id: 'viber', name: 'Viber'},
+        {id: 'line', name: 'Line'}
     ];
 
     get contacts() {
         return this.userForm.get('contacts');
-    };
+    }
 
     @ViewChild('phonePrefixElement', {static: false, read: ElementRef}) phonePrefixElement: ElementRef;
 
@@ -36,7 +36,7 @@ export class UserFormComponent implements OnInit, AfterViewInit {
             contacts: this.formBuilder.array([]),
         });
 
-        console.log('contacts', this.userForm.controls.contacts)
+        console.log('contacts', this.userForm.controls.contacts);
 
         this.addCheckboxes();
     }
