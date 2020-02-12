@@ -23,7 +23,9 @@
     </div>
 
     <div>
-        <international-phone-number formControlName="phonePrefix" placeholder="Enter phone number"
+        <international-phone-number formControlName="phonePrefix"
+                                    #phonePrefixElement
+                                    placeholder="Enter phone number"
                                     [maxlength]="20"
                                     [defaultCountry]="'us'"
                                     [required]="true"
@@ -41,10 +43,3 @@
 
 </form>
 
-<international-phone-number [(ngModel)]="model.phone_number" placeholder="Enter phone number"
-                            [maxlength]="20"
-                            [defaultCountry]="'us'"
-                            [required]="true"
-                            name="phone_number"></international-phone-number>
-
-<div>{{model.phone_number}}</div>

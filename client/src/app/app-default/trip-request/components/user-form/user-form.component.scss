@@ -1,0 +1,7 @@
+::ng-deep .prefix-input {
+  &[disabled] {
+    color: #000000;
+    width: 63px;
+    margin: 0 10px;
+  }
+}
