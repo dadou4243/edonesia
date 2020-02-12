@@ -45,7 +45,7 @@
         </div>
         contacts length: {{contacts}}
         <label formArrayName="contacts"
-               *ngFor="let contact of contacts.controls; let i = index">
+               *ngFor="let contact of contacts['controls']; let i = index">
             <input type="checkbox"
                    [formControl]="contact"
                    [value]="contactData[i].id"/>
