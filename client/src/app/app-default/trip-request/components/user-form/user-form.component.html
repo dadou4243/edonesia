@@ -23,6 +23,14 @@
     </div>
 
     <div>
+        <international-phone-number formControlName="phonePrefix" placeholder="Enter phone number"
+                                    [maxlength]="20"
+                                    [defaultCountry]="'us'"
+                                    [required]="true"
+                                    name="phone_number"></international-phone-number>
+    </div>
+
+    <div>
         <label for="">Phone number</label>
         <input formControlName="phoneNumber"
                placeholder="Phone number"
@@ -32,3 +40,11 @@
     <div>{{userForm.value | json}}</div>
 
 </form>
+
+<international-phone-number [(ngModel)]="model.phone_number" placeholder="Enter phone number"
+                            [maxlength]="20"
+                            [defaultCountry]="'us'"
+                            [required]="true"
+                            name="phone_number"></international-phone-number>
+
+<div>{{model.phone_number}}</div>

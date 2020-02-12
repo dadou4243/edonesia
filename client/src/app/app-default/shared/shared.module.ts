@@ -10,28 +10,39 @@ import { MultipleChoiceComponent } from './components/multiple-choice/multiple-c
 import { SelectOptionComponent } from './components/select-option/select-option.component';
 import { PackagesComponent } from './components/packages/packages.component';
 import { PackageComponent } from './components/packages/package/package.component';
+import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
+
 
 @NgModule({
-  declarations: [
-    BookTripComponent,
-    StripePaymentComponent,
-    ChoiceCardComponent,
-    MultipleChoiceComponent,
-    SelectOptionComponent,
-    PackagesComponent,
-    PackageComponent
-  ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, Ng5SliderModule],
-  exports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    Ng5SliderModule,
-    StripePaymentComponent,
-    ChoiceCardComponent,
-    MultipleChoiceComponent,
-    SelectOptionComponent,
-    PackagesComponent
-  ]
+    declarations: [
+        BookTripComponent,
+        StripePaymentComponent,
+        ChoiceCardComponent,
+        MultipleChoiceComponent,
+        SelectOptionComponent,
+        PackagesComponent,
+        PackageComponent,
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        Ng5SliderModule,
+        InternationalPhoneNumberModule
+    ],
+    exports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        Ng5SliderModule,
+        StripePaymentComponent,
+        ChoiceCardComponent,
+        MultipleChoiceComponent,
+        SelectOptionComponent,
+        PackagesComponent,
+        PackageComponent,
+        InternationalPhoneNumberModule
+    ]
 })
-export class SharedModule {}
+export class SharedModule {
+}

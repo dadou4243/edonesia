@@ -28,7 +28,8 @@
               "src/scss/main.scss",
               "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/slick-carousel/slick/slick-theme.scss",
-              "node_modules/lightpick/css/lightpick.css"
+              "node_modules/lightpick/css/lightpick.css",
+              "./node_modules/intl-tel-input/build/css/intlTelInput.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/scss"]

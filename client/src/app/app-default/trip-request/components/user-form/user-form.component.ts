@@ -8,13 +8,16 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class UserFormComponent implements OnInit {
   userForm;
+  model = {
+    phone_number: '34234443'
+  };
 
   constructor(private formBuilder: FormBuilder) {
     this.userForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(10)]],
       lastName: ['', [Validators.required, Validators.minLength(10)]],
       email: ['', [Validators.email]],
-      phonePrefix: ['', [Validators.required, Validators.minLength(10)]],
+      phonePrefix: ['+1', [Validators.required, Validators.minLength(10)]],
       phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
       country: ['', [Validators.required]],
       contact: ['', [Validators.required]],
@@ -24,6 +27,7 @@ export class UserFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.userForm.controls.phonePrefix.disable();
   }
 
 }
