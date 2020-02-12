@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PhoneNumberComponent } from 'ngx-international-phone-number';
 
 @Component({
@@ -9,6 +9,16 @@ import { PhoneNumberComponent } from 'ngx-international-phone-number';
 })
 export class UserFormComponent implements OnInit, AfterViewInit {
     userForm: FormGroup;
+    contactData = [
+        { id: 'whatsapp', name: 'Whatsapp' },
+        { id: 'skype', name: 'Skype' },
+        { id: 'viber', name: 'Viber' },
+        { id: 'line', name: 'Line' }
+    ];
+
+    get contacts() {
+        return this.userForm.get('contacts');
+    };
 
     @ViewChild('phonePrefixElement', {static: false, read: ElementRef}) phonePrefixElement: ElementRef;
 
@@ -21,22 +31,30 @@ export class UserFormComponent implements OnInit, AfterViewInit {
             phonePrefix: ['+1', [Validators.required]],
             phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
             country: ['', [Validators.required]],
-            contact: ['', [Validators.required]],
             confirmContact: ['', [Validators.required]],
             generalTerms: ['', [Validators.required]],
+            contacts: this.formBuilder.array([]),
         });
+
+        console.log('contacts', this.userForm.controls.contacts)
+
+        this.addCheckboxes();
     }
 
     ngOnInit() {
     }
 
     ngAfterViewInit() {
-        console.log('childComponent', this.phonePrefixElement);
         const phonePrefixInputElement = this.phonePrefixElement.nativeElement.children[0].children[1];
-        console.log(phonePrefixInputElement);
         this.renderer.setAttribute(phonePrefixInputElement, 'disabled', '');
         this.renderer.addClass(phonePrefixInputElement, 'prefix-input');
+    }
 
+    private addCheckboxes() {
+        this.contactData.forEach((o, i) => {
+            const control = this.formBuilder.control(i === 0);
+            (this.userForm.controls.contacts as FormArray).push(control);
+        });
     }
 
 }
