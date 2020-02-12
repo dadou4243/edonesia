@@ -1,3 +1,10 @@
 node_modules/
 
 ./client/node_modules
+
+/.idea/.gitignore
+/.idea/edonesia.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml
