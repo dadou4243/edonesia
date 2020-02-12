@@ -1,0 +1,34 @@
+<h3>Contact details and meeting</h3>
+
+<form [formGroup]="userForm">
+    <div>
+        <label for="">First name</label>
+        <input formControlName="firstName"
+               placeholder="First name"
+               type="text">
+    </div>
+
+    <div>
+        <label for="">Last name</label>
+        <input formControlName="lastName"
+               placeholder="Last name"
+               type="text">
+    </div>
+
+    <div>
+        <label for="">Email address</label>
+        <input formControlName="email"
+               placeholder="Email address"
+               type="email">
+    </div>
+
+    <div>
+        <label for="">Phone number</label>
+        <input formControlName="phoneNumber"
+               placeholder="Phone number"
+               type="text">
+    </div>
+
+    <div>{{userForm.value | json}}</div>
+
+</form>

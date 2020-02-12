@@ -76,7 +76,7 @@ export const initialState: RequestState = {
     package: 'VIP package'
   },
   isValid: false,
-  currentStepIndex: 0,
+  currentStepIndex: 11,
   currentActivitiesStepIndex: -1,
   currentValidationErrors: {}
 };

@@ -29,6 +29,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { LastQuestionComponent } from './components/last-question/last-question.component';
 import { ExampleDirective } from './request-questions/scrollTop.directive';
 import { FormPackageComponent } from './components/form-package/form-package.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { FormPackageComponent } from './components/form-package/form-package.com
     HistoryComponent,
     LastQuestionComponent,
     ExampleDirective,
-    FormPackageComponent
+    FormPackageComponent,
+    UserFormComponent
   ],
   imports: [CommonModule, TripRequestRoutingModule, SharedModule]
 })

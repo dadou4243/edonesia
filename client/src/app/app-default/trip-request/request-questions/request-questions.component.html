@@ -238,6 +238,11 @@
   (formPackageSelected)="onUpdateStepValues($event)"
 ></app-form-package>
 
+<app-user-form
+        appScrollTop
+        *ngIf="currentStepIndex === stepsNumber.userForm"
+></app-user-form>
+
 <app-stripe-payment
   appScrollTop
   *ngIf="currentStepIndex === stepsNumber.payment"

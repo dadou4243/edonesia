@@ -11,5 +11,6 @@ export const steps = {
   hotelType: 8,
   lastQuestion: 9,
   packages: 10,
-  payment: 11
+  userForm: 11,
+  payment: 12
 };
